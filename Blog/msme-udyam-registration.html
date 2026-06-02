@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>MSME Udyam Registration 2026 | DreamMore Blog</title>
+  <link rel="icon" type="image/png" href="/public/LOGO.png">
+  <meta name="description" content="Udyam Registration is the gateway to 20+ government benefits. This step-by-step guide covers the process, documents, classification criteria, and common errors to avoid.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a2e1e;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+    /* Animations */
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(30px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      0% { opacity: 0; transform: translateX(-40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeRight {
+      0% { opacity: 0; transform: translateX(40px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes zoomInOut {
+      0% { transform: scale(0.95); opacity: 0; }
+      50% { transform: scale(1.02); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
+    }
+    .animate-fadeUp { animation: fadeUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+    .animate-fadeLeft { animation: fadeLeft 0.5s ease forwards; }
+    .animate-fadeRight { animation: fadeRight 0.5s ease forwards; }
+    .animate-scale { animation: scaleIn 0.45s ease forwards; }
+    .animate-zoom { animation: zoomInOut 0.7s ease forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    html { scroll-behavior: smooth; }
+    .mobile-menu-open { overflow: hidden; }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    .glass-nav.scrolled {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100%;
+      background: white;
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #f5f5f5;
+    }
+    .mobile-menu a {
+      padding: 12px 0;
+      text-decoration: none;
+      color: #1a2e1e;
+      font-weight: 500;
+      border-bottom: 1px solid #eef2f0;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: #1C9C6E; }
+    .mobile-cta {
+      margin-top: 20px;
+      background: #1C9C6E;
+      color: white !important;
+      text-align: center;
+      padding: 12px !important;
+      border-radius: 30px;
+      font-weight: bold !important;
+      border: none !important;
+    }
+    .mobile-cta:hover { background: #15855f; }
+    .line-clamp-2 {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-close" id="mobileMenuClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="mb-8 pt-8">
+      <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+          <!-- Logo Image -->
+          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+          <!-- Optional Text -->
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+        </a>
+    </div>
+    <a href="/Home/index.html">Home</a>
+    <a href="/Service/service.html">Services</a>
+    <a href="/Government Schemes/schemes.html">Government Schemes</a>
+    <a href="/Loan/loan.html">Loan</a>
+    <a href="/Blog/blog.html">Blog</a>
+    <a href="/About us/about.html">About Us</a>
+    <a href="/Carrers/carrers.html">Careers</a>
+    <a href="/Contact us/contact.html">Contact</a>
+    <a href="/Contact us/contact.html" class="mobile-cta">Free Consultation →</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+        <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+          <!-- Logo Image -->
+          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+          <!-- Optional Text -->
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Home/index.html">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Government Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/About us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Carrers/carrers.html">Careers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Contact us/contact.html">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[#15855f] transition" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg>
+            Free Consultation
+          </a>
+        </div>
+        <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="bg-white pt-[72px] overflow-x-hidden">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden py-14 lg:py-20 bg-[#FAFAF7]">
+      <div class="absolute -top-[280px] -right-[180px] w-[700px] h-[700px] rounded-full bg-gradient-radial from-[#BE3A1B]/10 to-transparent"></div>
+      <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-2 text-[12px] mb-8 animate-fadeUp">
+          <a class="transition-colors text-[#8a9a8e] hover:text-[#BE3A1B]" href="/Home/index.html">Home</a>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[#8a9a8e]"><path d="m9 18 6-6-6-6"></path></svg>
+          <a class="transition-colors text-[#8a9a8e] hover:text-[#BE3A1B]" href="/Blog/blog.html">Blog</a>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[#8a9a8e]"><path d="m9 18 6-6-6-6"></path></svg>
+          <span class="truncate max-w-xs font-semibold text-[#BE3A1B]">MSME Udyam Registration 2026: The Only Guide You'll Need</span>
+        </div>
+        <div class="inline-flex items-center gap-2 mb-5 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B] animate-fadeUp delay-100">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
+          <span class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Registration</span>
+        </div>
+        <h1 class="text-3xl md:text-[44px] lg:text-[54px] font-black leading-[1.06] tracking-tight mb-5 max-w-4xl text-[#1a2e1e] animate-fadeUp delay-200">MSME Udyam Registration 2026: The Only Guide You'll Need</h1>
+        <p class="text-[15px] leading-relaxed max-w-2xl mb-8 text-[#5a6b5e] animate-fadeUp delay-300">Udyam Registration is the gateway to 20+ government benefits. This step-by-step guide covers the process, documents, classification criteria, and common errors to avoid.</p>
+        <div class="flex flex-wrap items-center gap-5 pt-5 border-t border-[#BE3A1B]/15 animate-zoom delay-400">
+          <div class="flex items-center gap-3"><div class="w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-sm bg-[#BE3A1B]">A</div><div><p class="font-bold text-[13px] text-[#1a2e1e]">Anita Sharma</p><p class="text-[11px] text-[#8a9a8e]">Business Compliance Expert</p></div></div>
+          <div class="h-8 w-px bg-[#BE3A1B]/20"></div>
+          <span class="flex items-center gap-1.5 text-[13px] text-[#8a9a8e]"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> 8 Jan 2026</span>
+          <span class="flex items-center gap-1.5 text-[13px] text-[#8a9a8e]"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 8 min read</span>
+        </div>
+      </div>
+      <svg viewBox="0 0 1440 48" fill="none" class="block w-full"><path d="M0,24 C480,0 960,48 1440,16 L1440,48 L0,48 Z" fill="white"></path></svg>
+    </section>
+
+    <!-- Blog Content -->
+    <section class="max-w-full mx-auto px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
+      <div class="grid lg:grid-cols-[1fr_320px] gap-12 items-start min-w-0">
+        <article class="min-w-0">
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp">Since its launch in 2020, Udyam Registration has replaced the old Udyog Aadhaar system. Over 3.5 crore MSMEs are now registered — but millions more are still operating without registration, missing out on scheme eligibility, priority lending, and legal protections.</p>
+          
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft">MSME Classification (2026 Updated Criteria)</h2>
+          <div class="my-8 overflow-x-auto rounded-2xl border border-[#BE3A1B]/20 shadow-sm animate-scale delay-100"><thead><tr style="background:#1C9C6E"><th class="px-5 py-3.5 text-left text-white font-bold text-[11px] uppercase tracking-wider">Category</th><th class="px-5 py-3.5 text-left text-white font-bold text-[11px] uppercase tracking-wider">Investment in P&amp;M/Equipment</th><th class="px-5 py-3.5 text-left text-white font-bold text-[11px] uppercase tracking-wider">Annual Turnover</th></tr></thead><tbody><tr style="background:white"><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 font-bold text-[#1a2e1e]">Micro Enterprise</td><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 text-[#4a5c4e]">Up to ₹1 Crore</td><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 text-[#4a5c4e]">Up to ₹5 Crore</td></tr><tr style="background:rgba(28,156,110,0.03)"><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 font-bold text-[#1a2e1e]">Small Enterprise</td><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 text-[#4a5c4e]">Up to ₹10 Crore</td><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 text-[#4a5c4e]">Up to ₹50 Crore</td></tr><tr style="background:white"><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 font-bold text-[#1a2e1e]">Medium Enterprise</td><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 text-[#4a5c4e]">Up to ₹50 Crore</td><td class="px-5 py-3.5 border-t border-[#BE3A1B]/10 text-[#4a5c4e]">Up to ₹250 Crore</td></tr></tbody> Month</div>
+
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-100">Benefits of Udyam Registration</h2>
+          <ul class="space-y-2.5 mb-6"><li class="flex items-start gap-3 animate-fadeRight delay-100"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Priority lending — banks must allocate 7.5% of credit to micro enterprises</span></li><li class="flex items-start gap-3 animate-fadeRight delay-150"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">1% interest subvention on MSME loans</span></li><li class="flex items-start gap-3 animate-fadeRight delay-200"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Collateral-free loans under CGTMSE</span></li><li class="flex items-start gap-3 animate-fadeRight delay-250"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Access to PMEGP, Mudra, Stand-Up India, and 15+ other schemes</span></li><li class="flex items-start gap-3 animate-fadeRight delay-300"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Protection against delayed payments (MSMED Act — 45 days clause)</span></li></ul>
+
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-200">Step-by-Step Registration Process</h2>
+          <ol class="space-y-3 mb-6"><li class="flex items-start gap-3 animate-fadeUp delay-100"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">1</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Visit udyamregistration.gov.in — completely free, no login needed</span></li><li class="flex items-start gap-3 animate-fadeUp delay-150"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">2</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Enter Aadhar number of proprietor/managing partner/director</span></li><li class="flex items-start gap-3 animate-fadeUp delay-200"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">3</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Validate with OTP received on Aadhar-linked mobile</span></li><li class="flex items-start gap-3 animate-fadeUp delay-250"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">4</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Fill business details: name, type, location, NIC code</span></li><li class="flex items-start gap-3 animate-fadeUp delay-300"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">5</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Enter investment and turnover figures (use ITR/GST data)</span></li><li class="flex items-start gap-3 animate-fadeUp delay-350"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">6</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Self-declare — no documents to upload</span></li><li class="flex items-start gap-3 animate-fadeUp delay-400"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">7</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Download the Udyam Registration Certificate instantly</span></li></ol>
+
+          <div class="my-8 rounded-2xl p-6 flex gap-4 bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 animate-scale delay-200"><div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BE3A1B" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg></div><div><p class="text-[11px] font-black uppercase tracking-widest mb-1.5 text-[#BE3A1B]">Important</p><p class="text-[14px] leading-relaxed text-[#1a2e1e]">Udyam Registration is self-declared and based on your last ITR and GST returns. Providing wrong investment or turnover figures can lead to cancellation. DreamMore verifies all figures before submission.</p></div></div>
+
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-300">Common Mistakes to Avoid</h2>
+          <ul class="space-y-2.5 mb-6"><li class="flex items-start gap-3 animate-fadeLeft delay-100"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Using wrong NIC code — each industry has a specific code</span></li><li class="flex items-start gap-3 animate-fadeLeft delay-150"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Entering investment figures excluding GST</span></li><li class="flex items-start gap-3 animate-fadeLeft delay-200"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Not linking Aadhar with mobile (OTP validation fails)</span></li><li class="flex items-start gap-3 animate-fadeLeft delay-250"><svg class="flex-shrink-0 mt-0.5 text-[#BE3A1B]" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="m9 12 2 2 4-4"></path></svg><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Registering without PAN — mandatory for businesses with GST liability</span></li></ul>
+
+          <div class="mt-10 rounded-2xl p-8 flex gap-5 items-start bg-[#BE3A1B] shadow-lg animate-zoom delay-300"><div class="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-xl flex-shrink-0 bg-white/20 border border-white/30">A</div><div class="relative z-10"><p class="font-black text-lg text-white">Anita Sharma</p><p class="text-[13px] mb-3 text-white/60">Business Compliance Expert · DreamMore</p><p class="text-[14px] leading-relaxed text-white/80">Anita has helped 500+ MSMEs navigate government schemes. Book a free consultation to get personalized advice.</p></div></div>
+        </article>
+
+        <aside class="lg:sticky lg:top-24 space-y-5">
+          <div class="rounded-2xl p-5 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10 animate-fadeRight delay-100"><p class="text-[11px] font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-[#1a2e1e]">Table of Contents</p><ol class="space-y-2"><li class="flex items-start gap-2.5 text-[13px]"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">01</span><span class="leading-snug text-[#5a6b5e]">MSME Classification</span></li><li class="flex items-start gap-2.5 text-[13px]"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">02</span><span class="leading-snug text-[#5a6b5e]">Benefits of Udyam Registration</span></li><li class="flex items-start gap-2.5 text-[13px]"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">03</span><span class="leading-snug text-[#5a6b5e]">Step-by-Step Process</span></li><li class="flex items-start gap-2.5 text-[13px]"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">04</span><span class="leading-snug text-[#5a6b5e]">Common Mistakes to Avoid</span></li></ol></div>
+          
+          <div class="rounded-2xl overflow-hidden bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 animate-scale delay-200"><div class="p-5 bg-[#BE3A1B]"><p class="font-black text-white text-[15px] mb-1">Need Help Applying?</p><p class="text-[13px] leading-relaxed text-white/75">Our experts handle the complete application process.</p></div><div class="p-5 space-y-2.5"><a class="group flex items-center justify-between font-bold px-5 py-3.5 rounded-xl bg-[#BE3A1B] text-white" href="#"><span class="text-[13px]">Book Free Call</span><span>→</span></a><a href="tel:+917600764809" class="flex items-center gap-2 justify-center font-semibold px-5 py-3 rounded-xl bg-white border border-[#BE3A1B]/20 text-[#1a2e1e]">📞 +91 9898495417</a><div class="flex items-center justify-center gap-3 pt-2"><div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">✅</span><span class="text-[10px] font-medium text-gray-500">Govt. Recognized</span></div><div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">🎧</span><span class="text-[10px] font-medium text-gray-500">Free</span></div></div></div></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- More Articles Section -->
+    <section class="relative overflow-hidden py-20 bg-[#F4F1EC]">
+      <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14 animate-fadeUp"><span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20"><span class="w-2 h-2 rounded-full bg-[#BE3A1B]"></span><span class="text-[11px] font-semibold tracking-widest uppercase text-[#0f6e50]">Keep Reading</span></span><h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3 text-[#1a2e1e]">More from DreamMore</h2></div>
+        <div class="grid md:grid-cols-3 gap-5">
+          <article class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 animate-scale delay-100"><div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div><div class="p-6 flex flex-col flex-1"><span class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B]/10 text-[#0f6e50]">Government Schemes</span><h3 class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">Udyam Shakti Scheme 2026: Complete Guide for Women Entrepreneurs</h3><p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">Everything you need to know about India's flagship scheme for women-led MSMEs — eligibility, benefits up to ₹10 lakh, and how to apply.</p><div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 10 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B]" href="#">Read →</a></div></div></article>
+          <article class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 animate-scale delay-200"><div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div><div class="p-6 flex flex-col flex-1"><span class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B]/10 text-[#0f6e50]">Government Schemes</span><h3 class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">PMEGP 2026: The Complete Guide to Getting ₹50 Lakh for Your Business</h3><p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">PMEGP remains India's biggest self-employment scheme. Learn exact eligibility, subsidy rates, and bank selection strategy.</p><div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 14 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B]" href="#">Read →</a></div></div></article>
+          <article class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 animate-scale delay-300"><div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div><div class="p-6 flex flex-col flex-1"><span class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B]/10 text-[#0f6e50]">Certifications</span><h3 class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">5 Certifications Every MSME Must Have for Business Growth in 2026</h3><p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">ISO, FSSAI, BIS, IEC, or GI Tag — which certifications actually drive revenue and open government contracts?</p><div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 9 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B]" href="#">Read →</a></div></div></article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+
+        <!-- Disclaimer & Notice Section -->
+
+
+        <!-- Main Footer Grid -->
+        <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
+
+          <!-- Brand Column -->
+          <div>
+            <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
+            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
+              funding — we handle every step.</p>
+          </div>
+
+          <!-- Navigation Column -->
+          <div>
+            <h4 class="font-bold text-lg">Navigation</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li><a href="/Home/index.html" class="hover:text-white transition">Home</a></li>
+              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
+              <li><a href="/Government Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
+              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
+              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
+              <li><a href="/About us/about.html" class="hover:text-white transition">About Us</a></li>
+              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
+              <li><a href="/Contact us/contact.html" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Categories Column -->
+          <div>
+            <h4 class="font-bold text-lg">Categories</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li>AI Solutions</li>
+              <li>Certifications</li>
+              <li>Website Development</li>
+              <li>App Development</li>
+              <li>IOT Solution</li>
+              <li>Digital Marketing</li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div>
+            <h4 class="font-bold text-lg">Contact</h4>
+            <p class="mt-3 text-sm">Ahmedabad, Gujarat, India</p>
+            <p class="mt-2">📧 dreammore2026@gmail.com</p>
+            <p class="pt-4">📞 +91 9898495417</p>
+          </div>
+        </div>
+
+        <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
+
+          <!-- Disclaimer -->
+          <div class="text-sm text-white/80 leading-relaxed pt-5">
+            <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
+            DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
+            services.
+            All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
+            guarantees.
+            All outcomes are subject to government procedures, approvals, and external factors.
+          </div>
+
+          <!-- Note -->
+          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
+            <span class="font-bold text-[#F97316]">📌 NOTE:</span>
+            All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
+            official payment channels,
+            including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
+            payments to personal accounts
+            or under any other name. Clients are strongly advised to verify account details before making any
+            transaction.
+            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
+          </div>
+        </div>
+
+        <!-- Legal & Policy Links Row -->
+        <div
+          class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
+          </div>
+          <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
+        </div>
+
+
+
+      </div>
+    </footer>
+
+  <!-- WhatsApp float button -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div class="bg-white rounded-2xl shadow-xl p-3 pr-7 text-xs font-medium animate-zoom delay-500 border border-gray-100">💬 Chat with us! Get free advice</div>
+    <a href="https://wa.me/919898495417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business." target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl hover:scale-105 transition"><svg viewBox="0 0 32 32" fill="white" width="30"><path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zm0 23.04c-2.04 0-3.96-.54-5.62-1.5l-.4-.24-4 1.16 1.18-3.88-.26-.4A10.36 10.36 0 015.56 15.8c0-5.76 4.68-10.44 10.44-10.44 5.76 0 10.44 4.68 10.44 10.44S21.762 26.24 16.002 26.24zM21.74 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z"/></svg></a>
+  </div>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() { mobileMenu.classList.add('active'); mobileMenuOverlay.classList.add('active'); document.body.classList.add('mobile-menu-open'); }
+    function closeMobileMenu() { mobileMenu.classList.remove('active'); mobileMenuOverlay.classList.remove('active'); document.body.classList.remove('mobile-menu-open'); }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  </script>
+</body>
+</html>

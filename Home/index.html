@@ -1,0 +1,1535 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>DreamMore – Grow Your Business Wings | MSME & Startup Solutions</title>
+  <link rel="icon" type="image/png" href="/public/LOGO.png">
+  <meta name="description"
+    content="India's trusted MSME and startup support platform. Business registration, government schemes, funding, certifications, and digital services.">
+  <meta name="keywords"
+    content="MSME, startup, business registration, PMEGP, CGTMSE, Mudra loan, GST, ISO certification, government schemes, India">
+  <!-- Google Fonts + Tailwind CDN + simple custom animations -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet">
+    <link rel="preload" as="image" href="/public/LOGO.png"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      scroll-behavior: smooth;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* custom glassmorph & animations */
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.35);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+    }
+
+    .btn-primary {
+      background: #BE3A1B;
+      transition: all 0.2s ease;
+      box-shadow: 0 6px 20px rgba(28, 156, 110, 0.35);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: black;
+      box-shadow: 0 12px 28px rgba(28, 156, 110, 0.45);
+    }
+
+    .card-hover {
+      transition: all 0.25s ease;
+    }
+
+    .card-hover:hover {
+      transform: translateY(-4px);
+    }
+
+    .section-bg-pattern {
+      background-image: radial-gradient(circle at 10% 20%, rgba(28, 156, 110, 0.03) 0%, transparent 60%);
+    }
+
+    .animated-fade-up {
+      animation: fadeUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    }
+
+    @keyframes fadeUp {
+      0% {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+
+      100% {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .delay-100 {
+      animation-delay: 0.1s;
+    }
+
+    .delay-200 {
+      animation-delay: 0.2s;
+    }
+
+    .delay-300 {
+      animation-delay: 0.3s;
+    }
+
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #ffffff;
+    }
+
+    @media (min-width: 768px) {
+      .stat-number {
+        font-size: 2.5rem;
+      }
+    }
+
+    .faq-btn.active svg {
+      transform: rotate(180deg);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.3s ease-out;
+    }
+
+    .faq-btn.active+.faq-content {
+      max-height: 300px;
+      transition: max-height 0.4s ease-in;
+    }
+
+    .floating-wa {
+      animation: waFloat 1.2s ease-in-out infinite;
+    }
+
+    @keyframes waFloat {
+      0% {
+        transform: scale(0.96);
+        box-shadow: 0 0 0 0 rgba(113, 146, 125, 0.4);
+      }
+
+      70% {
+        transform: scale(1.02);
+        box-shadow: 0 0 0 12px rgba(37, 211, 102, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      transition: left 0.3s ease-in-out;
+      box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+      padding: 24px 20px;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu-close:hover {
+      background: #e0e0e0;
+      transform: rotate(90deg);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a2e1e;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: #BE3A1B;
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 20px;
+      background: #BE3A1B;
+      color: white !important;
+      text-align: center;
+      border-radius: 12px;
+      padding: 14px;
+      border: none;
+    }
+
+    .mobile-menu .mobile-cta:hover {
+      background: black;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+</head>
+
+<body class="text-gray-800 antialiased">
+
+  <!-- ========== MOBILE MENU OVERLAY ========== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- ========== MOBILE MENU ========== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-close" id="mobileMenuClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="mb-8 pt-8">
+      <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+          <!-- Logo Image -->
+          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+          <!-- Optional Text -->
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+        </a>
+    </div>
+    <a href="/Home/index.html">Home</a>
+    <a href="/Service/service.html">Services</a>
+    <a href="/Government Schemes/schemes.html">Government Schemes</a>
+    <a href="/Loan/loan.html">Loan</a>
+    <a href="/Blog/blog.html">Blog</a>
+    <a href="/About us/about.html">About Us</a>
+    <a href="/Carrers/carrers.html">Careers</a>
+    <a href="/Contact us/contact.html">Contact</a>
+    <a href="/Contact us/contact.html" class="mobile-cta">Free Consultation →</a>
+  </div>
+
+  <!-- ========== NAVBAR ========== -->
+  <nav
+    class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+
+        <!-- LOGO -->
+        <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+          <!-- Logo Image -->
+          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+          <!-- Optional Text -->
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-1">
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Home/index.html">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Government Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/About us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Carrers/carrers.html">Careers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+            href="/Contact us/contact.html">Contact</a>
+        </div>
+
+        <!-- Button -->
+        <div class="hidden md:flex items-center gap-2">
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[black] transition"
+            href="/Contact us/contact.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+              stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path
+                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+            </svg>
+            Free Consultation
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ========== HERO SECTION ========== -->
+    <section class="relative overflow-hidden pt-32 pb-16 lg:py-24 bg-[#ffffff] reveal-on-scroll">
+      <div
+        class="absolute -top-40 -right-40 w-[640px] h-[640px] rounded-full bg-[#BE3A1B] opacity-10 pointer-events-none">
+      </div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+          <div class="space-y-5">
+            <div
+              class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#A35E47]/30">
+              <span class="w-2 h-2 rounded-full bg-[#ffffff] animate-pulse"></span>
+              <span class="text-[11px] font-bold text-[#ffffff] uppercase tracking-wider">India's Trusted MSME & Startup
+                Partner</span>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-black leading-tight tracking-tight text-[#1a2e1e]">Limited Dreames<br><span
+                class="text-[#BE3A1B]">Endless Possibilities</span></h1>
+            <p class="text-gray-600 max-w-lg">End-to-end support for MSMEs and startups — from registration,licence and
+              certifications to government funding and digital growth.</p>
+            <div class="flex flex-wrap gap-3 pt-2">
+              <a href="/Contact us/contact.html"
+                class="btn-primary px-6 py-3 rounded-xl text-white font-bold flex items-center gap-2">Get Free
+                Consultation →</a>
+              <a href="#services"
+                class="px-6 py-3 rounded-xl font-semibold bg-white/70 border border-[#A35E47]/30 text-gray-800 hover:-translate-y-0.5 transition">Explore
+                Services</a>
+            </div>
+            <div class="flex flex-wrap gap-6 pt-5 border-t border-[#A35E47]/20">
+              <div><span class="stat-number text-[#BE3A1B]">130+</span>
+                <p class="text-xs text-gray-500">MSMEs Served</p>
+              </div>
+              <div><span class="stat-number text-[#BE3A1B]">₹10Cr+</span>
+                <p class="text-xs text-gray-500">Funding Facilitated</p>
+              </div>
+              <div><span class="stat-number text-[#BE3A1B]">93%</span>
+                <p class="text-xs text-gray-500">Success Rate</p>
+              </div>
+              <div><span class="stat-number text-[#BE3A1B]">66+</span>
+                <p class="text-xs text-gray-500">Expert Advisors</p>
+              </div>
+            </div>
+          </div>
+          <div class="hidden lg:grid gap-4 bg-white/50 rounded-2xl p-6 backdrop-blur-sm shadow-lg">
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm">
+              <div class="w-10 h-10 bg-[#BE3A1B] rounded-xl flex items-center justify-center">📄</div>
+              <div>
+                <h4 class="font-bold">Business Registration</h4>
+                <p class="text-sm text-gray-500">Pvt Ltd, OPC, LLP, Partnership</p>
+              </div>
+            </div>
+            <div class="flex items-start gap-4 p-4 bg-white rounded-xl shadow-sm">
+              <div class="w-10 h-10 bg-[#BE3A1B] rounded-xl flex items-center justify-center">🏛️</div>
+              <div>
+                <h4 class="font-bold">Government Schemes</h4>
+                <p class="text-sm text-gray-500">PMEGP, CGTMSE, Mudra, Stand-Up India</p>
+              </div>
+            </div>
+            <div class="bg-[#BE3A1B] rounded-xl p-4 text-white">
+              <p class="font-bold">Free 30-min Consultation</p>
+              <p class="text-sm opacity-80">No commitment · No hidden fees</p><a href="/Contact us/contact.html"
+                class="mt-2 inline-block bg-white text-[black] font-bold px-4 py-2 rounded-lg text-sm">Book Now →</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== SERVICES SECTION ========== -->
+    <section id="services" class="py-20 bg-white reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12"><span
+            class="bg-[#BE3A1B] px-4 py-1 rounded-full text-[white] font-semibold text-sm">What We Offer</span>
+          <h2 class="text-4xl font-black mt-3">Our <span class="text-[#BE3A1B]">Services</span></h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="p-6 rounded-2xl border border-[#A35E47]/20 bg-white/60 backdrop-blur-sm card-hover">
+            <div class="text-3xl mb-3">01</div>
+            <h3 class="text-xl font-bold">Business Registration</h3>
+            <p class="text-gray-500 text-sm mt-2">Private Limited, OPC, LLP, Partnership, Section 8 Company & NGO</p><a
+              href="/Contact us/contact.html" class="mt-4 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+          <div class="p-6 rounded-2xl border border-[#A35E47]/20 bg-white/50 card-hover">
+            <div class="text-3xl mb-3">02</div>
+            <h3 class="text-xl font-bold">Legal & Protection</h3>
+            <p class="text-gray-500 text-sm mt-2">Trademark, Patent, Copyright, Shram Suvidha registrations</p><a
+              href="/Contact us/contact.html" class="mt-4 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+          <div class="p-6 rounded-2xl border border-[#A35E47]/20 bg-white/60 card-hover">
+            <div class="text-3xl mb-3">03</div>
+            <h3 class="text-xl font-bold">Certifications</h3>
+            <p class="text-gray-500 text-sm mt-2">ISO, FSSAI, IEC, GeM, Startup India, Udyam, NSIC ,Darpan,Tax Exemption 80-IAC</p><a href="/Contact us/contact.html"
+              class="mt-4 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+          <div class="p-6 rounded-2xl border border-[#A35E47]/20 bg-white/60 card-hover">
+            <div class="text-3xl mb-3">04</div>
+            <h3 class="text-xl font-bold">Grants & Funding</h3>
+            <p class="text-gray-500 text-sm mt-2">PMEGP, CGTMSE, Mudra, Stand-Up India, Startup India Seed Fund,Women Grants</p><a
+              href="/Contact us/contact.html" class="mt-4 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+          <div class="p-6 rounded-2xl border border-[#A35E47]/20 bg-white/60 card-hover">
+            <div class="text-3xl mb-3">05</div>
+            <h3 class="text-xl font-bold">Business Finance</h3>
+            <p class="text-gray-500 text-sm mt-2">Working capital, term loans, venture capital connections up to ₹5 Cr
+            </p><a href="/Contact us/contact.html" class="mt-4 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+          <div class="p-6 rounded-2xl border border-[#A35E47]/20 bg-white/60 card-hover">
+            <div class="text-3xl mb-3">06</div>
+            <h3 class="text-xl font-bold">Digital Services</h3>
+            <p class="text-gray-500 text-sm mt-2">Website, SEO, Social Media,Meta Ads,Google Ads,Ai Tools,Data Analysis</p><a href="/Contact us/contact.html"
+              class="mt-4 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== GOVERNMENT SCHEMES ========== -->
+    <section id="schemes" class="py-20 bg-[#f8faf9] reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-12"><span
+            class="bg-[#BE3A1B] px-4 py-1 rounded-full text-[white] font-semibold text-sm">Government Backed</span>
+          <h2 class="text-4xl font-black mt-3">Government <span class="text-[#BE3A1B]">Schemes</span></h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
+          <div class="bg-white rounded-2xl p-6 shadow-sm border-l-4 border-[#A35E47]">
+            <div class="flex items-center gap-2"><span class="text-2xl font-black text-[#BE3A1B]">₹50L</span><span
+                class="bg-[#BE3A1B] text-white text-xs px-2 py-0.5 rounded-full">Collateral-Free</span></div>
+            <h3 class="font-bold text-xl mt-1">PMEGP</h3>
+            <p class="text-sm text-black">Prime Minister's Employment Generation Programme - 15-35% subsidy</p><a
+              href="/Contact us/contact.html" class="mt-3 inline-block text-[#BE3A1B] font-medium text-sm">Apply Now →</a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-2"><span class="text-2xl font-black text-[#BE3A1B]">₹5Cr</span><span
+                class="bg-[#BE3A1B] text-white text-xs px-2 py-0.5 rounded-full">Credit Guarantee</span></div>
+            <h3 class="font-bold text-xl mt-1">CGTMSE</h3>
+            <p class="text-sm text-gray-500">Collateral-free credit guarantee up to 85% cover</p><a href="/Contact us/contact.html"
+              class="mt-3 inline-block text-[#BE3A1B] font-medium text-sm">Apply →</a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-2"><span class="text-2xl font-black text-[#BE3A1B]">₹10L</span><span
+                class="bg-[#BE3A1B] text-white text-xs px-2 py-0.5 rounded-full">Low Interest</span></div>
+            <h3 class="font-bold text-xl mt-1">Mudra Loan</h3>
+            <p class="text-sm text-gray-500">Shishu, Kishore, Tarun categories for micro enterprises</p><a
+              href="/Contact us/contact.html" class="mt-3 inline-block text-[#BE3A1B] font-medium text-sm">Apply →</a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-2"><span class="text-2xl font-black text-[#BE3A1B]">₹1Cr</span><span
+                class="bg-[#BE3A1B] text-white text-xs px-2 py-0.5 rounded-full">SC/ST & Women</span></div>
+            <h3 class="font-bold text-xl mt-1">Stand-Up India</h3>
+            <p class="text-sm text-gray-500">Loans for greenfield enterprises by SC/ST & Women entrepreneurs</p><a
+              href="/Contact us/contact.html" class="mt-3 inline-block text-[#BE3A1B] font-medium text-sm">Apply →</a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-2"><span class="text-2xl font-black text-[#BE3A1B]">₹50L</span><span
+                class="bg-[#BE3A1B] text-white text-xs px-2 py-0.5 rounded-full">Equity & Grants</span></div>
+            <h3 class="font-bold text-xl mt-1">Startup India</h3>
+            <p class="text-sm text-gray-500">Seed fund scheme for DPIIT-recognized startups</p><a href="/Contact us/contact.html"
+              class="mt-3 inline-block text-[#BE3A1B] font-medium text-sm">Apply →</a>
+          </div>
+          <div class="bg-white rounded-2xl p-6 shadow-sm">
+            <div class="flex items-center gap-2"><span class="text-2xl font-black text-[#BE3A1B]">₹10L</span><span
+                class="bg-[#BE3A1B] text-white text-xs px-2 py-0.5 rounded-full">35% Subsidy</span></div>
+            <h3 class="font-bold text-xl mt-1">PMFME</h3>
+            <p class="text-sm text-gray-500">Micro food processing enterprises subsidy scheme</p><a href="/Contact us/contact.html"
+              class="mt-3 inline-block text-[#BE3A1B] font-medium text-sm">Apply →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== LOAN PRODUCTS ========== -->
+    <section id="loans" class="py-20 bg-white reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="text-center mb-10"><span
+            class="bg-[#BE3A1B] px-4 py-1 rounded-full text-[white] font-semibold text-sm">Financial
+            Solutions</span>
+          <h2 class="text-4xl font-black mt-3">Our <span class="text-[#BE3A1B]">Loan</span> Products</h2>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div class="bg-[#BE3A1B] text-white rounded-2xl p-6">
+            <h3 class="text-2xl font-bold">Personal Loan</h3>
+            <p class="mt-1 opacity-90">Up to ₹40L · 10-24% p.a. · 12-72 months</p><a href="/Contact us/contact.html"
+              class="inline-block mt-4 bg-white text-[#BE3A1B] font-semibold px-5 py-2 rounded-xl text-sm">Apply Now</a>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <h3 class="text-xl font-bold">Business Loan</h3>
+            <p class="text-gray-500">₹1L – ₹50L+ · working capital, expansion</p><a href="/Contact us/contact.html"
+              class="inline-block mt-4 text-[#BE3A1B] font-semibold">Apply →</a>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <h3 class="text-xl font-bold">Home Loan</h3>
+            <p class="text-gray-500">₹5L – ₹10Cr+ · attractive interest rates</p><a href="/Contact us/contact.html"
+              class="inline-block mt-4 text-[#BE3A1B] font-semibold">Apply →</a>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <h3 class="text-xl font-bold">Mortgage Loan</h3>
+            <p class="text-gray-500">Against property, 50%-75% value</p><a href="/Contact us/contact.html"
+              class="inline-block mt-4 text-[#BE3A1B] font-semibold">Apply →</a>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <h3 class="text-xl font-bold">Education Loan</h3>
+            <p class="text-gray-500">Up to ₹50L+ · India & abroad</p><a href="/Contact us/contact.html"
+              class="inline-block mt-4 text-[#BE3A1B] font-semibold">Apply →</a>
+          </div>
+          <div class="bg-gray-50 rounded-2xl p-6 border border-gray-200">
+            <h3 class="text-xl font-bold">Machinery Loan</h3>
+            <p class="text-gray-500">₹1L – ₹5Cr+ for equipment finance</p><a href="/Contact us/contact.html"
+              class="inline-block mt-4 text-[#BE3A1B] font-semibold">Apply →</a>
+          </div>
+        </div>
+        <div class="mt-8 bg-[#BE3A1B]/30 p-5 rounded-2xl text-center">
+          <p class="font-semibold">Not sure which loan fits you? <a href="/Contact us/contact.html" class="text-[#BE3A1B] underline">Get
+              free loan advisory</a></p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== WHY CHOOSE US ========== -->
+    <section class="py-20 bg-gray-50 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="inline-block bg-[#BE3A1B] px-4 py-1 rounded-full text-[white] text-sm font-semibold">Our
+              Advantage</div>
+            <h2 class="text-4xl font-black mt-3">Why Choose <span class="text-[#BE3A1B]">DreamMore?</span></h2>
+            <p class="text-black mt-3">We are more than a consulting firm — your long-term growth partner.</p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+              <div class="bg-white p-4 rounded-xl shadow-sm text-center"><span
+                  class="text-2xl font-black text-[#BE3A1B]">130+</span>
+                <p class="text-xs">Clients Served</p>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-sm text-center"><span
+                  class="text-2xl font-black text-[#BE3A1B]">₹10Cr+</span>
+                <p class="text-xs">Funding</p>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-sm text-center"><span
+                  class="text-2xl font-black text-[#BE3A1B]">7+</span>
+                <p class="text-xs">Years Exp</p>
+              </div>
+              <div class="bg-white p-4 rounded-xl shadow-sm text-center"><span
+                  class="text-2xl font-black text-[#BE3A1B]">93%</span>
+                <p class="text-xs">Approval Rate</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div class="bg-white p-5 rounded-2xl border-l-4 border-[#A35E47]">
+              <div class="text-3xl font-black text-[#BE3A1B] mb-2">01</div>
+              <h4 class="font-bold">Expert Team</h4>
+              <p class="text-sm text-black">CA, CS, lawyers & govt liaison experts</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl">
+              <div class="text-3xl font-black text-[#BE3A1B] mb-2">02</div>
+              <h4 class="font-bold">Fastest Turnaround</h4>
+              <p class="text-sm text-black">Registrations in 7-10 days, funding in 30-45 days</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl">
+              <div class="text-3xl font-black text-[#BE3A1B] mb-2">03</div>
+              <h4 class="font-bold">Zero Hidden Charges</h4>
+              <p class="text-sm text-black">Fixed upfront pricing</p>
+            </div>
+            <div class="bg-white p-5 rounded-2xl">
+              <div class="text-3xl font-black text-[#BE3A1B] mb-2">04</div>
+              <h4 class="font-bold">Dedicated Manager</h4>
+              <p class="text-sm text-black">End-to-end single point of contact</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TESTIMONIALS ========== -->
+    <section class="py-20 bg-white reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 text-center">
+        <div class="bg-[#BE3A1B] inline-block px-4 py-1 rounded-full text-[white] text-sm font-semibold">Client
+          Stories</div>
+        <h2 class="text-4xl font-black mt-3">What Our <span class="text-[#BE3A1B]">Clients Say</span></h2>
+        <div class="grid md:grid-cols-3 gap-6 mt-12">
+          <div class="bg-gray-50 p-6 rounded-2xl">
+            <div class="flex text-[#BE3A1B] mb-3">★★★★★</div>
+            <p class="text-gray-600">“DreamMore got my PMEGP loan of ₹25L approved in 6 weeks. Excellent follow-up.”</p>
+            <p class="font-bold mt-4">— Ramesh Jha, SME</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-2xl">
+            <div class="flex text-[#BE3A1B] mb-3">★★★★★</div>
+            <p class="text-gray-600">“Startup India recognition + Stand-Up India loan. Completely stress-free process.”
+            </p>
+            <p class="font-bold mt-4">— Priya Sharma, Entrepreneur</p>
+          </div>
+          <div class="bg-gray-50 p-6 rounded-2xl">
+            <div class="flex text-[#BE3A1B] mb-3">★★★★★</div>
+            <p class="text-gray-600">“Trademark, GeM, website — all under one roof. Complete one-stop solution.”</p>
+            <p class="font-bold mt-4">— Das Nair, Tech Startup</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FAQ SECTION ========== -->
+    <section class="py-20 bg-gray-50 reveal-on-scroll">
+      <div class="max-w-4xl mx-auto px-4">
+        <div class="text-center mb-10">
+          <h2 class="text-3xl font-black">Common <span class="text-[#BE3A1B]">Questions</span></h2>
+        </div>
+        <div class="space-y-3">
+          <div class="bg-white rounded-xl p-5 shadow-sm"><button
+              class="faq-btn w-full text-left flex justify-between items-center font-semibold">Which government scheme
+              is best for my business?<span class="text-[#BE3A1B] text-xl">+</span></button>
+            <div class="faq-content mt-2 text-gray-600 text-sm">It depends on your business stage & sector. New
+              businesses benefit from PMEGP/Mudra, existing MSMEs from CGTMSE. Book a free consultation to get a
+              personalized match.</div>
+          </div>
+          <div class="bg-white rounded-xl p-5 shadow-sm"><button
+              class="faq-btn w-full text-left flex justify-between items-center font-semibold">How long does it take for
+              a government loan?<span class="text-[#BE3A1B] text-xl">+</span></button>
+            <div class="faq-content mt-2 text-gray-600 text-sm">Mudra: 7-15 days, PMEGP: 45-60 days, CGTMSE: 30-60 days.
+              We fast-track with proper documentation.</div>
+          </div>
+          <div class="bg-white rounded-xl p-5 shadow-sm"><button
+              class="faq-btn w-full text-left flex justify-between items-center font-semibold">Do I need
+              collateral?<span class="text-[#BE3A1B] text-xl">+</span></button>
+            <div class="faq-content mt-2 text-gray-600 text-sm">PMEGP (up to ₹10L), Mudra, Stand-Up India are fully
+              collateral-free. CGTMSE provides government guarantee up to 85%.</div>
+          </div>
+          <div class="bg-white rounded-xl p-5 shadow-sm"><button
+              class="faq-btn w-full text-left flex justify-between items-center font-semibold">What is the cost of
+              DreamMore’s services?<span class="text-[#BE3A1B] text-xl">+</span></button>
+            <div class="faq-content mt-2 text-gray-600 text-sm">Transparent one-time service fee based on complexity. No
+              hidden charges. Free initial consultation.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== CTA / CONTACT ========== -->
+    <section id="contact" class="relative py-20 bg-white overflow-hidden reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4 text-center relative z-10"><span
+          class="bg-[#BE3A1B] px-4 py-1 rounded-full text-[WHITE] text-sm font-semibold">Free Consultations
+          Available</span>
+        <h2 class="text-4xl lg:text-5xl font-black mt-3">Ready to Grow Your Business?<br><span
+            class="text-[#BE3A1B]">Your Business Wings</span></h2>
+        <p class="max-w-lg mx-auto text-BLACK mt-4">Get a free consultation with our expert team today. No
+          commitment, no hidden fees.</p>
+        <div class="flex flex-wrap justify-center gap-5 mt-8"><a href="/Contact us/contact.html"
+            class="btn-primary px-8 py-3 rounded-xl text-white font-bold">Book Free Consultation →</a><a
+            href="tel:+919898495417"
+            class="px-6 py-3 rounded-xl border border-[#1C9C6E] text-[#BE3A1B] font-semibold">📞 Call +91 9898495417</a></div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER ========== -->
+    <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+
+        <!-- Disclaimer & Notice Section -->
+
+
+        <!-- Main Footer Grid -->
+        <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
+
+          <!-- Brand Column -->
+          <div>
+            <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
+            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
+              funding — we handle every step.</p>
+          </div>
+
+          <!-- Navigation Column -->
+          <div>
+            <h4 class="font-bold text-lg">Navigation</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li><a href="/Home/index.html" class="hover:text-white transition">Home</a></li>
+              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
+              <li><a href="/Government Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
+              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
+              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
+              <li><a href="/About us/about.html" class="hover:text-white transition">About Us</a></li>
+              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
+              <li><a href="/Contact us/contact.html" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Categories Column -->
+          <div>
+            <h4 class="font-bold text-lg">Categories</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li>AI Solutions</li>
+              <li>Certifications</li>
+              <li>Website Development</li>
+              <li>App Development</li>
+              <li>IOT Solution</li>
+              <li>Digital Marketing</li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div>
+            <h4 class="font-bold text-lg">Contact</h4>
+            <p class="mt-3 text-sm">Ahmedabad, Gujarat, India</p>
+            <p class="mt-2">📧 dreammore2026@gmail.com</p>
+            <p class="pt-4">📞 +91 9898495417</p>
+          </div>
+        </div>
+
+        <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
+
+          <!-- Disclaimer -->
+          <div class="text-sm text-white/80 leading-relaxed pt-5">
+            <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
+            DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
+            services.
+            All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
+            guarantees.
+            All outcomes are subject to government procedures, approvals, and external factors.
+          </div>
+
+          <!-- Note -->
+          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
+            <span class="font-bold text-[#F97316]">📌 NOTE:</span>
+            All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
+            official payment channels,
+            including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
+            payments to personal accounts
+            or under any other name. Clients are strongly advised to verify account details before making any
+            transaction.
+            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
+          </div>
+        </div>
+
+        <!-- Legal & Policy Links Row -->
+        <div
+          class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
+          </div>
+          <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
+        </div>
+
+
+
+      </div>
+    </footer>
+  </main>
+
+  <!-- WhatsApp sticky + FAQ accordion script -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div class="bg-white rounded-xl shadow-lg p-3 text-sm max-w-[200px] border">💬 Chat with us! Get free advice on
+      schemes & funding.</div>
+    <a href="https://wa.me/919898495417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business."
+      target="_blank"
+      class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl floating-wa">
+      <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="white">
+        <path
+          d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zM23 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" />
+      </svg>
+    </a>
+  </div>
+
+
+<style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #f5f7fa 0%, #e4e8f0 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Main Content Styles */
+    .main-content {
+      text-align: center;
+      padding: 80px 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .main-content h1 {
+      font-size: clamp(1.8rem, 5vw, 3rem);
+      font-weight: 800;
+      background: linear-gradient(135deg, #BE3A1B, #1a2e1e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 1rem;
+    }
+
+    .main-content p {
+      color: #4a5568;
+      font-size: clamp(0.9rem, 3vw, 1.1rem);
+      line-height: 1.6;
+    }
+
+    /* Stats Cards */
+    .stats-container {
+      display: flex;
+      gap: 15px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
+    .stat-card {
+      background: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      width: 180px;
+      flex: 0 0 auto;
+    }
+
+    @media (max-width: 640px) {
+      .stat-card {
+        width: calc(50% - 15px);
+        min-width: 140px;
+      }
+    }
+
+    .stat-emoji {
+      font-size: 2rem;
+    }
+
+    .stat-number {
+      font-weight: bold;
+      font-size: 1.5rem;
+      color: #BE3A1B;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: #666;
+    }
+
+    /* ========== PREMIUM POPUP STYLES - PERFECT COVER ========== */
+    .popup-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.85);
+      backdrop-filter: blur(12px);
+      z-index: 9999;
+      display: none;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .popup-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    /* Popup Container - Full responsive with perfect fit */
+    /* Popup Container mein ye changes karo */
+    .popup-container {
+      background: white;
+      border-radius: 32px;
+      width: 90%;
+      max-width: 1000px;
+      max-height: 85vh;
+      /* ✅ Maximum height viewport ki 85% */
+      height: auto;
+      /* ✅ Auto height - content ke hisaab se */
+      position: relative;
+      animation: slideInUp 0.5s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 50px 80px -30px rgba(0, 0, 0, 0.5);
+      overflow-y: auto;
+      /* ✅ Agar content zyada ho to scroll aayega */
+      overflow-x: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Custom scrollbar for popup */
+    .popup-container::-webkit-scrollbar {
+      width: 5px;
+    }
+
+    .popup-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: 10px;
+    }
+
+    .popup-container::-webkit-scrollbar-thumb {
+      background: #BE3A1B;
+      border-radius: 10px;
+    }
+
+    @media (min-width: 768px) {
+      .popup-container {
+        flex-direction: row;
+        max-height: 85vh;
+      }
+    }
+
+    @keyframes slideInUp {
+      from {
+        transform: translateY(60px) scale(0.96);
+        opacity: 0;
+      }
+
+      to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    /* LEFT SIDE - Premium Image Section */
+    .popup-image-section {
+      background: linear-gradient(145deg, #BE3A1B, #8B2A14);
+      padding: clamp(1.5rem, 4vw, 2.5rem);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @media (min-width: 768px) {
+      .popup-image-section {
+        width: 40%;
+        padding: 2rem 1.5rem;
+      }
+    }
+
+    .popup-image-section::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.06"><path fill="white" d="M20,20 L80,20 L80,80 L20,80 Z M30,30 L70,30 L70,70 L30,70 Z"/><circle cx="50" cy="50" r="15"/></svg>');
+      background-size: 40px;
+      animation: slowMove 30s linear infinite;
+    }
+
+    @keyframes slowMove {
+      0% {
+        transform: translate(0, 0);
+      }
+
+      100% {
+        transform: translate(40px, 40px);
+      }
+    }
+
+    .popup-image-section .image-wrapper {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* Premium Contact Illustration */
+    .contact-illustration {
+      width: clamp(100px, 30vw, 180px);
+      height: clamp(100px, 30vw, 180px);
+      margin: 0 auto 1rem;
+      background: rgba(255, 255, 255, 0.12);
+      border-radius: 50px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      backdrop-filter: blur(4px);
+      border: 2px solid rgba(255, 255, 255, 0.25);
+    }
+
+    .contact-illustration svg {
+      width: clamp(60px, 20vw, 100px);
+      height: auto;
+    }
+
+    .popup-image-section h3 {
+      font-size: clamp(1.2rem, 5vw, 1.6rem);
+      font-weight: 800;
+      color: white;
+      margin-bottom: 0.25rem;
+    }
+
+    .popup-image-section>p {
+      color: rgba(255, 255, 255, 0.9);
+      font-size: clamp(0.7rem, 3vw, 0.85rem);
+    }
+
+    .benefits-list {
+      text-align: left;
+      margin-top: 1.2rem;
+      list-style: none;
+      background: rgba(255, 255, 255, 0.08);
+      border-radius: 20px;
+      padding: 0.8rem 1rem;
+    }
+
+    .benefits-list li {
+      color: white;
+      font-size: clamp(0.7rem, 3vw, 0.8rem);
+      margin-bottom: 0.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .benefits-list li:last-child {
+      margin-bottom: 0;
+    }
+
+    .benefits-list li::before {
+      content: "✓";
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 18px;
+      height: 18px;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      font-size: 10px;
+      flex-shrink: 0;
+    }
+
+    /* RIGHT SIDE - Form Section */
+    .popup-form-section {
+      padding: clamp(1.2rem, 4vw, 2rem);
+      background: white;
+    }
+
+    @media (min-width: 768px) {
+      .popup-form-section {
+        width: 60%;
+        padding: 2rem 2rem 2rem 1.5rem;
+      }
+    }
+
+    /* Close Button */
+    .close-popup {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      width: 36px;
+      height: 36px;
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 30;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .close-popup:hover {
+      transform: rotate(90deg) scale(1.05);
+    }
+
+    .close-popup svg {
+      width: 18px;
+      height: 18px;
+      stroke: #1a2e1e;
+    }
+
+    /* Form Title */
+    .form-title {
+      margin-bottom: 1.2rem;
+    }
+
+    .form-title h2 {
+      font-size: clamp(1.3rem, 5vw, 1.7rem);
+      font-weight: 800;
+      color: #1a2e1e;
+    }
+
+    .form-title p {
+      color: #6b7280;
+      font-size: clamp(0.7rem, 3vw, 0.8rem);
+      margin-top: 0.2rem;
+    }
+
+    /* Form Groups */
+    .form-group {
+      margin-bottom: 0.9rem;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: clamp(0.7rem, 3vw, 0.75rem);
+      font-weight: 600;
+      color: #374151;
+      margin-bottom: 0.3rem;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: clamp(0.6rem, 2.5vw, 0.75rem) clamp(0.8rem, 3vw, 1rem);
+      border: 1.5px solid #e9edf2;
+      border-radius: 16px;
+      font-size: clamp(0.8rem, 3vw, 0.85rem);
+      transition: all 0.25s ease;
+      font-family: inherit;
+      background: #fafbfc;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus,
+    .form-group select:focus {
+      outline: none;
+      border-color: #BE3A1B;
+      box-shadow: 0 0 0 3px rgba(190, 58, 27, 0.12);
+    }
+
+    /* Submit Button */
+    .submit-btn {
+      width: 100%;
+      background: linear-gradient(135deg, #BE3A1B, #9B2E14);
+      color: white;
+      font-weight: 700;
+      padding: clamp(0.7rem, 3vw, 0.85rem);
+      border: none;
+      border-radius: 40px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-size: clamp(0.85rem, 3.5vw, 0.95rem);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 0.3rem;
+    }
+
+    .submit-btn:hover {
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      transform: translateY(-2px);
+    }
+
+    .success-message {
+      text-align: center;
+      padding: clamp(1rem, 4vw, 2rem);
+    }
+
+    .success-message svg {
+      width: clamp(60px, 15vw, 80px);
+      height: auto;
+      margin-bottom: 1rem;
+    }
+
+    .timer-text {
+      text-align: center;
+      font-size: 0.65rem;
+      color: #9ca3af;
+      margin-top: 1rem;
+    }
+
+    /* WhatsApp Float */
+    .whatsapp-float {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+    }
+
+    .whatsapp-float a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 55px;
+      height: 55px;
+      background: #25D366;
+      border-radius: 50%;
+      box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    .whatsapp-float a:hover {
+      transform: scale(1.1);
+    }
+
+    /* Ensure perfect cover on all devices */
+    @media (max-width: 480px) {
+      .popup-container {
+        width: 95%;
+        border-radius: 24px;
+        max-height: 92vh;
+      }
+
+      .benefits-list {
+        display: none;
+      }
+
+      .popup-image-section {
+        padding: 1.2rem;
+      }
+
+      .popup-image-section p {
+        display: none;
+      }
+
+      .popup-image-section h3 {
+        font-size: 1.1rem;
+        margin-top: 0.5rem;
+      }
+    }
+
+    @media (min-width: 481px) and (max-width: 767px) {
+      .benefits-list li {
+        font-size: 0.7rem;
+      }
+    }
+  </style>
+  </head>
+
+  <body>
+
+    <!-- Main Website Content -->
+
+
+    <!-- PREMIUM POPUP - PERFECT COVER ON ALL ZOOM LEVELS -->
+    <div id="contactPopup" class="popup-overlay">
+      <div class="popup-container">
+        <div class="close-popup" id="closePopupBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </div>
+
+        <!-- LEFT SIDE - IMAGE SECTION -->
+        <div class="popup-image-section">
+          <div class="image-wrapper">
+            <!-- Custom Image - Apni image ka path yahan set karein -->
+            <img src="/public/LOGO.png" alt="Contact Support"
+              style="width: 100%; max-width: 200px; height: auto; margin: 0 auto 1.5rem; display: block; border-radius: 20px;">
+
+            <h3>Expert Support</h3>
+            <p>Get personalized assistance</p>
+            <ul class="benefits-list">
+              <li>Free 30-min consultation</li>
+              <li>Tailored business solutions</li>
+              <li>Dedicated relationship manager</li>
+              <li>Quick 2-hour response</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- RIGHT SIDE - CONTACT FORM -->
+        <div class="popup-form-section">
+          <div id="popupFormContent">
+            <div class="form-title">
+              <h2>Let's Connect!</h2>
+              <p>Fill the form below - response within 2 hours</p>
+            </div>
+
+            <form id="contactForm">
+              <div class="form-group">
+                <label>Full Name *</label>
+                <input type="text" name="name" placeholder="Enter your full name" required>
+              </div>
+              <div class="form-group">
+                <label>Email Address *</label>
+                <input type="email" name="email" placeholder="you@example.com" required>
+              </div>
+              <div class="form-group">
+                <label>Phone Number *</label>
+                <input type="tel" name="phone" placeholder="+91 XXXXX XXXXX" required>
+              </div>
+              <div class="form-group">
+                <label>Service Interested In</label>
+                <select name="service">
+                  <option value="">Select a service</option>
+                  <option>Company Registration</option>
+                  <option>Government Schemes</option>
+                  <option>Funding Support</option>
+                  <option>Certifications</option>
+                  <option>Digital Marketing</option>
+                  <option>AI / IoT Solutions</option>
+                  <option>Website / App Development</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Message / Query</label>
+                <textarea rows="2" name="message" placeholder="Tell us about your business requirements..."></textarea>
+              </div>
+              <button type="submit" class="submit-btn">
+                Submit Request
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </button>
+            </form>
+            <div class="timer-text" id="timerText"></div>
+          </div>
+
+          <!-- Success Message -->
+          <div id="successMessage" style="display: none;">
+            <div class="success-message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="#10B981" stroke-width="2">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+                <polyline points="22 4 12 14.01 9 11.01" />
+              </svg>
+              <h3 style="font-size: 1.3rem; font-weight: 700; color: #1a2e1e;">Thank You!</h3>
+              <p style="color: #6b7280; font-size: 0.85rem;">Our team will get back within 24 hours.</p>
+              <button id="closeSuccessBtn" class="submit-btn"
+                style="margin-top: 1.2rem; width: auto; padding: 0.5rem 1.8rem;">Close</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- WhatsApp Float Button -->
+
+
+    <script>
+      (function () {
+        let popupTimer;
+        let isPopupVisible = false;
+        let popupClosedManually = false;
+
+        const popup = document.getElementById('contactPopup');
+        const closeBtn = document.getElementById('closePopupBtn');
+        const popupFormContent = document.getElementById('popupFormContent');
+        const successMessageDiv = document.getElementById('successMessage');
+        const contactForm = document.getElementById('contactForm');
+        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
+        const timerTextElem = document.getElementById('timerText');
+
+        function showPopup() {
+          if (!isPopupVisible && !popupClosedManually) {
+            popupFormContent.style.display = 'block';
+            successMessageDiv.style.display = 'none';
+            if (contactForm) contactForm.reset();
+            popup.classList.add('active');
+            isPopupVisible = true;
+            document.body.style.overflow = 'hidden';
+            startPopupCountdown();
+          }
+        }
+
+        function hidePopup() {
+          popup.classList.remove('active');
+          isPopupVisible = false;
+          document.body.style.overflow = '';
+          stopPopupCountdown();
+          if (timerTextElem) timerTextElem.innerHTML = '';
+        }
+
+        let countdownInterval;
+        function startPopupCountdown() {
+          let secondsLeft = 60;
+          if (timerTextElem) timerTextElem.innerHTML = `⏳ Popup closes in ${secondsLeft}s`;
+          if (countdownInterval) clearInterval(countdownInterval);
+          countdownInterval = setInterval(() => {
+            secondsLeft--;
+            if (timerTextElem && isPopupVisible) timerTextElem.innerHTML = `⏳ Popup closes in ${secondsLeft}s`;
+            if (secondsLeft <= 0 && isPopupVisible) {
+              stopPopupCountdown();
+              hidePopup();
+            }
+          }, 1000);
+        }
+        function stopPopupCountdown() {
+          if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
+        }
+
+        function startTimer() {
+          if (popupTimer) clearInterval(popupTimer);
+          popupTimer = setInterval(() => {
+            if (!isPopupVisible && !popupClosedManually) showPopup();
+          }, 30000);
+        }
+        function resetTimer() {
+          if (popupTimer) clearInterval(popupTimer);
+          startTimer();
+        }
+
+        if (contactForm) {
+          contactForm.addEventListener('submit', function (e) {
+            e.preventDefault();
+            const formData = new FormData(contactForm);
+            console.log('Form submitted:', Object.fromEntries(formData.entries()));
+            popupFormContent.style.display = 'none';
+            successMessageDiv.style.display = 'block';
+            popupClosedManually = false;
+            resetTimer();
+            setTimeout(() => { if (isPopupVisible) hidePopup(); }, 5000);
+          });
+        }
+
+        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', function () { hidePopup(); popupClosedManually = false; resetTimer(); });
+        if (closeBtn) closeBtn.addEventListener('click', function () { hidePopup(); stopPopupCountdown(); popupClosedManually = true; resetTimer(); });
+        popup.addEventListener('click', function (e) { if (e.target === popup) { hidePopup(); stopPopupCountdown(); popupClosedManually = true; resetTimer(); } });
+
+        let activityTimeout;
+        function resetOnActivity() {
+          if (activityTimeout) clearTimeout(activityTimeout);
+          activityTimeout = setTimeout(() => {
+            if (!isPopupVisible && popupClosedManually) { popupClosedManually = false; resetTimer(); }
+          }, 5000);
+        }
+        window.addEventListener('scroll', resetOnActivity);
+        window.addEventListener('click', resetOnActivity);
+        window.addEventListener('mousemove', resetOnActivity);
+
+        startTimer();
+        setTimeout(() => { if (!isPopupVisible && !popupClosedManually) showPopup(); }, 30000);
+      })();
+    </script>
+
+
+  <script>
+    // FAQ toggle
+    document.querySelectorAll('.faq-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        btn.classList.toggle('active');
+        const content = btn.nextElementSibling;
+        if (content.style.maxHeight) content.style.maxHeight = null;
+        else content.style.maxHeight = content.scrollHeight + "px";
+      });
+    });
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      mobileMenuOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      mobileMenuOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileMenuBtn) {
+      mobileMenuBtn.addEventListener('click', openMobileMenu);
+    }
+    if (mobileMenuClose) {
+      mobileMenuClose.addEventListener('click', closeMobileMenu);
+    }
+    if (mobileMenuOverlay) {
+      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    }
+
+    // Close mobile menu on window resize (if open and screen becomes desktop)
+    window.addEventListener('resize', function() {
+      if (window.innerWidth >= 768 && mobileMenu.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    
+    function checkReveal() {
+      const windowHeight = window.innerHeight;
+      const revealThreshold = 100;
+      
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - revealThreshold) {
+          element.classList.add('revealed');
+        }
+      });
+    }
+    
+    // Initial check on load
+    window.addEventListener('load', checkReveal);
+    // Check on scroll
+    window.addEventListener('scroll', checkReveal);
+  </script>
+</body>
+
+</html>

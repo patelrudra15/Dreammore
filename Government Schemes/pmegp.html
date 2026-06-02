@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>PMEGP | DreamMore Business Solutions</title>
+  <meta name="description" content="PMEGP is a credit-linked subsidy scheme administered by KVIC to generate employment through the establishment of micro-enterprises in the non-farm sector. Get collateral-free loans up to ₹50 Lakh with 15–35% government subsidy.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1a2e1e;
+      overflow-x: hidden;
+    }
+    h1, h2, h3, h4, .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+    @keyframes fadeUp {
+      0% { opacity: 0; transform: translateY(20px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeLeft {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes fadeRight {
+      0% { opacity: 0; transform: translateX(30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleSoft {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .animate-fadeUp { animation: fadeUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+    .animate-fadeLeft { animation: fadeLeft 0.5s ease forwards; }
+    .animate-fadeRight { animation: fadeRight 0.5s ease forwards; }
+    .animate-scale { animation: scaleSoft 0.45s ease forwards; }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    html { scroll-behavior: smooth; }
+    .mobile-menu-open { overflow: hidden; }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.3s ease;
+    }
+    .glass-nav.scrolled {
+      background: rgba(255, 255, 255, 0.85);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+    /* Mobile Menu Styles */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100%;
+      background: white;
+      box-shadow: -5px 0 30px rgba(0, 0, 0, 0.1);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      overflow-y: auto;
+    }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s ease;
+    }
+    .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background: #f5f5f5;
+    }
+    .mobile-menu a {
+      padding: 12px 0;
+      text-decoration: none;
+      color: #1a2e1e;
+      font-weight: 500;
+      border-bottom: 1px solid #eef2f0;
+      transition: color 0.2s;
+    }
+    .mobile-menu a:hover { color: #BE3A1B; }
+    .mobile-cta {
+      margin-top: 20px;
+      background: #BE3A1B;
+      color: white !important;
+      text-align: center;
+      padding: 12px !important;
+      border-radius: 30px;
+      font-weight: bold !important;
+      border: none !important;
+    }
+    .mobile-cta:hover { background: #15855f; }
+  </style>
+</head>
+<body>
+
+  <!-- Mobile Menu Overlay -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-close" id="mobileMenuClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="mb-8 pt-8">
+      <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+
+          <!-- Logo Image -->
+          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+
+          <!-- Optional Text -->
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+
+        </a>
+    </div>
+    <a href="/Home/index.html">Home</a>
+    <a href="/Service//service.html">Services</a>
+    <a href="/Government Schemes/schemes.html">Government Schemes</a>
+    <a href="/Loan/loan.html">Loan</a>
+    <a href="/Blog/blog.html">Blog</a>
+    <a href="/About us/about.html">About Us</a>
+    <a href="/Carrers/carrers.html">Careers</a>
+    <a href="/Contact us/contact.html">Contact</a>
+    <a href="/Contact us/contact.html" class="mobile-cta">Free Consultation →</a>
+  </div>
+
+  <!-- NAVBAR -->
+  <nav class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+        <!-- LOGO -->
+        <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+
+          <!-- Logo Image -->
+          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+
+          <!-- Optional Text -->
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-1">
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Home/index.html">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Government Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/About us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Carrers/carrers.html">Carrers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Contact us/contact.html">Contact Us</a>
+
+        </div>
+
+        <!-- Button -->
+        <div class="hidden md:flex items-center gap-2">
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[#15855f] transition" href="/Contact us/contact.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+            </svg>
+            Free Consultation
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main class="pt-[72px] bg-white">
+    <!-- Hero Section -->
+    <section class="relative overflow-hidden bg-[#FAFAF7]">
+      <div class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-gradient-radial from-[#BE3A1B]/10 to-transparent"></div>
+      <div class="relative max-w-7xl mx-auto px-5 py-14 lg:py-20">
+        <div class="flex flex-wrap items-center justify-between gap-4 mb-10">
+          <div class="flex items-center gap-2 text-xs text-gray-500">
+            <a href="/Home/index.html" class="hover:text-[#BE3A1B]">Home</a> <span>›</span> <a href="/Government Schemes/schemes.html" class="hover:text-[#BE3A1B]">Schemes</a> <span>›</span> <span class="font-semibold text-[#BE3A1B]">PMEGP</span>
+          </div>
+          <a href="tel:+917600764809" class="text-xs font-semibold rounded-full px-5 py-2 bg-white border border-[#BE3A1B]/30 shadow-sm">📞 +91 76007 64809</a>
+        </div>
+        <div class="grid lg:grid-cols-2 gap-12 items-start">
+          <div>
+            <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B] mb-5 animate-fadeUp">
+              <span class="text-[#BE3A1B]">✨</span><span class="text-[11px] font-bold tracking-wider uppercase text-[#ffffff]">Government of India Scheme</span>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-black leading-[1.1] tracking-tight text-[#1a2e1e] animate-fadeUp delay-100">
+              PMEGP<br><span class="text-xl lg:text-2xl font-bold text-[#BE3A1B]">Start a New Business with Government Subsidy</span>
+            </h1>
+            <p class="text-[13px] font-semibold mb-4 text-[#000000] animate-fadeUp delay-100">Prime Minister's Employment Generation Programme</p>
+            <p class="text-[15px] text-gray-900 max-w-md my-6 leading-relaxed animate-fadeUp delay-200">PMEGP is a credit-linked subsidy scheme administered by KVIC to generate employment through the establishment of micro-enterprises in the non-farm sector. Get collateral-free loans up to ₹50 Lakh with 15–35% government subsidy.</p>
+            <div class="flex flex-wrap gap-3 mb-10 animate-fadeUp delay-300">
+              <a href="#" class="bg-[#BE3A1B] text-white font-bold px-7 py-3.5 rounded-xl shadow-lg hover:-translate-y-0.5 transition">Apply Now →</a>
+              <a href="#" class="border border-[#BE3A1B]/30 bg-white px-7 py-3.5 rounded-xl font-semibold hover:shadow transition">Check Eligibility</a>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4 border-t border-[#BE3A1B]/20 animate-fadeUp delay-400">
+              <div class="bg-white p-3 rounded-xl border border-[#BE3A1B]/10"><div class="w-9 h-9 rounded-lg bg-[#BE3A1B]/10 flex items-center justify-center"><span class="text-[#BE3A1B] text-lg">👥</span></div><p class="text-2xl font-black text-[#BE3A1B]">7 Lakh+</p><p class="text-[11px] text-gray-500">Beneficiaries</p></div>
+              <div class="bg-white p-3 rounded-xl border border-[#BE3A1B]/10"><div class="w-9 h-9 rounded-lg bg-[#BE3A1B]/10 flex items-center justify-center"><span class="text-[#BE3A1B] text-lg">💰</span></div><p class="text-2xl font-black text-[#BE3A1B]">₹50L</p><p class="text-[11px] text-gray-500">Max Loan</p></div>
+              <div class="bg-white p-3 rounded-xl border border-[#BE3A1B]/10"><div class="w-9 h-9 rounded-lg bg-[#BE3A1B]/10 flex items-center justify-center"><span class="text-[#BE3A1B] text-lg">🎯</span></div><p class="text-2xl font-black text-[#BE3A1B]">35%</p><p class="text-[11px] text-gray-500">Max Subsidy</p></div>
+              <div class="bg-white p-3 rounded-xl border border-[#BE3A1B]/10"><div class="w-9 h-9 rounded-lg bg-[#BE3A1B]/10 flex items-center justify-center"><span class="text-[#BE3A1B] text-lg">⏱️</span></div><p class="text-2xl font-black text-[#BE3A1B]">45–60</p><p class="text-[11px] text-gray-500">Days to Disburse</p></div>
+            </div>
+          </div>
+          <div class="hidden lg:block space-y-3 animate-fadeRight">
+            <div class="flex gap-2 items-center"><div class="h-px flex-1 bg-[#BE3A1B]/20"></div><span class="text-[10px] font-bold text-[#BE3A1B]">KEY HIGHLIGHTS</span><div class="h-px flex-1 bg-[#BE3A1B]/20"></div></div>
+            <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3 shadow-sm"><div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">01</div><div><p class="font-bold text-[#BE3A1B]">Up to ₹50 Lakh</p><p class="text-xs text-gray-900">Manufacturing Sector</p></div></div>
+            <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3"><div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">02</div><div><p class="font-bold text-[#BE3A1B]">Up to ₹20 Lakh</p><p class="text-xs text-gray-900">Service Sector</p></div></div>
+            <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3"><div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">03</div><div><p class="font-bold text-[#BE3A1B]">Up to ₹10 Lakh</p><p class="text-xs text-gray-900">Collateral-free</p></div></div>
+            <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3"><div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">04</div><div><p class="font-bold text-[#BE3A1B]">5–10% of project cost</p><p class="text-xs text-gray-900">Margin Money</p></div></div>
+          </div>
+        </div>
+      </div>
+      <svg viewBox="0 0 1440 40" fill="none" class="w-full"><path d="M0,32 C480,0 960,56 1440,24 L1440,56 L0,56 Z" fill="white"></path></svg>
+    </section>
+
+    <!-- Subsidy Breakdown Section -->
+    <section class="py-16 relative overflow-hidden bg-[#F4F1EC]">
+      <div class="relative z-10 max-w-4xl mx-auto px-4 sm:px-6">
+        <div class="text-center mb-10"><span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B] border border-[#BE3A1B]"><span class="text-[#ffffff]">%</span><span class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Subsidy Breakdown</span></span><h2 class="text-3xl lg:text-4xl font-black leading-tight mb-2 text-[#1a2e1e]">Category-wise Subsidy Rates</h2><p class="text-[14px] text-gray-600">Higher subsidy for rural entrepreneurs to bridge urban-rural gap</p></div>
+        <div class="grid gap-2 sm:gap-3 mb-3 px-3 sm:px-5" style="grid-template-columns:1fr 70px 70px"><span class="text-[11px] font-bold uppercase tracking-wider text-gray-500">Beneficiary Category</span><div class="flex items-center justify-center gap-1"><span class="text-[11px] font-bold uppercase text-[#BE3A1B]">Urban</span></div><div class="flex items-center justify-center gap-1"><span class="text-[11px] font-bold uppercase text-[#0f6e50]">Rural</span></div></div>
+        <div class="space-y-2">
+          <div class="grid gap-2 sm:gap-3 items-center rounded-xl px-3 sm:px-5 py-4 bg-white/60 border border-[#BE3A1B]/10 animate-fadeLeft"><p class="text-[12px] sm:text-[13px] font-semibold text-[#1a2e1e]">General Category – Urban</p><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B] text-white">15%</span></div><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B]/10 text-[#0f6e50] border border-[#BE3A1B]/20">25%</span></div></div>
+          <div class="grid gap-2 sm:gap-3 items-center rounded-xl px-3 sm:px-5 py-4 bg-white/60 border border-[#BE3A1B]/10 animate-fadeLeft delay-100"><p class="text-[12px] sm:text-[13px] font-semibold text-[#1a2e1e]">General Category – Rural</p><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B] text-white">25%</span></div><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B]/10 text-[#0f6e50] border border-[#BE3A1B]/20">25%</span></div></div>
+          <div class="grid gap-2 sm:gap-3 items-center rounded-xl px-3 sm:px-5 py-4 bg-white/60 border border-[#BE3A1B]/10 animate-fadeLeft delay-200"><p class="text-[12px] sm:text-[13px] font-semibold text-[#1a2e1e]">SC / ST / OBC / Minorities / Women</p><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B] text-white">25%</span></div><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B]/10 text-[#0f6e50] border border-[#BE3A1B]/20">35%</span></div></div>
+          <div class="grid gap-2 sm:gap-3 items-center rounded-xl px-3 sm:px-5 py-4 bg-white/60 border border-[#BE3A1B]/10 animate-fadeLeft delay-300"><p class="text-[12px] sm:text-[13px] font-semibold text-[#1a2e1e]">Ex-Servicemen / PH / NER / Hill & Border Areas</p><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B] text-white">25%</span></div><div class="flex justify-center"><span class="font-black text-[12px] sm:text-[13px] px-2 py-2 rounded-lg w-full text-center bg-[#BE3A1B]/10 text-[#0f6e50] border border-[#BE3A1B]/20">35%</span></div></div>
+        </div>
+        <p class="text-[11px] text-center mt-6 text-gray-900">* Subsidy % of project cost. Maximum project cost limits apply per category.</p>
+      </div>
+    </section>
+
+    <!-- Eligibility & Documents Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14"><span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20"><span class="w-2 h-2 rounded-full bg-[#BE3A1B]"></span><span class="text-[11px] font-semibold text-[#0f6e50] tracking-widest uppercase">Eligibility & Documents</span></span><h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3 text-[#1a2e1e]">Are You Eligible?</h2><p class="text-[15px] max-w-xl mx-auto text-gray-500">Check your eligibility and prepare documents — we handle the rest.</p></div>
+        <div class="grid lg:grid-cols-2 gap-6 items-start">
+          <div class="rounded-2xl p-7 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10">
+            <div class="mb-6"><span class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-3 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20"><span class="w-1.5 h-1.5 rounded-full bg-[#BE3A1B]"></span><span class="text-[10px] font-bold uppercase tracking-widest text-[#0f6e50]">Quick Check</span></span><h3 class="text-2xl font-black text-[#1a2e1e]">Am I Eligible?</h3><p class="text-[13px] mt-1.5 text-gray-500">Tap each criterion to check — how many apply to you?</p></div>
+            <div class="space-y-2">
+              <div class="w-full flex items-start gap-3.5 p-4 rounded-xl bg-white border border-[#BE3A1B]/10"><div class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-black bg-[#BE3A1B]/10 text-[#BE3A1B]">1</div><p class="text-[13px] leading-snug font-semibold text-[#1a2e1e]">Age 18 years and above</p></div>
+              <div class="w-full flex items-start gap-3.5 p-4 rounded-xl bg-white border border-[#BE3A1B]/10"><div class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-black bg-[#BE3A1B]/10 text-[#BE3A1B]">2</div><p class="text-[13px] leading-snug font-semibold text-[#1a2e1e]">Class 8 pass for projects above ₹10 Lakh in manufacturing</p></div>
+              <div class="w-full flex items-start gap-3.5 p-4 rounded-xl bg-white border border-[#BE3A1B]/10"><div class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-black bg-[#BE3A1B]/10 text-[#BE3A1B]">3</div><p class="text-[13px] leading-snug font-semibold text-[#1a2e1e]">New micro-enterprises only (not for expansion of existing units)</p></div>
+              <div class="w-full flex items-start gap-3.5 p-4 rounded-xl bg-white border border-[#BE3A1B]/10"><div class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-black bg-[#BE3A1B]/10 text-[#BE3A1B]">4</div><p class="text-[13px] leading-snug font-semibold text-[#1a2e1e]">SHG members, institutions under SC/ST, Charitable Trusts eligible</p></div>
+              <div class="w-full flex items-start gap-3.5 p-4 rounded-xl bg-white border border-[#BE3A1B]/10"><div class="flex-shrink-0 w-7 h-7 rounded-lg flex items-center justify-center text-[11px] font-black bg-[#BE3A1B]/10 text-[#BE3A1B]">5</div><p class="text-[13px] leading-snug font-semibold text-[#1a2e1e]">EDP training preferred</p></div>
+            </div>
+            <div class="mt-6 p-4 rounded-xl flex items-start gap-3 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10"><span class="text-[#BE3A1B] text-lg">🛡️</span><p class="text-[12px] leading-relaxed text-gray-600">Not sure about all criteria? Book a free consultation — we'll do a complete eligibility assessment for you.</p></div>
+          </div>
+          <div class="rounded-2xl p-7 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10">
+            <div class="mb-6"><span class="inline-flex items-center gap-2 rounded-full px-3 py-1.5 mb-3 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20"><span class="text-[#BE3A1B]">📄</span><span class="text-[10px] font-bold uppercase tracking-widest text-[#0f6e50]">Checklist</span></span><h3 class="text-2xl font-black text-[#1a2e1e]">Documents Needed</h3><p class="text-[13px] mt-1.5 text-gray-500">We help you prepare and verify every document before submission.</p></div>
+            <div class="space-y-2">
+              <div class="flex items-center gap-3.5 rounded-xl px-5 py-4 bg-white border border-[#BE3A1B]/10"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#BE3A1B]/10"><span class="text-[#BE3A1B]">📄</span></div><span class="text-[13px] font-semibold text-[#BE3A1B]">Aadhaar Card</span></div>
+              <div class="flex items-center gap-3.5 rounded-xl px-5 py-4 bg-white border border-[#BE3A1B]/10"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#BE3A1B]/10"><span class="text-[#BE3A1B]">📄</span></div><span class="text-[13px] font-semibold text-[#BE3A1B]">PAN Card</span></div>
+              <div class="flex items-center gap-3.5 rounded-xl px-5 py-4 bg-white border border-[#BE3A1B]/10"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#BE3A1B]/10"><span class="text-[#BE3A1B]">📄</span></div><span class="text-[13px] font-semibold text-[#BE3A1B]">Educational Certificates (Class 8+)</span></div>
+              <div class="flex items-center gap-3.5 rounded-xl px-5 py-4 bg-white border border-[#BE3A1B]/10"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#BE3A1B]/10"><span class="text-[#BE3A1B]">📄</span></div><span class="text-[13px] font-semibold text-[#BE3A1B]">Category Certificate (SC/ST/OBC/Women)</span></div>
+              <div class="flex items-center gap-3.5 rounded-xl px-5 py-4 bg-white border border-[#BE3A1B]/10"><div class="w-8 h-8 rounded-lg flex items-center justify-center bg-[#BE3A1B]/10"><span class="text-[#BE3A1B]">📄</span></div><span class="text-[13px] font-semibold text-[#BE3A1B]">Detailed Project Report — we prepare this</span></div>
+            </div>
+            <div class="mt-6 p-4 rounded-xl flex items-start gap-3 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10"><span class="text-[#BE3A1B] text-lg">✅</span><p class="text-[12px] font-medium leading-relaxed text-gray-600">Missing any documents? We assist with obtaining and attesting all required paperwork.</p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="py-20 relative overflow-hidden bg-[#F4F1EC]">
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14"><span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B] border border-[#BE3A1B]"><span class="w-2 h-2 rounded-full bg-[#ffffff]"></span><span class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Application Process</span></span><h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3 text-[#1a2e1e]">Step-by-Step Process</h2><p class="text-[15px] max-w-xl mx-auto text-gray-500">We manage the entire application — you just review and approve.</p></div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div class="group relative rounded-2xl p-6 bg-white border border-[#BE3A1B]/10 transition-all hover:-translate-y-1 hover:shadow-xl animate-fadeUp"><div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#BE3A1B] shadow-md"><span class="text-white font-black text-lg">01</span></div><h3 class="font-bold text-[15px] mb-2 text-[#1a2e1e]">Online Registration</h3><p class="text-[13px] leading-relaxed text-gray-500">Register on the KVIC/PMEGP portal with your Aadhaar-linked mobile number.</p></div>
+          <div class="group relative rounded-2xl p-6 bg-white border border-[#BE3A1B]/10 transition-all hover:-translate-y-1 hover:shadow-xl animate-fadeUp delay-100"><div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#BE3A1B] shadow-md"><span class="text-white font-black text-lg">02</span></div><h3 class="font-bold text-[15px] mb-2 text-[#1a2e1e]">Project Report Submission</h3><p class="text-[13px] leading-relaxed text-gray-500">We prepare a comprehensive DPR with cost estimates, projections, and business plan.</p></div>
+          <div class="group relative rounded-2xl p-6 bg-white border border-[#BE3A1B]/10 transition-all hover:-translate-y-1 hover:shadow-xl animate-fadeUp delay-200"><div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#BE3A1B] shadow-md"><span class="text-white font-black text-lg">03</span></div><h3 class="font-bold text-[15px] mb-2 text-[#1a2e1e]">Bank Processing</h3><p class="text-[13px] leading-relaxed text-gray-500">The application goes to the bank. We follow up with the bank and district KVIC office.</p></div>
+          <div class="group relative rounded-2xl p-6 bg-white border border-[#BE3A1B]/10 transition-all hover:-translate-y-1 hover:shadow-xl animate-fadeUp delay-300"><div class="w-12 h-12 rounded-xl flex items-center justify-center mb-5 bg-[#BE3A1B] shadow-md"><span class="text-white font-black text-lg">04</span></div><h3 class="font-bold text-[15px] mb-2 text-[#1a2e1e]">Margin Money & Subsidy</h3><p class="text-[13px] leading-relaxed text-gray-500">Pay your margin money (5–10%). Loan is disbursed and subsidy is credited to your account.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="py-20 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14"><span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B] border border-[#BE3A1B]"><span class="w-2 h-2 rounded-full bg-[#ffffff]"></span><span class="text-[11px] font-semibold text-[#ffffff] tracking-widest uppercase">FAQs</span></span><h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3 text-[#1a2e1e]">Got Questions?</h2><p class="text-[15px] max-w-xl mx-auto text-gray-500">We've answered the most common questions about PMEGP. Need more clarity? Call us.</p></div>
+        <div class="grid lg:grid-cols-3 gap-10">
+          <div class="lg:sticky lg:top-28 self-start animate-fadeLeft">
+            <div class="rounded-2xl overflow-hidden bg-[#BE3A1B]/5 border border-[#BE3A1B]/15"><div class="p-5 bg-[#BE3A1B]"><p class="font-black text-white text-[15px] mb-1">Still Have Questions?</p><p class="text-[13px] leading-relaxed text-white/75">Our experts can answer all your queries in a free 30-min call.</p></div><div class="p-5 space-y-2.5"><a class="group flex items-center justify-between font-bold px-5 py-3.5 rounded-xl bg-[#BE3A1B] text-white" href="#"><span class="text-[13px]">Book Free Call</span><span>→</span></a><a href="tel:+917600764809" class="flex items-center gap-2 justify-center font-semibold px-5 py-3 rounded-xl bg-white border border-[#BE3A1B]/20 text-[#1a2e1e]">📞 +91 76007 64809</a><div class="flex items-center justify-center gap-3 pt-2"><div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">✅</span><span class="text-[10px] font-medium text-gray-500">Govt. Recognized</span></div><div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">🎧</span><span class="text-[10px] font-medium text-gray-500">Free</span></div></div></div></div>
+          </div>
+          <div class="lg:col-span-2 space-y-3">
+            <div class="bg-white rounded-xl p-5 shadow-sm border-l-4 border-[#BE3A1B]"><details><summary class="font-semibold text-[#1a2e1e]">Can I apply for PMEGP to expand my existing business?</summary><p class="text-gray-500 text-sm pt-2">No. PMEGP is only for setting up new micro-enterprises. Existing businesses are not eligible. However, you can apply under CGTMSE for expansion funding.</p></details></div>
+            <div class="bg-white rounded-xl p-5 shadow-sm"><details><summary class="font-semibold text-[#1a2e1e]">When is the subsidy credited?</summary><p class="text-gray-500 text-sm pt-2">The subsidy is transferred to your loan account after you pay the required margin money (5–10% of project cost). It reduces your effective loan amount.</p></details></div>
+            <div class="bg-white rounded-xl p-5 shadow-sm"><details><summary class="font-semibold text-[#1a2e1e]">Is collateral required for PMEGP?</summary><p class="text-gray-500 text-sm pt-2">No collateral is required for projects up to ₹10 Lakh. For projects above ₹10 Lakh, the bank may ask for collateral or CGTMSE guarantee.</p></details></div>
+            <div class="bg-white rounded-xl p-5 shadow-sm"><details><summary class="font-semibold text-[#1a2e1e]">How long does PMEGP approval take?</summary><p class="text-gray-500 text-sm pt-2">Typically 45–60 days from complete document submission. Timeline depends on bank processing speed and KVIC district office.</p></details></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA Banner -->
+    <section class="relative overflow-hidden py-20 bg-[#F4F1EC]">
+      <div class="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="rounded-2xl overflow-hidden bg-[#BE3A1B] shadow-2xl animate-scale">
+          <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 p-8 lg:p-10">
+            <div class="flex-1 text-center lg:text-left"><h3 class="text-2xl lg:text-3xl font-black text-white leading-tight mb-2">Get Up to ₹50 Lakh for Your Business</h3><p class="text-[14px] leading-relaxed max-w-md mx-auto lg:mx-0 text-white/70">15–35% Subsidy · 45–60 days · 90%+ Success Rate</p><div class="flex flex-wrap items-center justify-center lg:justify-start gap-4 mt-5"><div class="flex items-center gap-2"><span class="text-white/60">✅</span><span class="text-[12px] font-medium text-white/60">Govt. Recognized</span></div><div class="flex items-center gap-2"><span class="text-white/60">🎧</span><span class="text-[12px] font-medium text-white/60">Free Consultation</span></div><div class="flex items-center gap-2"><span class="text-white/60">⏱️</span><span class="text-[12px] font-medium text-white/60">45–60 days</span></div></div></div>
+            <div class="flex flex-col sm:flex-row lg:flex-col xl:flex-row gap-3 flex-shrink-0"><a class="group inline-flex items-center justify-center gap-2.5 text-[14px] font-bold px-8 py-4 rounded-xl bg-white text-[#BE3A1B]" href="#">Start Application →</a><a href="tel:+917600764809" class="inline-flex items-center justify-center gap-2 text-[14px] font-semibold px-8 py-4 rounded-xl bg-white/10 border border-white/25 text-white">📞 +91 76007 64809</a></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+
+        <!-- Disclaimer & Notice Section -->
+
+
+        <!-- Main Footer Grid -->
+        <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
+
+          <!-- Brand Column -->
+          <div>
+            <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
+            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
+              funding — we handle every step.</p>
+          </div>
+
+          <!-- Navigation Column -->
+          <div>
+            <h4 class="font-bold text-lg">Navigation</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li><a href="/Home/index.html" class="hover:text-white transition">Home</a></li>
+              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
+              <li><a href="/Government Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
+              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
+              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
+              <li><a href="/About us/about.html" class="hover:text-white transition">About Us</a></li>
+              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
+              <li><a href="/Contact us/contact.html" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Categories Column -->
+          <div>
+            <h4 class="font-bold text-lg">Categories</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li>AI Solutions</li>
+              <li>Certifications</li>
+              <li>Website Development</li>
+              <li>App Development</li>
+              <li>IOT Solution</li>
+              <li>Digital Marketing</li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div>
+            <h4 class="font-bold text-lg">Contact</h4>
+            <p class="mt-3 text-sm">Ahmedabad, Gujarat, India</p>
+            <p class="mt-2">📧 dreammore2026@gmail.com</p>
+            <p class="pt-4">📞 +91 9898495417</p>
+          </div>
+        </div>
+
+        <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
+
+          <!-- Disclaimer -->
+          <div class="text-sm text-white/80 leading-relaxed pt-5">
+            <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
+            DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
+            services.
+            All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
+            guarantees.
+            All outcomes are subject to government procedures, approvals, and external factors.
+          </div>
+
+          <!-- Note -->
+          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
+            <span class="font-bold text-[#F97316]">📌 NOTE:</span>
+            All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
+            official payment channels,
+            including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
+            payments to personal accounts
+            or under any other name. Clients are strongly advised to verify account details before making any
+            transaction.
+            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
+          </div>
+        </div>
+
+        <!-- Legal & Policy Links Row -->
+        <div
+          class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
+          </div>
+          <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
+        </div>
+
+
+
+      </div>
+    </footer>
+
+  <!-- WhatsApp float button -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div class="bg-white rounded-2xl shadow-xl p-3 pr-7 text-xs font-medium animate-fadeUp delay-500 border border-gray-100">💬 Chat with us! Get free advice</div>
+    <a href="https://wa.me/919898495417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business." target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl hover:scale-105 transition"><svg viewBox="0 0 32 32" fill="white" width="30"><path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zm0 23.04c-2.04 0-3.96-.54-5.62-1.5l-.4-.24-4 1.16 1.18-3.88-.26-.4A10.36 10.36 0 015.56 15.8c0-5.76 4.68-10.44 10.44-10.44 5.76 0 10.44 4.68 10.44 10.44S21.762 26.24 16.002 26.24zM21.74 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z"/></svg></a>
+  </div>
+
+  <script>
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() { mobileMenu.classList.add('active'); mobileMenuOverlay.classList.add('active'); document.body.classList.add('mobile-menu-open'); }
+    function closeMobileMenu() { mobileMenu.classList.remove('active'); mobileMenuOverlay.classList.remove('active'); document.body.classList.remove('mobile-menu-open'); }
+
+    mobileMenuBtn.addEventListener('click', openMobileMenu);
+    mobileMenuClose.addEventListener('click', closeMobileMenu);
+    mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 20) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    });
+  </script>
+</body>
+</html>

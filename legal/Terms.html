@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Terms & Conditions | DreamMore - User Agreement</title>
+  <meta name="description" content="Read DreamMore Business Solutions Pvt. Ltd.'s Terms and Conditions outlining our user agreement, service limitations, and responsibilities. Terms for company registration, funding support, certifications, and consultancy services.">
+  <meta name="keywords" content="DreamMore Terms, Terms and Conditions, User Agreement, Service Terms, Business Service Terms, MSME Terms">
+  <meta name="author" content="DreamMore">
+  <meta name="robots" content="index, follow">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: white;
+    }
+
+    h1, h2, h3, .font-heading {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.4);
+      backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.5);
+      box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+    }
+
+    .btn-primary {
+      background: #BE3A1B;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      background: #000000;
+    }
+
+    /* Mobile Menu Styles */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 80%;
+      max-width: 320px;
+      height: 100vh;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(20px);
+      z-index: 1000;
+      transition: left 0.3s ease-in-out;
+      box-shadow: 2px 0 20px rgba(0, 0, 0, 0.1);
+      padding: 24px 20px;
+      overflow-y: auto;
+    }
+
+    .mobile-menu.open {
+      left: 0;
+    }
+
+    .mobile-menu-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .mobile-menu-overlay.open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .mobile-menu-close {
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      width: 32px;
+      height: 32px;
+      background: #f0f0f0;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .mobile-menu-close:hover {
+      background: #e0e0e0;
+      transform: rotate(90deg);
+    }
+
+    .mobile-menu a {
+      display: block;
+      padding: 12px 0;
+      font-size: 16px;
+      font-weight: 500;
+      color: #1a2e1e;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      transition: color 0.2s ease;
+    }
+
+    .mobile-menu a:hover {
+      color: #BE3A1B;
+    }
+
+    .mobile-menu .mobile-cta {
+      margin-top: 20px;
+      background: #BE3A1B;
+      color: white !important;
+      text-align: center;
+      border-radius: 12px;
+      padding: 14px;
+      border: none;
+    }
+
+    .mobile-menu .mobile-cta:hover {
+      background: black;
+    }
+
+    /* Scroll Reveal Animation */
+    .reveal-on-scroll {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal-on-scroll.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Policy section styling */
+    .terms-section {
+      margin-bottom: 2rem;
+    }
+    .terms-section h2 {
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #1a2e1e;
+      margin-bottom: 0.75rem;
+      border-left: 4px solid #BE3A1B;
+      padding-left: 0.9rem;
+      font-family: 'Poppins', sans-serif;
+    }
+    .terms-section h3 {
+      font-weight: 600;
+      color: #2d3e2e;
+      margin: 0.75rem 0 0.25rem 0;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+    .terms-section p, .terms-section ul {
+      color: #4a5568;
+      line-height: 1.6;
+    }
+    .terms-section ul {
+      list-style-type: disc;
+      padding-left: 1.8rem;
+      margin-top: 0.5rem;
+    }
+    .terms-section li {
+      margin-bottom: 0.3rem;
+    }
+    @media (max-width: 768px) {
+      .terms-section h2 {
+        font-size: 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ========== MOBILE MENU OVERLAY ========== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- ========== MOBILE SIDEBAR ========== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-close" id="mobileMenuClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="mb-8 pt-8">
+      <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+        <span class="text-2xl font-black tracking-tight text-black">
+          Dream<span class="text-[#BE3A1B]">More</span>
+        </span>
+      </a>
+    </div>
+    <a href="/Home/index.html">Home</a>
+    <a href="/Service/service.html">Services</a>
+    <a href="/Government Schemes/schemes.html">Government Schemes</a>
+    <a href="/Loan/loan.html">Loan</a>
+    <a href="/Blog/blog.html">Blog</a>
+    <a href="/About us/about.html">About Us</a>
+    <a href="/Carrers/carrers.html">Careers</a>
+    <a href="/Contact us/contact.html">Contact</a>
+    <a href="/Contact us/contact.html" class="mobile-cta">Free Consultation →</a>
+  </div>
+
+  <!-- ==================== NAVBAR (DreamMore Theme) ==================== -->
+  <nav class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+        <!-- LOGO -->
+        <a class="flex items-center gap-2.5 flex-shrink-0" href="/Home/index.html">
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+        </a>
+
+        <!-- Desktop Menu -->
+        <div class="hidden md:flex items-center gap-1">
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Home/index.html">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Government Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/About us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Carrers/carrers.html">Careers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Contact us/contact.html">Contact</a>
+        </div>
+
+        <!-- Button -->
+        <div class="hidden md:flex items-center gap-2">
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[#000000] transition" href="/Contact us/contact.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+            </svg>
+            Free Consultation
+          </a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section (DreamMore Theme) -->
+    <section class="relative overflow-hidden pt-32 pb-16 lg:py-24 bg-[#FAFAF7] reveal-on-scroll">
+      <div class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-[#BE3A1B] opacity-10 blur-3xl"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-12 space-y-6 text-center">
+            <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B] mx-auto">
+              <span class="w-2 h-2 rounded-full bg-[#ffffff] animate-pulse"></span>
+              <span class="text-[11px] font-semibold tracking-widest uppercase text-[white]">Legal Agreement</span>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-[#1a2e1e]">Terms &amp; <br><span class="text-[#BE3A1B]">Conditions</span></h1>
+            <p class="text-gray-600 max-w-2xl mx-auto">Last Updated: April 9, 2026 — User agreement governing your use of DreamMore services and website.</p>
+            <div class="flex items-center justify-center gap-2 text-sm text-gray-500 pt-2">
+              <a class="hover:text-[#BE3A1B] transition-colors flex items-center gap-1" href="/Home/index.html">🏠 Home</a>
+              <span>/</span>
+              <span class="text-[#BE3A1B] font-medium">Terms & Conditions</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Terms Content Section -->
+    <section class="py-16 lg:py-20 bg-white reveal-on-scroll">
+      <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-white rounded-2xl shadow-xl p-6 sm:p-10 border border-gray-100">
+          <div class="text-center pb-6 border-b border-gray-200 mb-6">
+            <p class="font-bold text-gray-800 text-lg">DreamMore Business Solutions Pvt. Ltd.</p>
+            <p class="text-sm text-gray-500 mt-1">Consulting & Advisory Services</p>
+          </div>
+          
+          <div class="space-y-6">
+            <!-- Purpose -->
+            <div class="terms-section">
+              <h2>📜 Purpose</h2>
+              <p>DreamMore Business Solutions Pvt. Ltd. is committed to providing structured consulting, advisory, and execution support services to its clients.</p>
+              <p class="mt-2">This document outlines the terms and conditions governing the use of our website, services, and interactions. By engaging with us, you acknowledge how services are delivered and agree to the terms stated herein.</p>
+            </div>
+
+            <!-- Definitions -->
+            <div class="terms-section">
+              <h2>Definitions</h2>
+              <h3>Service Provider:</h3>
+              <p>DreamMore Business Solutions Pvt. Ltd., offering consulting, advisory, and execution support services.</p>
+              <h3 class="mt-3">Service Receiver:</h3>
+              <p>Any individual, business, or entity that avails services from the Service Provider.</p>
+            </div>
+
+            <!-- Applicability -->
+            <div class="terms-section">
+              <h2>Applicability</h2>
+              <p>These Terms and Conditions apply to all users accessing our website and availing our services.</p>
+              <p class="mt-2">The Company may collect information directly provided by the Service Receiver, including but not limited to:</p>
+              <ul>
+                <li>Name</li>
+                <li>Contact details (phone number, email)</li>
+                <li>Business information</li>
+                <li>Documents and details required for service execution</li>
+              </ul>
+              <p class="mt-2">Additionally, certain technical information may be collected automatically such as:</p>
+              <ul>
+                <li>IP address</li>
+                <li>Browser type</li>
+                <li>Device details</li>
+                <li>Website usage behavior</li>
+              </ul>
+              <p class="italic text-xs text-gray-400 mt-2">This information is required for efficient service delivery and communication.</p>
+            </div>
+
+            <!-- Use of Information -->
+            <div class="terms-section">
+              <h2>Use of Information</h2>
+              <p>By providing information, the Service Receiver agrees that the Company may use such information for:</p>
+              <ul>
+                <li>Communication regarding services, updates, and queries</li>
+                <li>Service execution and follow-ups</li>
+                <li>Internal analysis and performance improvement</li>
+                <li>Compliance with legal and regulatory requirements</li>
+              </ul>
+              <p>The Company shall not use or process personal data beyond lawful purposes without consent.</p>
+            </div>
+
+            <!-- Service Nature -->
+            <div class="terms-section">
+              <h2>Service Nature</h2>
+              <p>The services provided by the Company are:</p>
+              <ul>
+                <li>Customized and case-specific</li>
+                <li>Process-driven and execution-based</li>
+                <li>Dependent on client inputs, approvals, and external factors</li>
+              </ul>
+              <p>The Company provides services on a best-effort basis and does not guarantee outcomes.</p>
+            </div>
+
+            <!-- Pricing -->
+            <div class="terms-section">
+              <h2>Pricing</h2>
+              <p>Pricing for services may vary depending on:</p>
+              <ul>
+                <li>Scope of work</li>
+                <li>Business requirements</li>
+                <li>Complexity of services</li>
+              </ul>
+              <p>All services are customized, and pricing may differ from client to client.</p>
+            </div>
+
+            <!-- Payments -->
+            <div class="terms-section">
+              <h2>Payments</h2>
+              <p>All payments for services must be made only in the name of <strong>DreamMore Business Solutions Pvt. Ltd.</strong></p>
+              <p class="mt-2">Payments must be made through:</p>
+              <ul>
+                <li>Official bank account (Current Account)</li>
+                <li>NEFT / IMPS / RTGS</li>
+                <li>Authorized payment gateways</li>
+              </ul>
+              <p>The Company does not accept payments made to personal accounts or under any other name.</p>
+              <p class="mt-2">The Company shall not be responsible for any loss arising from payments made outside authorized channels.</p>
+            </div>
+
+            <!-- Security and Data Processing -->
+            <div class="terms-section">
+              <h2>Security and Data Processing</h2>
+              <p>The Company implements reasonable measures to protect the confidentiality and integrity of user information.</p>
+              <p class="mt-2">However, the Company does not guarantee complete security of data transmitted over the internet, and the Service Receiver acknowledges associated risks.</p>
+            </div>
+
+            <!-- User Obligations -->
+            <div class="terms-section">
+              <h2>User Obligations</h2>
+              <p>The Service Receiver agrees:</p>
+              <ul>
+                <li>Not to copy, reproduce, or misuse any content from the website</li>
+                <li>Not to distribute or modify any material without authorization</li>
+                <li>Not to engage in unlawful activities using the website or services</li>
+              </ul>
+              <p class="italic text-xs font-medium mt-2">Any misuse may result in termination of services.</p>
+            </div>
+
+            <!-- Acceptance of Terms -->
+            <div class="terms-section">
+              <h2>Acceptance of Terms</h2>
+              <p>By accessing the website, submitting information, or availing services, the Service Receiver:</p>
+              <ul>
+                <li>Acknowledges and accepts these Terms and Conditions</li>
+                <li>Agrees to comply with all policies of the Company</li>
+              </ul>
+              <p>If you do not agree, you must refrain from using our services.</p>
+            </div>
+
+            <!-- Governing Law and Jurisdiction -->
+            <div class="terms-section">
+              <h2>Governing Law and Jurisdiction</h2>
+              <p>These Terms shall be governed by the laws of India.</p>
+              <p class="mt-2">In case of any dispute:</p>
+              <ul>
+                <li>Parties shall first attempt to resolve the matter amicably</li>
+                <li>If unresolved, the matter may be referred for arbitration under the Arbitration and Conciliation Act, 1996</li>
+              </ul>
+              <p><strong>Jurisdiction:</strong> Ahmedabad, Gujarat</p>
+            </div>
+
+            <!-- Updates -->
+            <div class="terms-section">
+              <h2>Updates</h2>
+              <p>The Company reserves the right to update or modify these Terms at any time.</p>
+              <p class="mt-2">Continued use of the website or services shall constitute acceptance of the updated Terms.</p>
+            </div>
+
+            <!-- Links to Other Websites -->
+            <div class="terms-section">
+              <h2>Links to Other Websites</h2>
+              <p>The website may contain links to third-party platforms.</p>
+              <p class="mt-2">The Company is not responsible for:</p>
+              <ul>
+                <li>Content of such websites</li>
+                <li>Privacy practices or policies</li>
+              </ul>
+              <p>Users are advised to review third-party policies separately.</p>
+            </div>
+
+            <!-- Refund Policy -->
+            <div class="terms-section">
+              <h2>Refund Policy</h2>
+              <p>Refunds shall be governed by the Company's Refund Policy.</p>
+              <p class="mt-2">Refund eligibility, timelines, and process shall be determined based on:</p>
+              <ul>
+                <li>Service stage</li>
+                <li>Work completed</li>
+                <li>Agreement terms</li>
+              </ul>
+              <p>Refunds are not guaranteed and are subject to evaluation by the Company.</p>
+            </div>
+
+            <!-- Grievance Resolution -->
+            <div class="terms-section">
+              <h2>Grievance Resolution</h2>
+              <p>For any concerns, queries, or clarifications, the Service Receiver may contact us with:</p>
+              <ul>
+                <li>Name of the client / company</li>
+                <li>Service availed</li>
+                <li>Query details</li>
+                <li>Contact information</li>
+              </ul>
+              <p>📩 Email: <a href="mailto:support@dreammore.com" class="text-[#BE3A1B] font-medium hover:underline">support@dreammore.com</a></p>
+              <p class="text-xs mt-2">The Company shall review and respond within a reasonable timeframe.</p>
+            </div>
+
+            <!-- Contact Us -->
+            <div class="terms-section">
+              <h2>Contact Us</h2>
+              <p>If you have any questions regarding these Terms and Conditions:</p>
+              <div class="mt-3 space-y-1">
+                <p class="font-semibold text-gray-800 uppercase text-xs tracking-wider">DreamMore Business Solutions Pvt. Ltd.</p>
+                <p>📧 <a href="mailto:dreammore2026@gmail.com" class="text-[#BE3A1B] hover:underline">dreammore2026@gmail.com</a></p>
+                <p>📞 +91 9898495417</p>
+                <p>🌐 www.dreammore.co.in</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-10 pt-6 text-center border-t border-gray-100">
+            <a href="/Home/index.html" class="inline-flex items-center gap-2 bg-[#BE3A1B] hover:bg-black text-white px-6 py-3 rounded-full transition-all shadow-md font-semibold">
+              ← Back to Home
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FOOTER (DreamMore Theme) ========== -->
+    <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
+      <div class="max-w-7xl mx-auto px-4">
+
+        <!-- Disclaimer & Notice Section -->
+
+
+        <!-- Main Footer Grid -->
+        <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
+
+          <!-- Brand Column -->
+          <div>
+            <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
+            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
+              funding — we handle every step.</p>
+          </div>
+
+          <!-- Navigation Column -->
+          <div>
+            <h4 class="font-bold text-lg">Navigation</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li><a href="/Home/index.html" class="hover:text-white transition">Home</a></li>
+              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
+              <li><a href="/Government Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
+              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
+              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
+              <li><a href="/About us/about.html" class="hover:text-white transition">About Us</a></li>
+              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
+              <li><a href="/Contact us/contact.html" class="hover:text-white transition">Contact</a></li>
+            </ul>
+          </div>
+
+          <!-- Categories Column -->
+          <div>
+            <h4 class="font-bold text-lg">Categories</h4>
+            <ul class="mt-3 space-y-2 text-sm text-white/70">
+              <li>AI Solutions</li>
+              <li>Certifications</li>
+              <li>Website Development</li>
+              <li>App Development</li>
+              <li>IOT Solution</li>
+              <li>Digital Marketing</li>
+            </ul>
+          </div>
+
+          <!-- Contact Column -->
+          <div>
+            <h4 class="font-bold text-lg">Contact</h4>
+            <p class="mt-3 text-sm">Ahmedabad, Gujarat, India</p>
+            <p class="mt-2">📧 dreammore2026@gmail.com</p>
+            <p class="pt-4">📞 +91 9898495417</p>
+          </div>
+        </div>
+
+        <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
+
+          <!-- Disclaimer -->
+          <div class="text-sm text-white/80 leading-relaxed pt-5">
+            <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
+            DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
+            services.
+            All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
+            guarantees.
+            All outcomes are subject to government procedures, approvals, and external factors.
+          </div>
+
+          <!-- Note -->
+          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
+            <span class="font-bold text-[#F97316]">📌 NOTE:</span>
+            All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
+            official payment channels,
+            including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
+            payments to personal accounts
+            or under any other name. Clients are strongly advised to verify account details before making any
+            transaction.
+            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
+          </div>
+        </div>
+
+        <!-- Legal & Policy Links Row -->
+        <div
+          class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
+          <div class="flex flex-wrap justify-center gap-4">
+            <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
+            <span class="text-white/30">|</span>
+            <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
+          </div>
+          <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
+        </div>
+
+
+
+      </div>
+    </footer>
+  </main>
+
+  <!-- WhatsApp floating button (DreamMore Theme) -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div class="bg-white rounded-xl shadow-lg p-3 text-sm max-w-[200px] border">💬 Chat with us! Get free advice on schemes & funding.</div>
+    <a href="https://wa.me/919898495417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20about%20your%20terms%20and%20conditions" target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl animate-pulse">
+      <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="white">
+        <path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zM23 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z"/>
+      </svg>
+    </a>
+  </div>
+
+  <!-- JavaScript: Mobile Menu, Scroll Reveal -->
+  <script>
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileMenuClose = document.getElementById('mobileMenuClose');
+
+    function openMobileMenu() {
+      mobileMenu.classList.add('open');
+      mobileMenuOverlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('open');
+      mobileMenuOverlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
+
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+
+    window.addEventListener('resize', function () {
+      if (window.innerWidth >= 768 && mobileMenu.classList.contains('open')) {
+        closeMobileMenu();
+      }
+    });
+
+    // Scroll Reveal Animation
+    const revealElements = document.querySelectorAll('.reveal-on-scroll');
+    function checkReveal() {
+      const windowHeight = window.innerHeight;
+      const revealThreshold = 100;
+      revealElements.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        if (elementTop < windowHeight - revealThreshold) {
+          element.classList.add('revealed');
+        }
+      });
+    }
+    window.addEventListener('load', checkReveal);
+    window.addEventListener('scroll', checkReveal);
+  </script>
+</body>
+</html>
