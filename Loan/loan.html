@@ -1387,7 +1387,11 @@
               <p>Fill the form below - response within 2 hours</p>
             </div>
 
-            <form id="contactForm">
+            <form id="contactForm"
+              action="https://script.google.com/macros/s/AKfycbw6g7KXBuYTCiezQLUbXkc6S97Q7L1Ygkk8pjnBsBytw9By3ISLWEHNBsQSGFW5y60j/exec"
+              method="POST" target="hidden_iframe">
+              ```
+
               <div class="form-group">
                 <label>Full Name *</label>
                 <input type="text" name="name" placeholder="Enter your full name" required>
@@ -1448,102 +1452,552 @@
 
     <!-- WhatsApp Float Button -->
 
+<!-- =========================
+GOOGLE SHEET CONTACT FORM
+FULL WORKING VERSION
+NO CORS ERROR
+========================= -->
 
-    <script>
-      (function () {
-        let popupTimer;
-        let isPopupVisible = false;
-        let popupClosedManually = false;
+<!-- POPUP -->
+<div id="contactPopup" class="popup-overlay">
 
-        const popup = document.getElementById('contactPopup');
-        const closeBtn = document.getElementById('closePopupBtn');
-        const popupFormContent = document.getElementById('popupFormContent');
-        const successMessageDiv = document.getElementById('successMessage');
-        const contactForm = document.getElementById('contactForm');
-        const closeSuccessBtn = document.getElementById('closeSuccessBtn');
-        const timerTextElem = document.getElementById('timerText');
+  <div class="popup-container">
 
-        function showPopup() {
-          if (!isPopupVisible && !popupClosedManually) {
-            popupFormContent.style.display = 'block';
-            successMessageDiv.style.display = 'none';
-            if (contactForm) contactForm.reset();
-            popup.classList.add('active');
-            isPopupVisible = true;
-            document.body.style.overflow = 'hidden';
-            startPopupCountdown();
-          }
-        }
+    <!-- CLOSE BUTTON -->
+    <div class="close-popup" id="closePopupBtn">
 
-        function hidePopup() {
-          popup.classList.remove('active');
-          isPopupVisible = false;
-          document.body.style.overflow = '';
-          stopPopupCountdown();
-          if (timerTextElem) timerTextElem.innerHTML = '';
-        }
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
 
-        let countdownInterval;
-        function startPopupCountdown() {
-          let secondsLeft = 60;
-          if (timerTextElem) timerTextElem.innerHTML = `⏳ Popup closes in ${secondsLeft}s`;
-          if (countdownInterval) clearInterval(countdownInterval);
-          countdownInterval = setInterval(() => {
-            secondsLeft--;
-            if (timerTextElem && isPopupVisible) timerTextElem.innerHTML = `⏳ Popup closes in ${secondsLeft}s`;
-            if (secondsLeft <= 0 && isPopupVisible) {
-              stopPopupCountdown();
-              hidePopup();
-            }
-          }, 1000);
-        }
-        function stopPopupCountdown() {
-          if (countdownInterval) { clearInterval(countdownInterval); countdownInterval = null; }
-        }
+        <line x1="18" y1="6" x2="6" y2="18"></line>
 
-        function startTimer() {
-          if (popupTimer) clearInterval(popupTimer);
-          popupTimer = setInterval(() => {
-            if (!isPopupVisible && !popupClosedManually) showPopup();
-          }, 50000);
-        }
-        function resetTimer() {
-          if (popupTimer) clearInterval(popupTimer);
-          startTimer();
-        }
+        <line x1="6" y1="6" x2="18" y2="18"></line>
 
-        if (contactForm) {
-          contactForm.addEventListener('submit', function (e) {
-            e.preventDefault();
-            const formData = new FormData(contactForm);
-            console.log('Form submitted:', Object.fromEntries(formData.entries()));
-            popupFormContent.style.display = 'none';
-            successMessageDiv.style.display = 'block';
-            popupClosedManually = false;
-            resetTimer();
-            setTimeout(() => { if (isPopupVisible) hidePopup(); }, 5000);
-          });
-        }
+      </svg>
 
-        if (closeSuccessBtn) closeSuccessBtn.addEventListener('click', function () { hidePopup(); popupClosedManually = false; resetTimer(); });
-        if (closeBtn) closeBtn.addEventListener('click', function () { hidePopup(); stopPopupCountdown(); popupClosedManually = true; resetTimer(); });
-        popup.addEventListener('click', function (e) { if (e.target === popup) { hidePopup(); stopPopupCountdown(); popupClosedManually = true; resetTimer(); } });
+    </div>
 
-        let activityTimeout;
-        function resetOnActivity() {
-          if (activityTimeout) clearTimeout(activityTimeout);
-          activityTimeout = setTimeout(() => {
-            if (!isPopupVisible && popupClosedManually) { popupClosedManually = false; resetTimer(); }
-          }, 5000);
-        }
-        window.addEventListener('scroll', resetOnActivity);
-        window.addEventListener('click', resetOnActivity);
-        window.addEventListener('mousemove', resetOnActivity);
+    <!-- LEFT SIDE -->
+    <div class="popup-image-section">
 
-        startTimer();
-        setTimeout(() => { if (!isPopupVisible && !popupClosedManually) showPopup(); }, 50000);
-      })();
-    </script>
+      <div class="image-wrapper">
+
+        <img
+          src="/public/LOGO.png"
+          alt="Contact Support"
+          style="
+          width:100%;
+          max-width:200px;
+          margin:0 auto 1.5rem;
+          display:block;
+          border-radius:20px;
+        "
+        >
+
+        <h3>Expert Support</h3>
+
+        <p>Get personalized assistance</p>
+
+        <ul class="benefits-list">
+
+          <li>Free 30-min consultation</li>
+
+          <li>Tailored business solutions</li>
+
+          <li>Dedicated relationship manager</li>
+
+          <li>Quick 2-hour response</li>
+
+        </ul>
+
+      </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+    <div class="popup-form-section">
+
+      <!-- FORM -->
+      <div id="popupFormContent">
+
+        <div class="form-title">
+
+          <h2>Let's Connect!</h2>
+
+          <p>Fill the form below - response within 2 hours</p>
+
+        </div>
+
+        <!-- FORM START -->
+        <form
+          id="contactForm"
+          action="https://script.google.com/macros/s/AKfycbw6g7KXBuYTCiezQLUbXkc6S97Q7L1Ygkk8pjnBsBytw9By3ISLWEHNBsQSGFW5y60j/exec"
+          method="POST"
+          target="hidden_iframe"
+          onsubmit="submitted=true;"
+        >
+
+          <!-- NAME -->
+          <div class="form-group">
+
+            <label>Full Name *</label>
+
+            <input
+              type="text"
+              name="name"
+              placeholder="Enter your full name"
+              required
+            >
+
+          </div>
+
+          <!-- EMAIL -->
+          <div class="form-group">
+
+            <label>Email Address *</label>
+
+            <input
+              type="email"
+              name="email"
+              placeholder="you@example.com"
+              required
+            >
+
+          </div>
+
+          <!-- PHONE -->
+          <div class="form-group">
+
+            <label>Phone Number *</label>
+
+            <input
+              type="tel"
+              name="phone"
+              placeholder="+91 XXXXX XXXXX"
+              required
+            >
+
+          </div>
+
+          <!-- SERVICE -->
+          <div class="form-group">
+
+            <label>Service Interested In</label>
+
+            <select name="service">
+
+              <option value="">Select a service</option>
+
+              <option>Company Registration</option>
+
+              <option>Government Schemes</option>
+
+              <option>Funding Support</option>
+
+              <option>Certifications</option>
+
+              <option>Digital Marketing</option>
+
+              <option>AI / IoT Solutions</option>
+
+              <option>Website / App Development</option>
+
+              <option>Other</option>
+
+            </select>
+
+          </div>
+
+          <!-- MESSAGE -->
+          <div class="form-group">
+
+            <label>Message / Query</label>
+
+            <textarea
+              rows="3"
+              name="message"
+              placeholder="Tell us about your business requirements..."
+            ></textarea>
+
+          </div>
+
+          <!-- SUBMIT BUTTON -->
+          <button type="submit" class="submit-btn">
+
+            Submit Request
+
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+
+              <polyline points="12 5 19 12 12 19"></polyline>
+
+            </svg>
+
+          </button>
+
+        </form>
+
+        <!-- HIDDEN IFRAME -->
+        <iframe
+          name="hidden_iframe"
+          id="hidden_iframe"
+          style="display:none;"
+        ></iframe>
+
+        <!-- TIMER -->
+        <div class="timer-text" id="timerText"></div>
+
+      </div>
+
+      <!-- SUCCESS MESSAGE -->
+      <div id="successMessage" style="display:none;">
+
+        <div class="success-message">
+
+          <svg
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="#10B981"
+            stroke-width="2"
+            style="width:70px;"
+          >
+
+            <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+
+            <polyline points="22 4 12 14.01 9 11.01"></polyline>
+
+          </svg>
+
+          <h3
+            style="
+            font-size:1.4rem;
+            font-weight:700;
+            color:#1a2e1e;
+          "
+          >
+
+            Thank You!
+
+          </h3>
+
+          <p
+            style="
+            color:#6b7280;
+            margin-top:10px;
+          "
+          >
+
+            Your request has been submitted successfully.
+
+          </p>
+
+          <button
+            id="closeSuccessBtn"
+            class="submit-btn"
+            style="
+            margin-top:20px;
+            width:auto;
+            padding:12px 30px;
+          "
+          >
+
+            Close
+
+          </button>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
+
+<!-- =========================
+SCRIPT
+========================= -->
+
+<script>
+
+(function () {
+
+  let popupTimer;
+  let countdownInterval;
+  let activityTimeout;
+
+  let isPopupVisible = false;
+  let popupClosedManually = false;
+
+  let submitted = false;
+
+  const popup = document.getElementById('contactPopup');
+
+  const closeBtn = document.getElementById('closePopupBtn');
+
+  const popupFormContent =
+    document.getElementById('popupFormContent');
+
+  const successMessageDiv =
+    document.getElementById('successMessage');
+
+  const contactForm =
+    document.getElementById('contactForm');
+
+  const closeSuccessBtn =
+    document.getElementById('closeSuccessBtn');
+
+  const timerTextElem =
+    document.getElementById('timerText');
+
+  const hiddenIframe =
+    document.getElementById('hidden_iframe');
+
+  /* =========================
+     SHOW POPUP
+  ========================== */
+
+  function showPopup() {
+
+    if (!isPopupVisible && !popupClosedManually) {
+
+      popup.classList.add('active');
+
+      popupFormContent.style.display = 'block';
+
+      successMessageDiv.style.display = 'none';
+
+      isPopupVisible = true;
+
+      document.body.style.overflow = 'hidden';
+
+      startPopupCountdown();
+
+    }
+
+  }
+
+  /* =========================
+     HIDE POPUP
+  ========================== */
+
+  function hidePopup() {
+
+    popup.classList.remove('active');
+
+    isPopupVisible = false;
+
+    document.body.style.overflow = '';
+
+    stopPopupCountdown();
+
+    timerTextElem.innerHTML = '';
+
+  }
+
+  /* =========================
+     COUNTDOWN
+  ========================== */
+
+  function startPopupCountdown() {
+
+    let secondsLeft = 60;
+
+    timerTextElem.innerHTML =
+      `⏳ Popup closes in ${secondsLeft}s`;
+
+    clearInterval(countdownInterval);
+
+    countdownInterval = setInterval(() => {
+
+      secondsLeft--;
+
+      if (isPopupVisible) {
+
+        timerTextElem.innerHTML =
+          `⏳ Popup closes in ${secondsLeft}s`;
+
+      }
+
+      if (secondsLeft <= 0) {
+
+        stopPopupCountdown();
+
+        hidePopup();
+
+      }
+
+    }, 1000);
+
+  }
+
+  function stopPopupCountdown() {
+
+    clearInterval(countdownInterval);
+
+  }
+
+  /* =========================
+     AUTO TIMER
+  ========================== */
+
+  function startTimer() {
+
+    clearInterval(popupTimer);
+
+    popupTimer = setInterval(() => {
+
+      if (!isPopupVisible && !popupClosedManually) {
+
+        showPopup();
+
+      }
+
+    }, 30000);
+
+  }
+
+  function resetTimer() {
+
+    clearInterval(popupTimer);
+
+    startTimer();
+
+  }
+
+  /* =========================
+     FORM SUBMIT SUCCESS
+  ========================== */
+
+  contactForm.addEventListener('submit', function () {
+
+    submitted = true;
+
+  });
+
+  hiddenIframe.addEventListener('load', function () {
+
+    if (submitted) {
+
+      popupFormContent.style.display = 'none';
+
+      successMessageDiv.style.display = 'block';
+
+      contactForm.reset();
+
+      submitted = false;
+
+      setTimeout(() => {
+
+        hidePopup();
+
+      }, 4000);
+
+    }
+
+  });
+
+  /* =========================
+     CLOSE BUTTON
+  ========================== */
+
+  closeBtn.addEventListener('click', function () {
+
+    hidePopup();
+
+    popupClosedManually = true;
+
+    resetTimer();
+
+  });
+
+  /* =========================
+     SUCCESS CLOSE
+  ========================== */
+
+  closeSuccessBtn.addEventListener('click', function () {
+
+    hidePopup();
+
+    popupClosedManually = false;
+
+    resetTimer();
+
+  });
+
+  /* =========================
+     OUTSIDE CLICK
+  ========================== */
+
+  popup.addEventListener('click', function (e) {
+
+    if (e.target === popup) {
+
+      hidePopup();
+
+      popupClosedManually = true;
+
+      resetTimer();
+
+    }
+
+  });
+
+  /* =========================
+     USER ACTIVITY
+  ========================== */
+
+  function resetOnActivity() {
+
+    clearTimeout(activityTimeout);
+
+    activityTimeout = setTimeout(() => {
+
+      if (!isPopupVisible && popupClosedManually) {
+
+        popupClosedManually = false;
+
+        resetTimer();
+
+      }
+
+    }, 5000);
+
+  }
+
+  window.addEventListener('scroll', resetOnActivity);
+
+  window.addEventListener('mousemove', resetOnActivity);
+
+  window.addEventListener('click', resetOnActivity);
+
+  /* =========================
+     INITIAL START
+  ========================== */
+
+  startTimer();
+
+  setTimeout(() => {
+
+    if (!isPopupVisible && !popupClosedManually) {
+
+      showPopup();
+
+    }
+
+  }, 30000);
+
+})();
+
+</script>
 
 
   <!-- FAQ toggle, mobile menu, and scroll reveal script -->
