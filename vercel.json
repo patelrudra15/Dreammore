@@ -1,8 +1,41 @@
 {
-  "routes": [
+  "cleanUrls": true,
+  "rewrites": [
     {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/",
+      "destination": "/Home/index.html"
+    },
+    {
+      "source": "/about",
+      "destination": "/About us/about.html"
+    },
+    {
+      "source": "/contact",
+      "destination": "/Contact us/contact.html"
+    },
+    {
+      "source": "/services",
+      "destination": "/Service/service.html"
+    },
+    {
+      "source": "/blog",
+      "destination": "/Blog/blog.html"
+    },
+    {
+      "source": "/loan",
+      "destination": "/Loan/loan.html"
+    },
+    {
+      "source": "/schemes",
+      "destination": "/Government Schemes/schemes.html"
+    },
+    {
+      "source": "/careers",
+      "destination": "/Carrers/carrers.html"
+    },
+    {
+      "source": "/privacy-policy",
+      "destination": "/legal/privacy-policy.html"
     }
   ]
 }
