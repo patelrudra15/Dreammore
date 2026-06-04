@@ -8,7 +8,6 @@
     <meta name="description"
         content="Comprehensive legal services — trademark and IP protection, contract drafting, ROC compliance, legal advisory, and dispute resolution for MSMEs and startups.">
     <script src="https://cdn.tailwindcss.com"></script>
-
     <link
         href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -113,13 +112,115 @@
             animation-delay: 0.4s;
         }
 
+        /* Glass navbar & mobile menu refined styles */
         .glass-nav {
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(16px);
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.02);
         }
 
-        .mobile-menu-open {
+        .navbar-scrolled {
+            background: rgba(255, 255, 255, 0.96) !important;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05) !important;
+            top: 0 !important;
+            left: 0 !important;
+            right: 0 !important;
+            border-radius: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* Mobile Menu Overlay */
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(4px);
+            z-index: 150;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 85%;
+            max-width: 340px;
+            height: 100%;
+            background: white;
+            z-index: 200;
+            padding: 2rem 1.5rem;
+            box-shadow: -8px 0 30px rgba(0, 0, 0, 0.15);
+            transition: right 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+
+        .mobile-menu.open {
+            right: 0;
+        }
+
+        .mobile-menu-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.5rem;
+            width: 36px;
+            height: 36px;
+            background: #f3f4f6;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .mobile-menu-close:hover {
+            background: #e5e7eb;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 0;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1a2e1e;
+            border-bottom: 1px solid #f0f0f0;
+            transition: color 0.2s;
+        }
+
+        .mobile-menu a:hover {
+            color: #BE3A1B;
+        }
+
+        .mobile-cta {
+            margin-top: 1.5rem;
+            background: #BE3A1B;
+            color: white !important;
+            text-align: center;
+            border-radius: 40px;
+            padding: 0.85rem !important;
+            font-weight: 700 !important;
+            border: none !important;
+        }
+
+        .mobile-cta:hover {
+            background: black;
+            color: white !important;
+        }
+
+        body.menu-open {
             overflow: hidden;
         }
     </style>
@@ -127,99 +228,98 @@
 
 <body>
 
-    <!-- Navigation with Mobile Menu (exact glass style) -->
-    <nav class="fixed top-3 left-3 right-3 lg:left-6 lg:right-6 z-50 transition-all duration-300 rounded-2xl lg:rounded-full glass-nav shadow-sm"
-        id="navbar">
-        <div class="max-w-7xl mx-auto px-5 py-3 flex items-center justify-between">
-            <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
+    <!-- Mobile Menu Overlay & Panel -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-close" id="mobileMenuClose">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+            </svg>
+        </div>
+        <div class="mb-8 pt-4">
+    <a class="flex items-center gap-2.5" href="/LOGO.png">
+        <!-- Fixed image with fallback - will show properly -->
+        <img src="/LOGO.png" alt="Dream More Logo" class="h-12 w-auto object-contain" 
+             onerror="this.src='https://via.placeholder.com/60x60/BE3A1B/white?text=DM'; this.onerror=null;">
+        <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+        </span>
+    </a>
+</div>
+        <a href="/">Home</a>
+        <a href="/Service/service.html">Services</a>
+        <a href="/government-schemes/schemes.html">Government Schemes</a>
+        <a href="/loan/loan.html">Loan</a>
+        <a href="/blog/blog.html">Blog</a>
+        <a href="/about-us/about.html">About Us</a>
+        <a href="/careers/careers.html">Careers</a>
+        <a href="/contact-us/contact.html">Contact</a>
+        <a href="/contact-us/contact.html" class="mobile-cta">Free Consultation →</a>
+    </div>
 
-          <!-- Logo Image -->
-          <img src="/public/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
-
-          <!-- Optional Text -->
+    <!-- Navbar (Desktop + Mobile trigger) -->
+    <nav id="navbar"
+        class="fixed z-[100] top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-[72px]">
+                <!-- Logo -->
+                <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
+          <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
           <span class="text-2xl font-black tracking-tight text-black">
             Dream<span class="text-[#BE3A1B]">More</span>
           </span>
-
         </a>
-            <div class="hidden lg:flex items-center gap-1">
-                <a href="/"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">Home</a>
-                <a href="/Service/service.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">Services</a>
-                <a href="/Government Schemes/schemes.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">Government
-                    Schemes</a>
-                <a href="/Loan/loan.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">Loan</a>
-                <a href="/Blog/blog.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">
-                    Blog</a>
-                    <a href="/About%20us/about.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">About
-                    Us</a>
-                    <a href="/Carrers/carrers.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">Carrers
-                    </a>
-                <a href="/Contact us/contact.html"
-                    class="px-4 py-2 rounded-full text-sm font-medium text-gray-700 hover:bg-white/60 transition">Contact
-                    Us</a>
-            </div>
-            <div class="hidden lg:flex items-center gap-3">
-                <a href="/Contact us/contact.html"
-                    class="bg-[#BE3A1B] text-white text-sm font-semibold px-5 py-2.5 rounded-full shadow-md hover:bg-[#15855f] transition flex items-center gap-2">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path
-                            d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z" />
-                    </svg>
-                    Free Consultation
-                </a>
-            </div>
-            <button id="menuToggle"
-                class="lg:hidden flex items-center justify-center w-10 h-10 rounded-full bg-white/60 backdrop-blur-sm border border-gray-200 shadow-sm"
-                aria-label="Menu">
-                <svg id="menuIcon" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <line x1="4" x2="20" y1="12" y2="12" />
-                    <line x1="4" x2="20" y1="6" y2="6" />
-                    <line x1="4" x2="20" y1="18" y2="18" />
-                </svg>
-                <svg id="closeIcon" class="hidden" width="22" height="22" viewBox="0 0 24 24" fill="none"
-                    stroke="currentColor" stroke-width="2">
-                    <line x1="18" x2="6" y1="6" y2="18" />
-                    <line x1="6" x2="18" y1="6" y2="18" />
-                </svg>
-            </button>
-        </div>
-        <div id="mobileMenu"
-            class="lg:hidden fixed left-0 right-0 bg-white/95 backdrop-blur-xl border-b border-gray-100 shadow-xl rounded-b-2xl z-40 overflow-hidden transition-all duration-300 max-h-0 opacity-0 invisible">
-            <div class="flex flex-col py-5 px-5 gap-2">
-                <a href="/" class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">Home</a>
-                <a href="/Service/service.html"
-                    class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">Services</a>
-                <a href="/Government Schemes/schemes.html"
-                    class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">Government
-                    Schemes</a>
-                <a href="/Loan/loan.html" class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">Loan</a>
-                <a href="/Blog/blog.html" class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">
-                    Blog</a>
-                <a href="/About%20us/about.html" class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">About%20us
-                    Family</a>
-                    <a href="/Carrers/carrers.html" class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">Carrers
-                    </a>
-                    <a href="/Contact us/contact.html" class="py-3 px-4 rounded-xl text-gray-800 font-medium hover:bg-gray-50 transition">Contact us
-                    </a>
-                <div class="pt-3 mt-2 border-t border-gray-100">
-                    <a href="/Contact us/contact.html"
-                        class="flex items-center justify-center gap-2 bg-[#BE3A1B] text-white font-semibold py-3 rounded-xl">📞
-                        Free Consultation</a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-1">
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/">Home</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/service/service.html">Services</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/government-schemes/schemes.html">Government Schemes</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/loan/loan.html">Loan</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/blog/blog.html">Blog</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/about-us/about.html">About Us</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/careers/careers.html">Careers</a>
+                    <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
+                        href="/contact-us/contact.html">Contact</a>
                 </div>
+
+                <!-- Desktop CTA -->
+                <div class="hidden md:flex items-center gap-2">
+                    <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-black transition"
+                        href="/Contact%20us/contact.html">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                            stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+                        </svg>
+                        Free Consultation
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden p-2 rounded-full bg-white/70 shadow-sm" id="mobileMenuBtn" aria-label="menu">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="4" y1="6" x2="20" y2="6"></line>
+                        <line x1="4" y1="12" x2="20" y2="12"></line>
+                        <line x1="4" y1="18" x2="20" y2="18"></line>
+                    </svg>
+                </button>
             </div>
         </div>
     </nav>
 
     <main class="pt-[72px] bg-white">
-        <!-- Hero Section (exact background #FAFAF7) -->
+        <!-- Hero Section -->
         <section class="relative overflow-hidden bg-[#FAFAF7]">
             <div
                 class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-gradient-radial from-[#BE3A1B]/10 to-transparent">
@@ -227,8 +327,8 @@
             <div class="relative max-w-7xl mx-auto px-5 py-14 lg:py-20">
                 <div class="flex flex-wrap items-center justify-between gap-4 mb-10">
                     <div class="flex items-center gap-2 text-xs text-gray-500">
-                        <a href="/" class="hover:text-[#BE3A1B]">Home</a> <span class="text-[#8a9a8e]">›</span> <a
-                            href="/Service/service.html" class="hover:text-[#BE3A1B]">Services</a> <span class="text-[#8a9a8e]">›</span>
+                        <a href="/" class="hover:text-[#BE3A1B]">Home</a> <span class="text-[#8a9a8e]">›</span>
+                        <a href="/Service/service.html" class="hover:text-[#BE3A1B]">Services</a> <span class="text-[#8a9a8e]">›</span>
                         <span class="font-semibold text-[#BE3A1B]">Legal & Protection</span>
                     </div>
                     <a href="tel:+917600764809"
@@ -296,393 +396,128 @@
                             <div class="h-px flex-1 bg-[#BE3A1B]/20"></div>
                         </div>
                         <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3 shadow-sm">
-                            <div
-                                class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">
-                                01</div>
-                            <div>
-                                <p class="font-bold text-[#1a2e1e]">Trademark Registration</p>
-                                <p class="text-xs text-[#8a9a8e]">12–18 months (TM symbol immediate)</p>
-                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">01</div>
+                            <div><p class="font-bold text-[#1a2e1e]">Trademark Registration</p><p class="text-xs text-[#8a9a8e]">12–18 months (TM symbol immediate)</p></div>
                         </div>
                         <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3">
-                            <div
-                                class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">
-                                02</div>
-                            <div>
-                                <p class="font-bold text-[#1a2e1e]">Patent Filing</p>
-                                <p class="text-xs text-[#8a9a8e]">24–36 months</p>
-                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">02</div>
+                            <div><p class="font-bold text-[#1a2e1e]">Patent Filing</p><p class="text-xs text-[#8a9a8e]">24–36 months</p></div>
                         </div>
                         <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3">
-                            <div
-                                class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">
-                                03</div>
-                            <div>
-                                <p class="font-bold text-[#1a2e1e]">Copyright Registration</p>
-                                <p class="text-xs text-[#8a9a8e]">30–60 days</p>
-                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">03</div>
+                            <div><p class="font-bold text-[#1a2e1e]">Copyright Registration</p><p class="text-xs text-[#8a9a8e]">30–60 days</p></div>
                         </div>
                         <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3">
-                            <div
-                                class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">
-                                04</div>
-                            <div>
-                                <p class="font-bold text-[#1a2e1e]">Contract Drafting</p>
-                                <p class="text-xs text-[#8a9a8e]">3–7 days</p>
-                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">04</div>
+                            <div><p class="font-bold text-[#1a2e1e]">Contract Drafting</p><p class="text-xs text-[#8a9a8e]">3–7 days</p></div>
                         </div>
                         <div class="bg-white border border-[#BE3A1B]/10 rounded-xl p-4 flex gap-3">
-                            <div
-                                class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">
-                                05</div>
-                            <div>
-                                <p class="font-bold text-[#1a2e1e]">ROC Compliance</p>
-                                <p class="text-xs text-[#8a9a8e]">5–10 days</p>
-                            </div>
+                            <div class="w-8 h-8 rounded-lg bg-[#BE3A1B] text-white flex items-center justify-center font-black">05</div>
+                            <div><p class="font-bold text-[#1a2e1e]">ROC Compliance</p><p class="text-xs text-[#8a9a8e]">5–10 days</p></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <svg viewBox="0 0 1440 40" fill="none" class="w-full">
-                <path d="M0,32 C480,0 960,56 1440,24 L1440,56 L0,56 Z" fill="white"></path>
-            </svg>
+            <svg viewBox="0 0 1440 40" fill="none" class="w-full"><path d="M0,32 C480,0 960,56 1440,24 L1440,56 L0,56 Z" fill="white"></path></svg>
         </section>
 
-        <!-- All Services (exactly 7 service cards) -->
+        <!-- All Services Cards -->
         <section class="py-16 px-5 max-w-7xl mx-auto">
-            <div class="text-center mb-12"><span
-                    class="inline-block rounded-full px-4 py-1 bg-[#BE3A1B] text-[#FFFFFF] text-[11px] font-bold tracking-wide">SERVICE
-                    DETAILS</span>
+            <div class="text-center mb-12"><span class="inline-block rounded-full px-4 py-1 bg-[#BE3A1B] text-[#FFFFFF] text-[11px] font-bold tracking-wide">SERVICE DETAILS</span>
                 <h2 class="text-3xl font-black mt-3 text-[#1a2e1e]">All Services</h2>
-                <p class="text-[#4a5c4e] text-sm max-w-xl mx-auto">Explore every sub-service included in Legal &
-                    Protection.</p>
+                <p class="text-[#4a5c4e] text-sm max-w-xl mx-auto">Explore every sub-service included in Legal & Protection.</p>
             </div>
             <div class="grid md:grid-cols-2 gap-6">
-                <div class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm animate-left"><span
-                        class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">™️
-                        12–18 months</span>
-                    <h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Trademark Registration</h3>
-                    <p class="text-sm text-[#4a5c4e] my-3">Protect your brand name, logo, tagline. Includes search,
-                        filing, and objection handling.</p><a href="#"
-                        class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md">Apply
-                        for This →</a>
-                </div>
-                <div
-                    class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm animate-right delay-100">
-                    <span
-                        class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">📜
-                        24–36 months</span>
-                    <h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Patent Filing</h3>
-                    <p class="text-sm text-[#4a5c4e] my-3">Protect inventions with provisional/complete patent filing
-                        and prosecution.</p><a href="#"
-                        class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold">Apply →</a>
-                </div>
-                <div class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm animate-left delay-200">
-                    <span
-                        class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">©️
-                        30–60 days</span>
-                    <h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Copyright Registration</h3>
-                    <p class="text-sm text-[#4a5c4e] my-3">Register creative works — software, books, music, website
-                        content, art.</p><a href="#"
-                        class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold">Apply →</a>
-                </div>
-                <div
-                    class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm animate-right delay-300">
-                    <span
-                        class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">📝
-                        3–7 days</span>
-                    <h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Contract Drafting</h3>
-                    <p class="text-sm text-[#4a5c4e] my-3">NDA, partnership deeds, employment agreements, vendor
-                        contracts, SHAs.</p><a href="#"
-                        class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold">Apply →</a>
-                </div>
+                <div class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm"><span class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">™️ 12–18 months</span><h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Trademark Registration</h3><p class="text-sm text-[#4a5c4e] my-3">Protect your brand name, logo, tagline. Includes search, filing, and objection handling.</p><a href="#" class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold shadow-md">Apply for This →</a></div>
+                <div class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm"><span class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">📜 24–36 months</span><h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Patent Filing</h3><p class="text-sm text-[#4a5c4e] my-3">Protect inventions with provisional/complete patent filing and prosecution.</p><a href="#" class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold">Apply →</a></div>
+                <div class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm"><span class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">©️ 30–60 days</span><h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Copyright Registration</h3><p class="text-sm text-[#4a5c4e] my-3">Register creative works — software, books, music, website content, art.</p><a href="#" class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold">Apply →</a></div>
+                <div class="p-6 rounded-2xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/12 shadow-sm"><span class="inline-block bg-[#BE3A1B]/20 rounded-full px-3 py-1 text-xs font-bold text-[#BE3A1B]">📝 3–7 days</span><h3 class="text-2xl font-black mt-3 text-[#1a2e1e]">Contract Drafting</h3><p class="text-sm text-[#4a5c4e] my-3">NDA, partnership deeds, employment agreements, vendor contracts, SHAs.</p><a href="#" class="inline-block bg-[#BE3A1B] text-white px-6 py-2 rounded-xl text-sm font-bold">Apply →</a></div>
             </div>
         </section>
 
-        <!-- Inclusions block (exact background #F4F1EC) -->
+        <!-- Inclusions -->
         <section class="py-16 px-5 bg-[#F4F1EC]">
             <div class="max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center">
-                <div class="animate-left"><span
-                        class="inline-block rounded-full px-4 py-1 bg-[#BE3A1B] text-[#FFFFFF] text-xs font-bold">INCLUSIONS</span>
-                    <h2 class="text-3xl font-black mt-4 text-[#1a2e1e]">Everything You Get</h2>
-                    <p class="text-[#5a6b5e] my-5 leading-relaxed">Our end-to-end service means you don't have to worry
-                        about a single document, follow-up call, or government portal. We handle it all.</p><a href="#"
-                        class="bg-[#BE3A1B] text-white px-8 py-3 rounded-xl inline-block font-bold shadow-md hover:-translate-y-0.5 transition">Start
-                        Today →</a>
-                </div>
-                <div class="grid grid-cols-2 gap-3 animate-right">
-                    <div class="flex items-center gap-2 bg-white p-3 rounded-xl border border-[#BE3A1B]/10"><span
-                            class="text-[#BE3A1B] text-lg">✓</span> Brand & IP fully protected</div>
-                    <div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span
-                            class="text-[#BE3A1B] text-lg">✓</span> Legally binding contracts</div>
-                    <div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span
-                            class="text-[#BE3A1B] text-lg">✓</span> Reduced litigation risk</div>
-                    <div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span
-                            class="text-[#BE3A1B] text-lg">✓</span> Regulatory compliance</div>
-                    <div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span
-                            class="text-[#BE3A1B] text-lg">✓</span> Out-of-court settlement</div>
-                    <div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span
-                            class="text-[#BE3A1B] text-lg">✓</span> CA/CS/Lawyer team</div>
-                </div>
+                <div><span class="inline-block rounded-full px-4 py-1 bg-[#BE3A1B] text-[#FFFFFF] text-xs font-bold">INCLUSIONS</span><h2 class="text-3xl font-black mt-4 text-[#1a2e1e]">Everything You Get</h2><p class="text-[#5a6b5e] my-5 leading-relaxed">Our end-to-end service means you don't have to worry about a single document, follow-up call, or government portal. We handle it all.</p><a href="#" class="bg-[#BE3A1B] text-white px-8 py-3 rounded-xl inline-block font-bold shadow-md hover:-translate-y-0.5 transition">Start Today →</a></div>
+                <div class="grid grid-cols-2 gap-3"><div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span class="text-[#BE3A1B] text-lg">✓</span> Brand & IP fully protected</div><div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span class="text-[#BE3A1B] text-lg">✓</span> Legally binding contracts</div><div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span class="text-[#BE3A1B] text-lg">✓</span> Reduced litigation risk</div><div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span class="text-[#BE3A1B] text-lg">✓</span> Regulatory compliance</div><div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span class="text-[#BE3A1B] text-lg">✓</span> Out-of-court settlement</div><div class="flex items-center gap-2 bg-white p-3 rounded-xl"><span class="text-[#BE3A1B] text-lg">✓</span> CA/CS/Lawyer team</div></div>
             </div>
         </section>
 
         <!-- Process -->
         <section class="py-16 max-w-5xl mx-auto px-5">
-            <div class="text-center mb-12"><span
-                    class="inline-block rounded-full px-4 py-1 bg-[#BE3A1B] text-[#FFFFFF] text-xs font-bold">PROCESS</span>
-                <h2 class="text-3xl font-black mt-2 text-[#1a2e1e]">How It Works</h2>
-                <p class="text-[#4a5c4e]">From consultation to completion — we own every step.</p>
-            </div>
-            <div class="space-y-6">
-                <div class="flex gap-5 animate-left">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl shadow-md">
-                        01</div>
-                    <div>
-                        <h3 class="font-bold text-[#1a2e1e]">Legal Assessment</h3>
-                        <p class="text-[#5a6b5e] text-sm">We review your business situation, identify risks, and
-                            recommend legal protections.</p>
-                    </div>
-                </div>
-                <div class="flex gap-5 animate-left delay-100">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl">
-                        02</div>
-                    <div>
-                        <h3 class="font-bold text-[#1a2e1e]">Strategy & Documentation</h3>
-                        <p class="text-[#5a6b5e] text-sm">We develop a legal roadmap and prepare all required documents
-                            and filings.</p>
-                    </div>
-                </div>
-                <div class="flex gap-5 animate-left delay-200">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl">
-                        03</div>
-                    <div>
-                        <h3 class="font-bold text-[#1a2e1e]">Filing & Prosecution</h3>
-                        <p class="text-[#5a6b5e] text-sm">We file with the relevant authority and manage follow-ups and
-                            objections.</p>
-                    </div>
-                </div>
-                <div class="flex gap-5 animate-left delay-300">
-                    <div
-                        class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl">
-                        04</div>
-                    <div>
-                        <h3 class="font-bold text-[#1a2e1e]">Ongoing Legal Support</h3>
-                        <p class="text-[#5a6b5e] text-sm">We monitor deadlines, handle objections, and provide
-                            continuous advisory.</p>
-                    </div>
-                </div>
-            </div>
+            <div class="text-center mb-12"><span class="inline-block rounded-full px-4 py-1 bg-[#BE3A1B] text-[#FFFFFF] text-xs font-bold">PROCESS</span><h2 class="text-3xl font-black mt-2 text-[#1a2e1e]">How It Works</h2><p class="text-[#4a5c4e]">From consultation to completion — we own every step.</p></div>
+            <div class="space-y-6"><div class="flex gap-5"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl shadow-md">01</div><div><h3 class="font-bold text-[#1a2e1e]">Legal Assessment</h3><p class="text-[#5a6b5e] text-sm">We review your business situation, identify risks, and recommend legal protections.</p></div></div>
+            <div class="flex gap-5"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl">02</div><div><h3 class="font-bold text-[#1a2e1e]">Strategy & Documentation</h3><p class="text-[#5a6b5e] text-sm">We develop a legal roadmap and prepare all required documents and filings.</p></div></div>
+            <div class="flex gap-5"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl">03</div><div><h3 class="font-bold text-[#1a2e1e]">Filing & Prosecution</h3><p class="text-[#5a6b5e] text-sm">We file with the relevant authority and manage follow-ups and objections.</p></div></div>
+            <div class="flex gap-5"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] text-white flex items-center justify-center font-black text-xl">04</div><div><h3 class="font-bold text-[#1a2e1e]">Ongoing Legal Support</h3><p class="text-[#5a6b5e] text-sm">We monitor deadlines, handle objections, and provide continuous advisory.</p></div></div></div>
         </section>
 
-        <!-- FAQ section with sticky CTA -->
+        <!-- FAQ + CTA -->
         <section class="py-16 bg-[#F4F1EC] px-5">
             <div class="max-w-6xl mx-auto grid lg:grid-cols-3 gap-10">
-                <div class="bg-white rounded-2xl p-6 border border-[#BE3A1B]/20 self-start animate-scale">
-                    <div class="bg-[#BE3A1B] -mt-10 -mx-6 rounded-t-2xl p-5">
-                        <p class="font-black text-white">Still Have Questions?</p>
-                        <p class="text-white/70 text-sm">Free 30-min expert call</p>
-                    </div><a href="#"
-                        class="block bg-[#BE3A1B] text-white text-center font-bold py-3 rounded-xl mt-4">Book Free Call
-                        →</a><a href="tel:+917600764809"
-                        class="block border text-center mt-3 py-2 rounded-xl text-[#1a2e1e]">📞 +91 9898495417</a>
-                    <div class="flex justify-center gap-3 mt-3 text-xs text-gray-500"><span>✅ Govt.
-                            Recognized</span><span>🎧 Free</span></div>
-                </div>
-                <div class="lg:col-span-2 space-y-3">
-                    <div class="bg-white rounded-xl p-5 border-l-4 border-[#BE3A1B] shadow-sm">
-                        <details>
-                            <summary class="font-semibold text-[#1a2e1e]">Why should I register my trademark?</summary>
-                            <p class="text-[#4a5c4e] text-sm pt-2">Trademark registration gives you exclusive rights to
-                                your brand name and logo in India. Without it, anyone can copy your brand. You can use
-                                the ® symbol only after registration.</p>
-                        </details>
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-sm">
-                        <details>
-                            <summary class="font-semibold text-[#1a2e1e]">What is the difference between copyright and
-                                trademark?</summary>
-                            <p class="text-[#4a5c4e] text-sm pt-2">Trademark protects brand identifiers (name, logo).
-                                Copyright protects creative works (books, software, music). Patent protects inventions.
-                            </p>
-                        </details>
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-sm">
-                        <details>
-                            <summary class="font-semibold text-[#1a2e1e]">What happens if I miss ROC compliance
-                                deadlines?</summary>
-                            <p class="text-[#4a5c4e] text-sm pt-2">Late ROC filings attract penalties of ₹100–200 per
-                                day per form. Continued default can lead to director disqualification and company
-                                strike-off.</p>
-                        </details>
-                    </div>
-                    <div class="bg-white rounded-xl p-5 shadow-sm">
-                        <details>
-                            <summary class="font-semibold text-[#1a2e1e]">What contracts does every MSME need?</summary>
-                            <p class="text-[#4a5c4e] text-sm pt-2">At minimum: Partnership Deed / SHA, Vendor Agreement,
-                                Client Agreement, Employment Offer Letters, and NDA.</p>
-                        </details>
-                    </div>
-                </div>
+                <div class="bg-white rounded-2xl p-6 border border-[#BE3A1B]/20 self-start"><div class="bg-[#BE3A1B] -mt-10 -mx-6 rounded-t-2xl p-5"><p class="font-black text-white">Still Have Questions?</p><p class="text-white/70 text-sm">Free 30-min expert call</p></div><a href="#" class="block bg-[#BE3A1B] text-white text-center font-bold py-3 rounded-xl mt-4">Book Free Call →</a><a href="tel:+917600764809" class="block border text-center mt-3 py-2 rounded-xl text-[#1a2e1e]">📞 +91 9898495417</a><div class="flex justify-center gap-3 mt-3 text-xs text-gray-500"><span>✅ Govt. Recognized</span><span>🎧 Free</span></div></div>
+                <div class="lg:col-span-2 space-y-3"><div class="bg-white rounded-xl p-5 border-l-4 border-[#BE3A1B]"><details><summary class="font-semibold text-[#1a2e1e]">Why should I register my trademark?</summary><p class="text-[#4a5c4e] text-sm pt-2">Trademark registration gives you exclusive rights to your brand name and logo in India. Without it, anyone can copy your brand. You can use the ® symbol only after registration.</p></details></div>
+                <div class="bg-white rounded-xl p-5"><details><summary class="font-semibold text-[#1a2e1e]">What is the difference between copyright and trademark?</summary><p class="text-[#4a5c4e] text-sm pt-2">Trademark protects brand identifiers (name, logo). Copyright protects creative works (books, software, music). Patent protects inventions.</p></details></div>
+                <div class="bg-white rounded-xl p-5"><details><summary class="font-semibold text-[#1a2e1e]">What happens if I miss ROC compliance deadlines?</summary><p class="text-[#4a5c4e] text-sm pt-2">Late ROC filings attract penalties of ₹100–200 per day per form. Continued default can lead to director disqualification and company strike-off.</p></details></div>
+                <div class="bg-white rounded-xl p-5"><details><summary class="font-semibold text-[#1a2e1e]">What contracts does every MSME need?</summary><p class="text-[#4a5c4e] text-sm pt-2">At minimum: Partnership Deed / SHA, Vendor Agreement, Client Agreement, Employment Offer Letters, and NDA.</p></details></div></div>
             </div>
         </section>
 
         <!-- Final CTA Banner -->
-        <section class="py-16 px-5 relative overflow-hidden bg-[#F4F1EC]">
-            <div
-                class="max-w-5xl mx-auto bg-[#BE3A1B] rounded-3xl p-8 md:p-12 text-center text-white relative overflow-hidden shadow-2xl animate-scale">
-                <h3 class="text-3xl font-black">Ready to Get Legal & Protection?</h3>
-                <p class="text-white/80 mt-3">Our experts handle everything — docs, filing, follow-ups. You focus on
-                    business.</p>
-                <div class="flex flex-wrap justify-center gap-4 mt-6"><a href="#"
-                        class="bg-white text-[#BE3A1B] font-bold px-8 py-3 rounded-xl shadow-lg">Book Free Consultation
-                        →</a><a href="tel:+917600764809"
-                        class="border border-white/40 px-8 py-3 rounded-xl font-semibold">📞 +91 9898495417</a></div>
-                <div class="text-sm mt-6 flex justify-center gap-6"><span>✅ Govt. Recognized</span><span>🎧 Free
-                        Support</span><span>⭐ 4.9/5 Rating</span></div>
-            </div>
-        </section>
+        <section class="py-16 px-5 relative overflow-hidden bg-[#F4F1EC]"><div class="max-w-5xl mx-auto bg-[#BE3A1B] rounded-3xl p-8 md:p-12 text-center text-white"><h3 class="text-3xl font-black">Ready to Get Legal & Protection?</h3><p class="text-white/80 mt-3">Our experts handle everything — docs, filing, follow-ups. You focus on business.</p><div class="flex flex-wrap justify-center gap-4 mt-6"><a href="#" class="bg-white text-[#BE3A1B] font-bold px-8 py-3 rounded-xl shadow-lg">Book Free Consultation →</a><a href="tel:+917600764809" class="border border-white/40 px-8 py-3 rounded-xl font-semibold">📞 +91 9898495417</a></div><div class="text-sm mt-6 flex justify-center gap-6"><span>✅ Govt. Recognized</span><span>🎧 Free Support</span><span>⭐ 4.9/5 Rating</span></div></div></section>
     </main>
 
-    <!-- Footer exactly matching original color scheme -->
-    <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
-      <div class="max-w-7xl mx-auto px-4">
-
-        <!-- Disclaimer & Notice Section -->
-
-
-        <!-- Main Footer Grid -->
-        <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
-
-          <!-- Brand Column -->
-          <div>
-            <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
-            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
-              funding — we handle every step.</p>
-          </div>
-
-          <!-- Navigation Column -->
-          <div>
-            <h4 class="font-bold text-lg">Navigation</h4>
-            <ul class="mt-3 space-y-2 text-sm text-white/70">
-              <li><a href="/" class="hover:text-white transition">Home</a></li>
-              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
-              <li><a href="/Government Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
-              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
-              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
-              <li><a href="/About%20us/about.html" class="hover:text-white transition">About%20us</a></li>
-              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
-              <li><a href="/Contact us/contact.html" class="hover:text-white transition">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Categories Column -->
-          <div>
-            <h4 class="font-bold text-lg">Categories</h4>
-            <ul class="mt-3 space-y-2 text-sm text-white/70">
-              <li>AI Solutions</li>
-              <li>Certifications</li>
-              <li>Website Development</li>
-              <li>App Development</li>
-              <li>IOT Solution</li>
-              <li>Digital Marketing</li>
-            </ul>
-          </div>
-
-          <!-- Contact Column -->
-          <div>
-            <h4 class="font-bold text-lg">Contact</h4>
-            <p class="mt-3 text-sm">Ahmedabad, Gujarat, India</p>
-            <p class="mt-2">📧 dreammore2026@gmail.com</p>
-            <p class="pt-4">📞 +91 9898495417</p>
-          </div>
+    <!-- Footer -->
+    <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8">
+        <div class="max-w-7xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
+                <div><span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span><p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to funding — we handle every step.</p></div>
+                <div><h4 class="font-bold text-lg">Navigation</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li><a href="/" class="hover:text-white transition">Home</a></li><li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li><li><a href="/Government%20Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li><li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li><li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li><li><a href="/About%20us/about.html" class="hover:text-white transition">About Us</a></li><li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li><li><a href="/Contact%20us/contact.html" class="hover:text-white transition">Contact</a></li></ul></div>
+                <div><h4 class="font-bold text-lg">Categories</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li>AI Solutions</li><li>Certifications</li><li>Website Development</li><li>App Development</li><li>IOT Solution</li><li>Digital Marketing</li></ul></div>
+                <div><h4 class="font-bold text-lg">Contact</h4><p class="mt-3 text-sm">Ahmedabad, Gujarat, India</p><p class="mt-2">📧 dreammore2026@gmail.com</p><p class="pt-4">📞 +91 9898495417</p></div>
+            </div>
+            <div class="mb-10 pb-6 border-b border-white/20 space-y-4"><div class="text-sm text-white/80 leading-relaxed pt-5"><span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span> DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support services. All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory guarantees. All outcomes are subject to government procedures, approvals, and external factors.</div><div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg"><span class="font-bold text-[#F97316]">📌 NOTE:</span> All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our official payment channels, including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept payments to personal accounts or under any other name. Clients are strongly advised to verify account details before making any transaction. DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.</div></div>
+            <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80"><div class="flex flex-wrap justify-center gap-4"><a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a><span class="text-white/30">|</span><a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a><span class="text-white/30">|</span><a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a></div><div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div></div>
         </div>
-
-        <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
-
-          <!-- Disclaimer -->
-          <div class="text-sm text-white/80 leading-relaxed pt-5">
-            <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
-            DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
-            services.
-            All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
-            guarantees.
-            All outcomes are subject to government procedures, approvals, and external factors.
-          </div>
-
-          <!-- Note -->
-          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
-            <span class="font-bold text-[#F97316]">📌 NOTE:</span>
-            All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
-            official payment channels,
-            including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
-            payments to personal accounts
-            or under any other name. Clients are strongly advised to verify account details before making any
-            transaction.
-            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
-          </div>
-        </div>
-
-        <!-- Legal & Policy Links Row -->
-        <div
-          class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
-            <span class="text-white/30">|</span>
-            <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
-            <span class="text-white/30">|</span>
-            <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
-          </div>
-          <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
-        </div>
-
-
-
-      </div>
     </footer>
 
-    <!-- WhatsApp floating button -->
+    <!-- Floating WhatsApp -->
     <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-        <div
-            class="bg-white rounded-2xl shadow-xl p-3 pr-7 text-xs font-medium animate-up delay-500 border border-gray-100">
-            💬 Chat with us! Get free advice</div>
-        <a href="https://wa.me/919898495417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business." target="_blank"
-            class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl hover:scale-105 transition"><svg
-                viewBox="0 0 32 32" fill="white" width="30">
-                <path
-                    d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zm0 23.04c-2.04 0-3.96-.54-5.62-1.5l-.4-.24-4 1.16 1.18-3.88-.26-.4A10.36 10.36 0 015.56 15.8c0-5.76 4.68-10.44 10.44-10.44 5.76 0 10.44 4.68 10.44 10.44S21.762 26.24 16.002 26.24zM21.74 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" />
-            </svg></a>
+        <div class="bg-white rounded-2xl shadow-xl p-3 pr-7 text-xs font-medium border border-gray-100">💬 Chat with us! Get free advice</div>
+        <a href="https://wa.me/919898495417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business." target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl hover:scale-105 transition"><svg viewBox="0 0 32 32" fill="white" width="30"><path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zm0 23.04c-2.04 0-3.96-.54-5.62-1.5l-.4-.24-4 1.16 1.18-3.88-.26-.4A10.36 10.36 0 015.56 15.8c0-5.76 4.68-10.44 10.44-10.44 5.76 0 10.44 4.68 10.44 10.44S21.762 26.24 16.002 26.24zM21.74 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" /></svg></a>
     </div>
 
     <script>
-        const menuToggle = document.getElementById('menuToggle');
-        const mobileMenu = document.getElementById('mobileMenu');
-        const menuIcon = document.getElementById('menuIcon');
-        const closeIcon = document.getElementById('closeIcon');
-        menuToggle.addEventListener('click', () => {
-            const isOpen = mobileMenu.classList.contains('max-h-0');
-            if (isOpen) {
-                mobileMenu.classList.remove('max-h-0', 'opacity-0', 'invisible');
-                mobileMenu.classList.add('max-h-[550px]', 'opacity-100', 'visible');
-                menuIcon.classList.add('hidden');
-                closeIcon.classList.remove('hidden');
-                document.body.classList.add('mobile-menu-open');
-            } else {
-                mobileMenu.classList.add('max-h-0', 'opacity-0', 'invisible');
-                mobileMenu.classList.remove('max-h-[550px]', 'opacity-100', 'visible');
-                menuIcon.classList.remove('hidden');
-                closeIcon.classList.add('hidden');
-                document.body.classList.remove('mobile-menu-open');
+        (function() {
+            const mobileBtn = document.getElementById('mobileMenuBtn');
+            const mobileMenu = document.getElementById('mobileMenu');
+            const overlay = document.getElementById('mobileMenuOverlay');
+            const closeBtn = document.getElementById('mobileMenuClose');
+            const body = document.body;
+
+            function openMenu() {
+                mobileMenu.classList.add('open');
+                overlay.classList.add('active');
+                body.classList.add('menu-open');
             }
-        });
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 20) nav.classList.add('bg-white/80', 'shadow-md');
-            else nav.classList.remove('bg-white/80', 'shadow-md');
-        });
+            function closeMenu() {
+                mobileMenu.classList.remove('open');
+                overlay.classList.remove('active');
+                body.classList.remove('menu-open');
+            }
+            if (mobileBtn) mobileBtn.addEventListener('click', openMenu);
+            if (closeBtn) closeBtn.addEventListener('click', closeMenu);
+            if (overlay) overlay.addEventListener('click', closeMenu);
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && mobileMenu.classList.contains('open')) closeMenu();
+            });
+
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) navbar.classList.add('navbar-scrolled');
+                else navbar.classList.remove('navbar-scrolled');
+            });
+        })();
     </script>
 </body>
 
