@@ -1,18 +1,19 @@
 {
   "rewrites": [
     { "source": "/", "destination": "/index.html" },
-    { "source": "/about", "destination": "/about-us/about.html" },
-    { "source": "/blog", "destination": "/blog/blog.html" },
-    { "source": "/contact", "destination": "/contact-us/contact.html" },
-    { "source": "/careers", "destination": "/careers/careers.html" },
-    { "source": "/schemes", "destination": "/government-schemes/schemes.html" },
-    { "source": "/loan", "destination": "/loan/loan.html" },
-    { "source": "/service", "destination": "/service/service.html" },
-    { "source": "/privacy", "destination": "/legal/privacy-policy.html" },
-    { "source": "/refund", "destination": "/legal/refund-policy.html" },
-    { "source": "/terms", "destination": "/legal/terms.html" }
-  ],
-  "routes": [
-    { "src": "/public/(.*)", "dest": "/public/$1" }
+    { "source": "/Service/service.html", "destination": "/Service/service.html" },
+    { "source": "/Service/:path", "destination": "/Service/:path" },
+    { "source": "/Government-Schemes/schemes.html", "destination": "/Government-Schemes/schemes.html" },
+    { "source": "/Government-Schemes/:path", "destination": "/Government-Schemes/:path" },
+    { "source": "/Loan/loan.html", "destination": "/Loan/loan.html" },
+    { "source": "/Blog/blog.html", "destination": "/Blog/blog.html" },
+    { "source": "/Blog/:path", "destination": "/Blog/:path" },
+    { "source": "/About-us/about.html", "destination": "/About-us/about.html" },
+    { "source": "/Carrers/carrers.html", "destination": "/Carrers/carrers.html" },
+    { "source": "/Contact-us/contact.html", "destination": "/Contact-us/contact.html" },
+    { "source": "/legal/privacy-policy.html", "destination": "/legal/privacy-policy.html" },
+    { "source": "/legal/refund-policy.html", "destination": "/legal/refund-policy.html" },
+    { "source": "/legal/Terms.html", "destination": "/legal/Terms.html" },
+    { "source": "/LOGO.png", "destination": "/LOGO.png" }
   ]
 }
