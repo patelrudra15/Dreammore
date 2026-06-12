@@ -13,6 +13,8 @@
     rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <!-- AOS Library for Scroll Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -24,6 +26,13 @@
     body {
       font-family: 'Inter', sans-serif;
       background: white;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
     }
 
     h1,
@@ -33,25 +42,161 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    /* Glass Navbar */
     .glass-nav {
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(12px);
       border: 1px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
     }
 
+    .glass-nav:hover {
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button Primary */
     .btn-primary {
       background: #BE3A1B;
-      transition: all 0.2s ease;
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       box-shadow: 0 6px 18px rgba(190, 58, 27, 0.3);
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.05);
       background: #000000;
       box-shadow: 0 12px 28px rgba(190, 58, 27, 0.4);
     }
 
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
+      transform: rotate(25deg);
+      transition: all 0.6s;
+      opacity: 0;
+    }
+
+    .btn-primary:hover::after {
+      animation: shine 0.6s forwards;
+    }
+
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(25deg); opacity: 0.5; }
+      100% { transform: translateX(100%) rotate(25deg); opacity: 0; }
+    }
+
+    /* Contact Card Hover */
+    .contact-card {
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
+    }
+
+    /* Zoom Image */
+    .zoom-image {
+      transition: transform 0.5s ease;
+    }
+
+    .zoom-image:hover {
+      transform: scale(1.08);
+    }
+
+    /* Float Animation */
+    @keyframes floatIcon {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .float-icon {
+      animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    /* Pulse Glow */
+    .stat-pulse {
+      transition: all 0.3s ease;
+    }
+
+    .stat-pulse:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 12px rgba(190, 58, 27, 0.5);
+    }
+
+    /* Animated Underline */
+    .animated-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .animated-underline::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -5px;
+      left: 0;
+      background-color: #BE3A1B;
+      transition: width 0.4s ease;
+    }
+
+    .animated-underline:hover::after {
+      width: 100%;
+    }
+
+    /* Spin on Hover */
+    .spin-hover {
+      transition: transform 0.5s ease;
+    }
+
+    .spin-hover:hover {
+      transform: rotate(360deg);
+    }
+
+    /* Glow Text */
+    .glow-text {
+      transition: text-shadow 0.3s ease;
+    }
+
+    .glow-text:hover {
+      text-shadow: 0 0 8px rgba(190, 58, 27, 0.5);
+    }
+
+    /* Ripple Effect */
+    .ripple-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple-effect:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(190, 58, 27, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+
+    .ripple-effect:hover:after {
+      width: 200%;
+      height: 200%;
+    }
+
+    /* Mobile Menu Styles */
     .mobile-menu {
       position: fixed;
       top: 0;
@@ -117,11 +262,12 @@
       font-weight: 500;
       color: #1a2e1e;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
     .mobile-menu a:hover {
       color: #BE3A1B;
+      transform: translateX(8px);
     }
 
     .mobile-menu .mobile-cta {
@@ -136,8 +282,10 @@
 
     .mobile-menu .mobile-cta:hover {
       background: black;
+      transform: translateX(0);
     }
 
+    /* Scroll Reveal Animation */
     .reveal-on-scroll {
       opacity: 0;
       transform: translateY(30px);
@@ -149,7 +297,118 @@
       transform: translateY(0);
     }
 
-    /* Popup Styles - 20 Second Popup Form */
+    /* Section Heading Center Fix */
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-heading .badge {
+      background: #BE3A1B;
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-block;
+      width: fit-content;
+      transition: all 0.3s ease;
+    }
+
+    .section-heading .badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(190, 58, 27, 0.3);
+    }
+
+    .section-heading h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-top: 0.75rem;
+    }
+
+    @media (min-width: 768px) {
+      .section-heading h2 {
+        font-size: 2.75rem;
+      }
+    }
+
+    /* Container Fix */
+    .container-fix {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+
+    @media (min-width: 640px) {
+      .container-fix {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .container-fix {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
+
+    /* WhatsApp Float Animation */
+    .floating-wa {
+      animation: waFloat 1.2s ease-in-out infinite;
+    }
+
+    @keyframes waFloat {
+      0% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(190, 58, 27, 0.4); }
+      70% { transform: scale(1.04); box-shadow: 0 0 0 12px rgba(190, 58, 27, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(190, 58, 27, 0); }
+    }
+
+    /* Link Hover Animation */
+    .hover-link {
+      transition: all 0.3s ease;
+    }
+
+    .hover-link:hover {
+      transform: translateX(5px);
+      color: #BE3A1B;
+    }
+
+    /* Channel Card Hover */
+    .channel-card {
+      transition: all 0.3s ease;
+    }
+
+    .channel-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 30px -12px rgba(190, 58, 27, 0.2);
+    }
+
+    /* Form Input Focus Animation */
+    .form-input {
+      transition: all 0.3s ease;
+    }
+
+    .form-input:focus {
+      transform: scale(1.01);
+    }
+
+    /* Office Map Card Hover */
+    .office-card {
+      transition: all 0.4s ease;
+    }
+
+    .office-card:hover {
+      transform: translateY(-5px);
+    }
+
+    /* Popup Styles */
     .popup-overlay {
       position: fixed;
       top: 0;
@@ -189,15 +448,8 @@
     }
 
     @keyframes slideInUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .popup-image-section {
@@ -397,18 +649,20 @@
       .popup-container {
         width: 95%;
       }
-
       .benefits-list {
         display: none;
       }
-
       .popup-image-section {
         padding: 1rem;
       }
-
       .popup-image-section h3 {
         font-size: 1rem;
       }
+    }
+
+    /* AOS Override */
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
   </style>
 </head>
@@ -426,7 +680,7 @@
     </div>
     <div class="mb-8 pt-8">
       <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
-        <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
+        <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain zoom-image" />
         <span class="text-2xl font-black tracking-tight text-black">Dream<span class="text-[#BE3A1B]">More</span></span>
       </a>
     </div>
@@ -442,40 +696,27 @@
   </div>
 
   <!-- Navbar -->
-  <nav
-    class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300">
+  <nav class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-[72px]">
         <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
-          <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
-          <span class="text-2xl font-black tracking-tight text-black">Dream<span
-              class="text-[#BE3A1B]">More</span></span>
+          <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain zoom-image" />
+          <span class="text-2xl font-black tracking-tight text-black">Dream<span class="text-[#BE3A1B]">More</span></span>
         </a>
         <div class="hidden md:flex items-center gap-1">
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/">Home</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Service/service.html">Services</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Government-Schemes/schemes.html">Government Schemes</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Loan/loan.html">Loan</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Blog/blog.html">Blog</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/About-us/about.html">About Us</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Carrers/carrers.html">Careers</a>
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Contact-us/contact.html">Contact</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Government-Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/About-us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Carrers/carrers.html">Careers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Contact-us/contact.html">Contact</a>
         </div>
         <div class="hidden md:flex items-center gap-2">
-          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[black] transition"
-            href="/Contact-us/contact.html">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="2">
-              <path
-                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-black transition transform hover:scale-105" href="/Contact-us/contact.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
             </svg>
             Free Consultation
           </a>
@@ -493,275 +734,71 @@
 
   <main>
     <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-32 pb-16 lg:py-24 bg-[#FAFAF7] reveal-on-scroll mt-10">
-      <div
-        class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-[#BE3A1B] opacity-10 blur-3xl">
-      </div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+    <section class="relative overflow-hidden pt-32 pb-16 lg:py-24 bg-[#FAFAF7] mt-10" data-aos="fade-up" data-aos-duration="800">
+      <div class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-[#BE3A1B] opacity-10 blur-3xl animate-pulse"></div>
+      <div class="container-fix relative z-10">
         <div class="grid lg:grid-cols-2 gap-12 items-start">
-          <div class="space-y-6">
-            <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B]">
-              <span class="w-2 h-2 rounded-full bg-[#ffffff] animate-pulse"></span>
-              <span class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Get in Touch</span>
+          <div class="space-y-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B] hover:scale-105 transition-transform duration-300">
+              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              <span class="text-[11px] font-semibold tracking-widest uppercase text-white">Get in Touch</span>
             </div>
-            <h1 class="text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-[#1a2e1e]">Get In
-              Touch<br><span class="text-[#BE3A1B]">We're Here to Help</span></h1>
-            <p class="text-gray-600 max-w-lg">Our experts are ready to help you take your business to the next level —
-              from registration to funding, certifications to digital growth.</p>
+            <h1 class="text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-[#1a2e1e]">Get In Touch<br><span class="text-[#BE3A1B] glow-text">We're Here to Help</span></h1>
+            <p class="text-gray-600 max-w-lg">Our experts are ready to help you take your business to the next level — from registration to funding, certifications to digital growth.</p>
             <div class="flex flex-wrap gap-3">
-              <a href="tel:+919898575417"
-                class="btn-primary px-6 py-3 rounded-xl text-white font-bold flex items-center gap-2">Call Now →</a>
-              <a href="https://wa.me/919898575417" target="_blank"
-                class="px-6 py-3 rounded-xl font-semibold bg-white/70 border border-[#BE3A1B] text-gray-800 hover:-translate-y-0.5 transition">WhatsApp
-                Us</a>
+              <a href="tel:+919898575417" class="btn-primary px-6 py-3 rounded-xl text-white font-bold flex items-center gap-2">Call Now →</a>
+              <a href="https://wa.me/919898575417" target="_blank" class="px-6 py-3 rounded-xl font-semibold bg-white/70 border border-[#BE3A1B] text-gray-800 hover:-translate-y-0.5 transition hover:scale-105">WhatsApp Us</a>
             </div>
             <div class="grid grid-cols-3 gap-3 pt-4 border-t border-[#BE3A1B]">
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">120+</div>
-                <p class="text-xs">Businesses Helped</p>
-              </div>
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">&lt;24h</div>
-                <p class="text-xs">First Response</p>
-              </div>
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">98%</div>
-                <p class="text-xs">Success Rate</p>
-              </div>
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">120+</div><p class="text-xs">Businesses Helped</p></div>
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">&lt;24h</div><p class="text-xs">First Response</p></div>
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">98%</div><p class="text-xs">Success Rate</p></div>
             </div>
           </div>
-          <div class="hidden lg:block space-y-3">
-            <div class="bg-white rounded-xl p-4 shadow-md flex items-center gap-4 border-l-4 border-[#BE3A1B]">
-              <div class="w-10 h-10 rounded-xl bg-[#BE3A1B] flex items-center justify-center text-white font-bold">01
-              </div>
-              <div>
-                <p class="font-bold">Phone</p>
-                <p class="text-xs text-gray-500">+91 9898575417</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                02</div>
-              <div>
-                <p class="font-bold">WhatsApp</p>
-                <p class="text-xs text-gray-500">Chat with us</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                03</div>
-              <div>
-                <p class="font-bold">Email</p>
-                <p class="text-xs text-gray-500">info@dreammore.in</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                04</div>
-              <div>
-                <p class="font-bold">Office</p>
-                <p class="text-xs text-gray-500">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                05</div>
-              <div>
-                <p class="font-bold">Hours</p>
-                <p class="text-xs text-gray-500">Mon–Sat, 9:30 AM – 6:00 PM</p>
-              </div>
-            </div>
-            <div class="flex items-center gap-3 mt-4">
-              <div class="flex -space-x-2">
-                <div
-                  class="w-7 h-7 rounded-full bg-[#BE3A1B] flex items-center justify-center text-white text-xs font-bold">
-                  R</div>
-                <div
-                  class="w-7 h-7 rounded-full bg-[#BE3A1B] flex items-center justify-center text-white text-xs font-bold">
-                  P</div>
-                <div
-                  class="w-7 h-7 rounded-full bg-[#BE3A1B] flex items-center justify-center text-white text-xs font-bold">
-                  D</div>
-              </div>
-              <div>
-                <p class="text-xs font-semibold">3 experts online</p>
-                <p class="text-xs text-gray-400">Ready to assist you</p>
-              </div>
-              <span class="ml-auto w-2 h-2 rounded-full bg-[#BE3A1B] animate-pulse"></span>
-            </div>
+          <div class="hidden lg:block space-y-3" data-aos="fade-left" data-aos-delay="200">
+            <div class="bg-white rounded-xl p-4 shadow-md flex items-center gap-4 border-l-4 border-[#BE3A1B] contact-card"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B] flex items-center justify-center text-white font-bold spin-hover">01</div><div><p class="font-bold">Phone</p><p class="text-xs text-gray-500">+91 9898575417</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 contact-card"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">02</div><div><p class="font-bold">WhatsApp</p><p class="text-xs text-gray-500">Chat with us</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 contact-card"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">03</div><div><p class="font-bold">Email</p><p class="text-xs text-gray-500">info@dreammore.in</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 contact-card"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">04</div><div><p class="font-bold">Office</p><p class="text-xs text-gray-500">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 contact-card"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">05</div><div><p class="font-bold">Hours</p><p class="text-xs text-gray-500">Mon–Sat, 9:30 AM – 6:00 PM</p></div></div>
+            <div class="flex items-center gap-3 mt-4"><div class="flex -space-x-2"><div class="w-7 h-7 rounded-full bg-[#BE3A1B] flex items-center justify-center text-white text-xs font-bold spin-hover">R</div><div class="w-7 h-7 rounded-full bg-[#BE3A1B] flex items-center justify-center text-white text-xs font-bold spin-hover">P</div><div class="w-7 h-7 rounded-full bg-[#BE3A1B] flex items-center justify-center text-white text-xs font-bold spin-hover">D</div></div><div><p class="text-xs font-semibold">3 experts online</p><p class="text-xs text-gray-400">Ready to assist you</p></div><span class="ml-auto w-2 h-2 rounded-full bg-[#BE3A1B] animate-pulse"></span></div>
           </div>
         </div>
       </div>
     </section>
 
     <!-- Contact Form Section -->
-    <section id="contact-form" class="py-20 bg-white reveal-on-scroll">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <span class="inline-block bg-[#BE3A1B] px-4 py-1 rounded-full text-[#ffffff] text-sm font-semibold">Send a
-            Message</span>
-          <h2 class="text-4xl font-black mt-3">Send Us a Message</h2>
+    <section id="contact-form" class="py-20 bg-white">
+      <div class="container-fix">
+        <div class="section-heading" data-aos="fade-up" data-aos-duration="600">
+          <span class="badge">Send a Message</span>
+          <h2>Send Us a <span class="text-[#BE3A1B] animated-underline">Message</span></h2>
           <p class="text-gray-500 mt-2">Fill the form below and our team will get back to you shortly.</p>
         </div>
         <div class="grid lg:grid-cols-5 gap-8 items-start">
-          <div class="lg:col-span-2 space-y-4">
-            <a href="https://wa.me/919898575417" target="_blank"
-              class="flex items-center gap-4 p-5 rounded-xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 hover:shadow-md transition-all">
-              <div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center">
-                <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path
-                    d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
-                </svg>
-              </div>
-              <div>
-                <p class="font-bold text-sm">Chat on WhatsApp</p>
-                <p class="text-xs text-gray-500">Typically replies within minutes</p>
-              </div>
-              <svg class="w-4 h-4 text-gray-400 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-            <a href="tel:+919898575417"
-              class="flex items-center gap-4 p-5 rounded-xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 hover:shadow-md transition-all">
-              <div
-                class="w-12 h-12 rounded-xl bg-[#BE3A1B]/10 border border-[#BE3A1B]/20 flex items-center justify-center">
-                <svg class="w-5 h-5 text-[#BE3A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <path
-                    d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-                </svg>
-              </div>
-              <div>
-                <p class="font-bold text-sm">Call Us Directly</p>
-                <p class="text-xs text-gray-500">No IVR, speak to an expert</p>
-              </div>
-              <svg class="w-4 h-4 text-gray-400 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-            <a href="mailto:info@dreammore.in"
-              class="flex items-center gap-4 p-5 rounded-xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 hover:shadow-md transition-all">
-              <div
-                class="w-12 h-12 rounded-xl bg-[#BE3A1B]/10 border border-[#BE3A1B]/20 flex items-center justify-center">
-                <svg class="w-5 h-5 text-[#BE3A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                  stroke-width="2">
-                  <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-                  <rect x="2" y="4" width="20" height="16" rx="2" />
-                </svg>
-              </div>
-              <div>
-                <p class="font-bold text-sm">Email Us</p>
-                <p class="text-xs text-gray-500">info@dreammore.in</p>
-              </div>
-              <svg class="w-4 h-4 text-gray-400 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                stroke-width="2">
-                <path d="M5 12h14" />
-                <path d="m12 5 7 7-7 7" />
-              </svg>
-            </a>
-            <div class="rounded-xl p-5 bg-[#BE3A1B]/5 border border-[#BE3A1B]/15">
-              <div class="flex items-center gap-3 mb-3">
-                <div class="w-9 h-9 rounded-lg bg-[#BE3A1B]/10 flex items-center justify-center">
-                  <svg class="w-4 h-4 text-[#BE3A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-                    stroke-width="2">
-                    <path
-                      d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
-                    <circle cx="12" cy="10" r="3" />
-                  </svg>
-                </div>
-                <p class="font-bold text-sm">Our Office</p>
-              </div>
-              <p class="text-sm text-gray-600 leading-relaxed">703 - H K House, B/H jivabhai chamber , ashram road
-                Ahmedabad</p>
-              <p class="text-xs text-gray-400 mt-2 flex items-center gap-1">
-                <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <circle cx="12" cy="12" r="10" />
-                  <path d="M12 6v6l4 2" />
-                </svg>
-                Mon–Sat · 9:30 AM – 6:00 PM IST
-              </p>
-            </div>
+          <div class="lg:col-span-2 space-y-4" data-aos="fade-right" data-aos-delay="100">
+            <a href="https://wa.me/919898575417" target="_blank" class="flex items-center gap-4 p-5 rounded-xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 hover:shadow-md transition-all contact-card cursor-pointer"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center"><svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></svg></div><div><p class="font-bold text-sm">Chat on WhatsApp</p><p class="text-xs text-gray-500">Typically replies within minutes</p></div><svg class="w-4 h-4 text-gray-400 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+            <a href="tel:+919898575417" class="flex items-center gap-4 p-5 rounded-xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 hover:shadow-md transition-all contact-card cursor-pointer"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B]/10 border border-[#BE3A1B]/20 flex items-center justify-center"><svg class="w-5 h-5 text-[#BE3A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg></div><div><p class="font-bold text-sm">Call Us Directly</p><p class="text-xs text-gray-500">No IVR, speak to an expert</p></div><svg class="w-4 h-4 text-gray-400 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+            <a href="mailto:info@dreammore.in" class="flex items-center gap-4 p-5 rounded-xl bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 hover:shadow-md transition-all contact-card cursor-pointer"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B]/10 border border-[#BE3A1B]/20 flex items-center justify-center"><svg class="w-5 h-5 text-[#BE3A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg></div><div><p class="font-bold text-sm">Email Us</p><p class="text-xs text-gray-500">info@dreammore.in</p></div><svg class="w-4 h-4 text-gray-400 ml-auto" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14" /><path d="m12 5 7 7-7 7" /></svg></a>
+            <div class="rounded-xl p-5 bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 contact-card"><div class="flex items-center gap-3 mb-3"><div class="w-9 h-9 rounded-lg bg-[#BE3A1B]/10 flex items-center justify-center"><svg class="w-4 h-4 text-[#BE3A1B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" /><circle cx="12" cy="10" r="3" /></svg></div><p class="font-bold text-sm">Our Office</p></div><p class="text-sm text-gray-600 leading-relaxed">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p><p class="text-xs text-gray-400 mt-2 flex items-center gap-1"><svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10" /><path d="M12 6v6l4 2" /></svg> Mon–Sat · 9:30 AM – 6:00 PM IST</p></div>
           </div>
 
-          <div class="lg:col-span-3">
+          <div class="lg:col-span-3" data-aos="fade-left" data-aos-delay="200">
             <div class="rounded-2xl p-7 md:p-8 bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 shadow-sm">
               <form id="mainContactForm" class="space-y-5">
                 <div class="grid md:grid-cols-2 gap-5">
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Full Name <span
-                        class="text-red-400">*</span></label>
-                    <input type="text" id="mainFullName" required placeholder="Enter Your Name"
-                      class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] transition">
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Phone Number
-                      <span class="text-red-400">*</span></label>
-                    <input type="tel" id="mainPhone" required placeholder="Enter Your Mobile-no"
-                      class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] transition">
-                  </div>
+                  <div><label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Full Name <span class="text-red-400">*</span></label><input type="text" id="mainFullName" required placeholder="Enter Your Name" class="form-input w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] transition"></div>
+                  <div><label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Phone Number <span class="text-red-400">*</span></label><input type="tel" id="mainPhone" required placeholder="Enter Your Mobile-no" class="form-input w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] transition"></div>
                 </div>
-                <div>
-                  <label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Email
-                    Address</label>
-                  <input type="email" id="mainEmail" placeholder="Enter Your Email-id"
-                    class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] transition">
-                </div>
+                <div><label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Email Address</label><input type="email" id="mainEmail" placeholder="Enter Your Email-id" class="form-input w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] transition"></div>
                 <div class="grid grid-cols-2 gap-4">
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Service
-                      Interested In</label>
-                    <select id="mainService"
-                      class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B]">
-                      <option>Select service</option>
-                      <option>Business Registration</option>
-                      <option>AI Solution</option>
-                      <option>IOT Solution</option>
-                      <option>Digital Marketing</option>
-                      <option>Website Development</option>
-                      <option>App Development</option>
-                    </select>
-                  </div>
-                  <div>
-                    <label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Loan Type</label>
-                    <select id="mainLoan"
-                      class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B]">
-                      <option>Select loan</option>
-                      <option>Business Loan</option>
-                      <option>Salaried Personal Loan</option>
-                      <option>Home Loan</option>
-                      <option>Education Loan</option>
-                      <option>Machinery Loan</option>
-                      <option>Loan Against Property</option>
-                    </select>
-                  </div>
+                  <div><label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Service Interested In</label><select id="mainService" class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B]"><option>Select service</option><option>Business Registration</option><option>AI Solution</option><option>IOT Solution</option><option>Digital Marketing</option><option>Website Development</option><option>App Development</option></select></div>
+                  <div><label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Loan Type</label><select id="mainLoan" class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B]"><option>Select loan</option><option>Business Loan</option><option>Salaried Personal Loan</option><option>Home Loan</option><option>Education Loan</option><option>Machinery Loan</option><option>Loan Against Property</option></select></div>
                 </div>
-                <div>
-                  <label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Tell us about your
-                    business</label>
-                  <textarea rows="5" id="mainMessage"
-                    placeholder="Tell us about your business, what you need help with..."
-                    class="w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] resize-none"></textarea>
-                </div>
-                <button type="submit" id="mainSubmitBtn"
-                  class="w-full bg-[#BE3A1B] text-white font-bold py-4 rounded-xl hover:bg-[#000000] transition flex items-center justify-center gap-2">
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <path
-                      d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" />
-                    <path d="m21.854 2.147-10.94 10.939" />
-                  </svg>
-                  Send Message
-                </button>
+                <div><label class="block text-xs font-bold uppercase tracking-wider mb-2 text-gray-700">Tell us about your business</label><textarea rows="5" id="mainMessage" placeholder="Tell us about your business, what you need help with..." class="form-input w-full p-3 rounded-xl border border-gray-200 bg-white focus:outline-none focus:border-[#BE3A1B] resize-none"></textarea></div>
+                <button type="submit" id="mainSubmitBtn" class="w-full bg-[#BE3A1B] text-white font-bold py-4 rounded-xl hover:bg-black transition flex items-center justify-center gap-2 transform hover:scale-105"><svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z" /><path d="m21.854 2.147-10.94 10.939" /></svg> Send Message</button>
                 <p id="mainResponseMsg" class="text-center text-sm font-semibold"></p>
-                <p class="text-center text-xs text-gray-900">Your information is kept strictly confidential. No spam,
-                  ever.</p>
+                <p class="text-center text-xs text-gray-500">Your information is kept strictly confidential. No spam, ever.</p>
               </form>
             </div>
           </div>
@@ -770,207 +807,61 @@
     </section>
 
     <!-- 3 Contact Channels -->
-    <section class="py-20 bg-[#F4F1EC] reveal-on-scroll">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <span
-          class="inline-block bg-[#BE3A1B] px-4 py-1 rounded-full text-[#ffffff] text-sm font-semibold mb-4">Multiple
-          Channels</span>
-        <h2 class="text-4xl font-black mb-12">Choose Your Preferred Channel</h2>
+    <section class="py-20 bg-[#F4F1EC]">
+      <div class="container-fix">
+        <div class="section-heading" data-aos="fade-up" data-aos-duration="600">
+          <span class="badge">Multiple Channels</span>
+          <h2>Choose Your <span class="text-[#BE3A1B] animated-underline">Preferred Channel</span></h2>
+        </div>
         <div class="grid md:grid-cols-3 gap-5">
-          <div class="bg-white rounded-2xl p-6 text-center shadow-md border">
-            <div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center mx-auto mb-4">
-              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-              </svg>
-            </div>
-            <h3 class="font-bold text-lg mb-2">Call Us Directly</h3>
-            <p class="text-sm text-gray-500 mb-3">Speak with an expert immediately. No IVR, no waiting.</p>
-            <p class="text-sm font-semibold text-[#BE3A1B] mb-4">+91 98985 75417</p>
-            <a href="tel:+919898575417"
-              class="inline-block bg-[#BE3A1B] text-white text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#000000] transition">Call
-              Now →</a>
-          </div>
-          <div class="bg-white rounded-2xl p-6 text-center shadow-md border">
-            <div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center mx-auto mb-4">
-              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path
-                  d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" />
-              </svg>
-            </div>
-            <h3 class="font-bold text-lg mb-2">WhatsApp Chat</h3>
-            <p class="text-sm text-gray-500 mb-3">Send documents, ask questions — get replies fast.</p>
-            <p class="text-sm font-semibold text-[#BE3A1B] mb-4">Avg. reply: 10 mins</p>
-            <a href="https://wa.me/919898575417" target="_blank"
-              class="inline-block bg-[#BE3A1B] text-white text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#000000] transition">Open
-              WhatsApp →</a>
-          </div>
-          <div class="bg-white rounded-2xl p-6 text-center shadow-md border">
-            <div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center mx-auto mb-4">
-              <svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" />
-                <rect x="2" y="4" width="20" height="16" rx="2" />
-              </svg>
-            </div>
-            <h3 class="font-bold text-lg mb-2">Email Us</h3>
-            <p class="text-sm text-gray-500 mb-3">For detailed queries, proposals, and document sharing.</p>
-            <p class="text-sm font-semibold text-[#BE3A1B] mb-4">info@dreammore.in</p>
-            <a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@dreammore.in" target="_blank"
-              class="inline-block bg-[#BE3A1B] text-white text-sm font-bold px-5 py-2 rounded-xl hover:bg-[#000000] transition">
-              Send Email →
-            </a>
-          </div>
+          <div class="bg-white rounded-2xl p-6 text-center shadow-md border channel-card" data-aos="zoom-in" data-aos-delay="0"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center mx-auto mb-4"><svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" /></svg></div><h3 class="font-bold text-lg mb-2">Call Us Directly</h3><p class="text-sm text-gray-500 mb-3">Speak with an expert immediately. No IVR, no waiting.</p><p class="text-sm font-semibold text-[#BE3A1B] mb-4">+91 98985 75417</p><a href="tel:+919898575417" class="inline-block bg-[#BE3A1B] text-white text-sm font-bold px-5 py-2 rounded-xl hover:bg-black transition transform hover:scale-105">Call Now →</a></div>
+          <div class="bg-white rounded-2xl p-6 text-center shadow-md border channel-card" data-aos="zoom-in" data-aos-delay="100"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center mx-auto mb-4"><svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.992 16.342a2 2 0 0 1 .094 1.167l-1.065 3.29a1 1 0 0 0 1.236 1.168l3.413-.998a2 2 0 0 1 1.099.092 10 10 0 1 0-4.777-4.719" /></svg></div><h3 class="font-bold text-lg mb-2">WhatsApp Chat</h3><p class="text-sm text-gray-500 mb-3">Send documents, ask questions — get replies fast.</p><p class="text-sm font-semibold text-[#BE3A1B] mb-4">Avg. reply: 10 mins</p><a href="https://wa.me/919898575417" target="_blank" class="inline-block bg-[#BE3A1B] text-white text-sm font-bold px-5 py-2 rounded-xl hover:bg-black transition transform hover:scale-105">Open WhatsApp →</a></div>
+          <div class="bg-white rounded-2xl p-6 text-center shadow-md border channel-card" data-aos="zoom-in" data-aos-delay="200"><div class="w-12 h-12 rounded-xl bg-[#BE3A1B] flex items-center justify-center mx-auto mb-4"><svg class="w-5 h-5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m22 7-8.991 5.727a2 2 0 0 1-2.009 0L2 7" /><rect x="2" y="4" width="20" height="16" rx="2" /></svg></div><h3 class="font-bold text-lg mb-2">Email Us</h3><p class="text-sm text-gray-500 mb-3">For detailed queries, proposals, and document sharing.</p><p class="text-sm font-semibold text-[#BE3A1B] mb-4">info@dreammore.in</p><a href="https://mail.google.com/mail/?view=cm&fs=1&to=info@dreammore.in" target="_blank" class="inline-block bg-[#BE3A1B] text-white text-sm font-bold px-5 py-2 rounded-xl hover:bg-black transition transform hover:scale-105">Send Email →</a></div>
         </div>
       </div>
     </section>
 
     <!-- Office Map CTA -->
-    <section class="relative overflow-hidden py-20 bg-white reveal-on-scroll">
-      <div class="max-w-6xl mx-auto px-4">
-        <div class="rounded-2xl overflow-hidden bg-[#BE3A1B] text-white relative shadow-xl">
-          <div class="absolute top-0 right-0 text-8xl font-black opacity-5 pointer-events-none">CONTACT</div>
+    <section class="relative overflow-hidden py-20 bg-white">
+      <div class="container-fix">
+        <div class="rounded-2xl overflow-hidden bg-[#BE3A1B] text-white relative shadow-xl office-card" data-aos="zoom-in" data-aos-duration="600">
+          <div class="absolute top-0 right-0 text-8xl font-black opacity-5 pointer-events-none float-icon">CONTACT</div>
           <div class="relative z-10 flex flex-col lg:flex-row items-center gap-8 p-8 lg:p-10">
-            <div class="flex-1 text-center lg:text-left">
-              <h3 class="text-2xl lg:text-3xl font-black mb-2">Visit Our Office in Ahmedabad</h3>
-              <p class="text-white/70 text-sm max-w-md mx-auto lg:mx-0">703 - H K House, B/H jivabhai chamber , ashram
-                road Ahmedabad</p>
-              <div class="flex flex-wrap justify-center lg:justify-start gap-2 mt-4">
-                <span class="text-xs bg-white/20 px-3 py-1 rounded-full">AI Solutions</span>
-                <span class="text-xs bg-white/20 px-3 py-1 rounded-full">IOT Solutions</span>
-                <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Digital Marketing</span>
-                <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Website</span>
-                <span class="text-xs bg-white/20 px-3 py-1 rounded-full">Startup India</span>
-                <span class="text-xs bg-white/20 px-3 py-1 rounded-full">App Development</span>
-              </div>
-            </div>
-            <div class="flex flex-col gap-3">
-              <a href="https://www.google.com/maps/place/Hk+House,+Shreyas+Colony,+Navrangpura,+Ahmedabad,+Gujarat+380009/@23.0357768,72.5700021,987m/data=!3m2!1e3!4b1!4m6!3m5!1s0x395e845f0ff46de5:0x78270c945aa3ad4e!8m2!3d23.0357842!4d72.5699297!16s%2Fg%2F11lsnh6w8m?entry=ttu&g_ep=EgoyMDI2MDYwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank"
-                class="bg-white text-[#BE3A1B] font-bold px-6 py-3 rounded-xl hover:shadow-lg transition flex items-center gap-2">Open
-                in Maps <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M7 7h10v10" />
-                  <path d="M7 17 17 7" />
-                </svg></a>
-              <a href="tel:+919898575417"
-                class="bg-white/20 border border-white/30 px-6 py-3 rounded-xl font-semibold hover:bg-white/30 transition">📞
-                +91 9898575417</a>
-            </div>
+            <div class="flex-1 text-center lg:text-left"><h3 class="text-2xl lg:text-3xl font-black mb-2">Visit Our Office in Ahmedabad</h3><p class="text-white/70 text-sm max-w-md mx-auto lg:mx-0">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p><div class="flex flex-wrap justify-center lg:justify-start gap-2 mt-4"><span class="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition">AI Solutions</span><span class="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition">IOT Solutions</span><span class="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition">Digital Marketing</span><span class="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition">Website</span><span class="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition">Startup India</span><span class="text-xs bg-white/20 px-3 py-1 rounded-full hover:bg-white/30 transition">App Development</span></div></div>
+            <div class="flex flex-col gap-3"><a href="https://www.google.com/maps/place/Hk+House,+Shreyas+Colony,+Navrangpura,+Ahmedabad,+Gujarat+380009/@23.0357768,72.5700021,987m/data=!3m2!1e3!4b1!4m6!3m5!1s0x395e845f0ff46de5:0x78270c945aa3ad4e!8m2!3d23.0357842!4d72.5699297!16s%2Fg%2F11lsnh6w8m?entry=ttu&g_ep=EgoyMDI2MDYwOS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="bg-white text-[#BE3A1B] font-bold px-6 py-3 rounded-xl hover:shadow-lg transition flex items-center gap-2 transform hover:scale-105">Open in Maps <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 7h10v10" /><path d="M7 17 17 7" /></svg></a><a href="tel:+919898575417" class="bg-white/20 border border-white/30 px-6 py-3 rounded-xl font-semibold hover:bg-white/30 transition transform hover:scale-105">📞 +91 9898575417</a></div>
           </div>
-          <div class="flex flex-wrap justify-center gap-4 px-8 py-4 bg-black/20 border-t border-white/10 text-xs">
-            <span>⭐ 4.9/5 rating</span><span>•</span><span>Mon–Sat · 9:30 AM – 6:00 PM
-              IST</span><span>•</span><span>90%+ approval rate</span>
-          </div>
+          <div class="flex flex-wrap justify-center gap-4 px-8 py-4 bg-black/20 border-t border-white/10 text-xs"><span>⭐ 4.9/5 rating</span><span>•</span><span>Mon–Sat · 9:30 AM – 6:00 PM IST</span><span>•</span><span>90%+ approval rate</span></div>
         </div>
       </div>
     </section>
 
     <!-- Footer -->
-     <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
-      <div class="max-w-7xl mx-auto px-4">
-
-        <!-- Disclaimer & Notice Section -->
-
-
-        <!-- Main Footer Grid -->
+    <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8">
+      <div class="container-fix">
         <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
-
-          <!-- Brand Column -->
-          <div>
-            <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
-            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
-              funding — we handle every step.</p>
-          </div>
-
-          <!-- Navigation Column -->
-          <div>
-            <h4 class="font-bold text-lg">Navigation</h4>
-            <ul class="mt-3 space-y-2 text-sm text-white/70">
-              <li><a href="/" class="hover:text-white transition">Home</a></li>
-              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
-              <li><a href="/Government-Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
-              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
-              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
-              <li><a href="/About-us/about.html" class="hover:text-white transition">About-us</a></li>
-              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
-              <li><a href="/Contact-us/contact.html" class="hover:text-white transition">Contact</a></li>
-            </ul>
-          </div>
-
-          <!-- Categories Column -->
-          <div>
-            <h4 class="font-bold text-lg">Categories</h4>
-            <ul class="mt-3 space-y-2 text-sm text-white/70">
-              <li>AI Solutions</li>
-              <li>Certifications</li>
-              <li>Website Development</li>
-              <li>App Development</li>
-              <li>IOT Solution</li>
-              <li>Digital Marketing</li>
-            </ul>
-          </div>
-
-          <!-- Contact Column -->
-          <div>
-            <h4 class="font-bold text-lg">Contact</h4>
-            <p class="mt-3 text-sm">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p>
-            <p class="mt-2">📧 info@dreammore.in</p>
-            <p class="pt-4">📞 +91 98985 75417</p>
-          </div>
+          <div data-aos="fade-up"><span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-white">More</span></span><p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to funding — we handle every step.</p></div>
+          <div data-aos="fade-up" data-aos-delay="100"><h4 class="font-bold text-lg">Navigation</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li><a href="/" class="hover:text-white transition hover:translate-x-1 inline-block">Home</a></li><li><a href="/Service/service.html" class="hover:text-white transition hover:translate-x-1 inline-block">Services</a></li><li><a href="/Government-Schemes/schemes.html" class="hover:text-white transition hover:translate-x-1 inline-block">Schemes</a></li><li><a href="/Loan/loan.html" class="hover:text-white transition hover:translate-x-1 inline-block">Loan</a></li><li><a href="/Blog/blog.html" class="hover:text-white transition hover:translate-x-1 inline-block">Blog</a></li><li><a href="/About-us/about.html" class="hover:text-white transition hover:translate-x-1 inline-block">About-us</a></li><li><a href="/Carrers/carrers.html" class="hover:text-white transition hover:translate-x-1 inline-block">Career</a></li><li><a href="/Contact-us/contact.html" class="hover:text-white transition hover:translate-x-1 inline-block">Contact</a></li></ul></div>
+          <div data-aos="fade-up" data-aos-delay="200"><h4 class="font-bold text-lg">Categories</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li class="hover:translate-x-1 transition">AI Solutions</li><li class="hover:translate-x-1 transition">Certifications</li><li class="hover:translate-x-1 transition">Website Development</li><li class="hover:translate-x-1 transition">App Development</li><li class="hover:translate-x-1 transition">IOT Solution</li><li class="hover:translate-x-1 transition">Digital Marketing</li></ul></div>
+          <div data-aos="fade-up" data-aos-delay="300"><h4 class="font-bold text-lg">Contact</h4><p class="mt-3 text-sm">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p><p class="mt-2">📧 info@dreammore.in</p><p class="pt-4">📞 +91 98985 75417</p></div>
         </div>
-
-        <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
-
-          <!-- Disclaimer -->
-          <div class="text-sm text-white/80 leading-relaxed pt-5">
-            <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
-            DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
-            services.
-            All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
-            guarantees.
-            All outcomes are subject to government procedures, approvals, and external factors.
-          </div>
-
-          <!-- Note -->
-          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
-            <span class="font-bold text-[#F97316]">📌 NOTE:</span>
-            All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
-            official payment channels,
-            including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
-            payments to personal accounts
-            or under any other name. Clients are strongly advised to verify account details before making any
-            transaction.
-            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
-          </div>
+        <div class="mb-10 pb-6 border-b border-white/20 space-y-4 pt-5">
+          <div class="text-sm text-white/80 leading-relaxed"><span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span> DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support services. All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory guarantees. All outcomes are subject to government procedures, approvals, and external factors.</div>
+          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg"><span class="font-bold text-[#F97316]">📌 NOTE:</span> All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our official payment channels, including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept payments to personal accounts or under any other name. Clients are strongly advised to verify account details before making any transaction. DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.</div>
         </div>
-
-        <!-- Legal & Policy Links Row -->
-        <div
-          class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
-          <div class="flex flex-wrap justify-center gap-4">
-            <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
-            <span class="text-white/30">|</span>
-            <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
-            <span class="text-white/30">|</span>
-            <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
-          </div>
+        <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
+          <div class="flex flex-wrap justify-center gap-4"><a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a><span class="text-white/30">|</span><a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a><span class="text-white/30">|</span><a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a></div>
           <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
         </div>
-
-
-
       </div>
     </footer>
   </main>
 
   <!-- WhatsApp Button -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-    <div class="bg-white rounded-xl shadow-lg p-3 text-sm max-w-[200px] border">💬 Chat with us! Get free advice on
-      schemes & funding.</div>
-    <a href="https://wa.me/919898575417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20my%20business."
-      target="_blank"
-      class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl animate-pulse">
+    <div class="bg-white rounded-xl shadow-lg p-3 text-sm max-w-[200px] border animate-pulse">💬 Chat with us! Get free advice on schemes & funding.</div>
+    <a href="https://wa.me/919898575417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20my%20business." target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl floating-wa">
       <svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="white">
-        <path
-          d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zM23 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" />
+        <path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zM23 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" />
       </svg>
     </a>
   </div>
@@ -979,86 +870,39 @@
   <div id="contactPopup" class="popup-overlay">
     <div class="popup-container">
       <div class="close-popup" id="closePopupBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </div>
       <div class="popup-image-section">
-        <div class="image-wrapper">
-          <img src="/LOGO.png" alt="DreamMore Logo"
-            style="width:120px; margin:0 auto; display:block; border-radius:20px; background:white; padding:10px;">
-          <h3>Expert Support</h3>
-          <p>Get personalized assistance for MSME & Startup</p>
-          <ul class="benefits-list">
-            <li>Free Business Consultation</li>
-            <li>Government Scheme Guidance</li>
-            <li>Loan & Funding Assistance</li>
-            <li>AI & Digital Growth Solutions</li>
-          </ul>
-        </div>
+        <div class="image-wrapper"><img src="/LOGO.png" alt="DreamMore Logo" style="width:120px; margin:0 auto; display:block; border-radius:20px; background:white; padding:10px;"><h3>Expert Support</h3><p>Get personalized assistance for MSME & Startup</p><ul class="benefits-list"><li>Free Business Consultation</li><li>Government Scheme Guidance</li><li>Loan & Funding Assistance</li><li>AI & Digital Growth Solutions</li></ul></div>
       </div>
       <div class="popup-form-section">
-        <div id="popupFormContent">
-          <div class="form-title">
-            <h2>Let's Connect!</h2>
-            <p>Fill the form below - response within 2 hours ⏱️</p>
-          </div>
-          <form id="popupContactForm">
-            <div class="form-group">
-              <label>Full Name <span class="required">*</span></label>
-              <input type="text" id="popupFullName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label>Email Address <span class="required">*</span></label>
-              <input type="email" id="popupEmail" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-              <label>Phone Number <span class="required">*</span></label>
-              <input type="tel" id="popupPhone" placeholder="+91 XXXXX XXXXX" required>
-            </div>
-            <div class="form-group">
-              <label>Service Interested In</label>
-              <select id="popupService">
-                <option value="">Select a service</option>
-                <option value="Company Registration">Company Registration (MSME/Udyam)</option>
-                <option value="Funding Support">Funding Support & Investment</option>
-                <option value="Certifications">Certifications (ISO, FSSAI, etc.)</option>
-                <option value="AI Solutions">AI & Automation Solutions</option>
-                <option value="Digital Marketing">Digital Marketing & SEO</option>
-                <option value="Website Development">Website & App Development</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Loan Type (If needed)</label>
-              <select id="popupLoan">
-                <option value="">Select loan</option>
-                <option value="Business Loan">Business Loan</option>
-                <option value="Salaried Personal Loan">Salaried Personal Loan</option>
-                <option value="Home Loan">Home Loan</option>
-                <option value="Education Loan">Education Loan</option>
-                <option value="Machinery Loan">Machinery Loan</option>
-                <option value="Loan Against Property">Loan Against Property</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Message / Query</label>
-              <textarea rows="2" id="popupMessage" placeholder="Tell us about your business requirements..."></textarea>
-            </div>
-            <button type="submit" id="popupSubmitBtn" class="submit-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg>
-              Submit Request
-            </button>
-          </form>
-          <div id="popupTimerText" class="timer-text"></div>
-        </div>
+        <div id="popupFormContent"><div class="form-title"><h2>Let's Connect!</h2><p>Fill the form below - response within 2 hours ⏱️</p></div>
+        <form id="popupContactForm">
+          <div class="form-group"><label>Full Name <span class="required">*</span></label><input type="text" id="popupFullName" placeholder="Enter your full name" required></div>
+          <div class="form-group"><label>Email Address <span class="required">*</span></label><input type="email" id="popupEmail" placeholder="you@example.com" required></div>
+          <div class="form-group"><label>Phone Number <span class="required">*</span></label><input type="tel" id="popupPhone" placeholder="+91 XXXXX XXXXX" required></div>
+          <div class="form-group"><label>Service Interested In</label><select id="popupService"><option value="">Select a service</option><option value="Company Registration">Company Registration (MSME/Udyam)</option><option value="Funding Support">Funding Support & Investment</option><option value="Certifications">Certifications (ISO, FSSAI, etc.)</option><option value="AI Solutions">AI & Automation Solutions</option><option value="Digital Marketing">Digital Marketing & SEO</option><option value="Website Development">Website & App Development</option></select></div>
+          <div class="form-group"><label>Loan Type (If needed)</label><select id="popupLoan"><option value="">Select loan</option><option value="Business Loan">Business Loan</option><option value="Salaried Personal Loan">Salaried Personal Loan</option><option value="Home Loan">Home Loan</option><option value="Education Loan">Education Loan</option><option value="Machinery Loan">Machinery Loan</option><option value="Loan Against Property">Loan Against Property</option></select></div>
+          <div class="form-group"><label>Message / Query</label><textarea rows="2" id="popupMessage" placeholder="Tell us about your business requirements..."></textarea></div>
+          <button type="submit" id="popupSubmitBtn" class="submit-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request</button>
+        </form>
+        <div id="popupTimerText" class="timer-text"></div>
       </div>
     </div>
   </div>
 
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script>
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: false,
+      offset: 100,
+      easing: 'ease-in-out-cubic'
+    });
+
     // ==========================================
     // GOOGLE SHEETS SCRIPT URL
     // ==========================================
@@ -1132,17 +976,10 @@
       countdownInterval = setInterval(() => {
         secondsLeft--;
         if (isPopupVisible && popupTimerText) {
-          if (secondsLeft > 0) {
-            popupTimerText.innerHTML = `⏳ This popup will close in ${secondsLeft} seconds`;
-          } else {
-            popupTimerText.innerHTML = `✨ Don't miss out! Submit now ✨`;
-          }
+          if (secondsLeft > 0) popupTimerText.innerHTML = `⏳ This popup will close in ${secondsLeft} seconds`;
+          else popupTimerText.innerHTML = `✨ Don't miss out! Submit now ✨`;
         }
-        if (secondsLeft <= 0) {
-          clearInterval(countdownInterval);
-          countdownInterval = null;
-          if (isPopupVisible) hidePopup(true);
-        }
+        if (secondsLeft <= 0) { clearInterval(countdownInterval); countdownInterval = null; if (isPopupVisible) hidePopup(true); }
       }, 1000);
     }
 
@@ -1164,90 +1001,41 @@
         document.body.style.overflow = '';
         if (countdownInterval) clearInterval(countdownInterval);
         countdownInterval = null;
-        if (manualClose) {
-          popupClosedManually = true;
-          setTimeout(() => { popupClosedManually = false; }, 30000);
-        }
+        if (manualClose) { popupClosedManually = true; setTimeout(() => { popupClosedManually = false; }, 30000); }
         if (popupTimerText) popupTimerText.innerHTML = '';
       }
     }
 
     if (closePopupBtn) closePopupBtn.addEventListener('click', () => hidePopup(true));
-
-    // Auto popup after 20 seconds
-    setTimeout(() => {
-      if (!isPopupVisible && !popupClosedManually) showPopup(true, 60);
-    }, 30000);
+    setTimeout(() => { if (!isPopupVisible && !popupClosedManually) showPopup(true, 60); }, 30000);
 
     // ==========================================
-    // POPUP FORM SUBMISSION - ONLY SWEETALERT
+    // POPUP FORM SUBMISSION
     // ==========================================
     const popupForm = document.getElementById('popupContactForm');
     const popupSubmitBtn = document.getElementById('popupSubmitBtn');
 
     async function submitPopupForm(e) {
       e.preventDefault();
-
       const fullName = document.getElementById('popupFullName').value.trim();
       const email = document.getElementById('popupEmail').value.trim();
       const phone = document.getElementById('popupPhone').value.trim();
-
-      if (!fullName || !email || !phone) {
-        Swal.fire({ title: "Missing Fields", text: "Please fill Full Name, Email and Phone Number (required fields).", icon: "warning", confirmButtonColor: "#BE3A1B" });
-        return;
-      }
-
+      if (!fullName || !email || !phone) { Swal.fire({ title: "Missing Fields", text: "Please fill all required fields.", icon: "warning", confirmButtonColor: "#BE3A1B" }); return; }
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        Swal.fire({ title: "Invalid Email", text: "Please enter a valid email address.", icon: "error", confirmButtonColor: "#BE3A1B" });
-        return;
-      }
-
+      if (!emailPattern.test(email)) { Swal.fire({ title: "Invalid Email", text: "Please enter a valid email address.", icon: "error", confirmButtonColor: "#BE3A1B" }); return; }
       popupSubmitBtn.disabled = true;
       popupSubmitBtn.innerHTML = '<span>⏳ Submitting...</span>';
-
-      const formData = {
-        fullName: fullName,
-        email: email,
-        phone: phone,
-        service: document.getElementById('popupService').value || "Not selected",
-        loan: document.getElementById('popupLoan').value || "Not selected",
-        message: document.getElementById('popupMessage').value.trim() || "No message",
-        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-        source: "20sec_popup_form"
-      };
-
+      const formData = { fullName, email, phone, service: document.getElementById('popupService').value || "Not selected", loan: document.getElementById('popupLoan').value || "Not selected", message: document.getElementById('popupMessage').value.trim() || "No message", timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }), source: "20sec_popup_form" };
       try {
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
-
-        // SIRF SWEETALERT - NO EXTRA SUCCESS BOX
-        Swal.fire({
-          title: "✅ Request Sent!",
-          text: "Your details have been submitted successfully. Our expert will contact you within 2 hours.",
-          icon: "success",
-          confirmButtonColor: "#BE3A1B",
-          confirmButtonText: "OK"
-        });
-
-        // Reset form
+        Swal.fire({ title: "✅ Request Sent!", text: "Your details have been submitted successfully. Our expert will contact you within 2 hours.", icon: "success", confirmButtonColor: "#BE3A1B", confirmButtonText: "OK" });
         popupForm.reset();
-
-        // Close popup after sweetalert
         hidePopup(true);
-
-      } catch (error) {
-        console.error("Submission Error:", error);
-        Swal.fire({ title: "Network Error", text: "Unable to submit. Please check your internet connection.", icon: "error", confirmButtonColor: "#BE3A1B" });
-      } finally {
-        popupSubmitBtn.disabled = false;
-        popupSubmitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request';
-      }
+      } catch (error) { Swal.fire({ title: "Network Error", text: "Unable to submit. Please check your internet connection.", icon: "error", confirmButtonColor: "#BE3A1B" }); }
+      finally { popupSubmitBtn.disabled = false; popupSubmitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request'; }
     }
-
     if (popupForm) popupForm.addEventListener('submit', submitPopupForm);
-
-    // Close popup when clicking outside
-    popup.addEventListener('click', (e) => { if (e.target === popup) hidePopup(true); });
+    if (popup) popup.addEventListener('click', (e) => { if (e.target === popup) hidePopup(true); });
 
     // ==========================================
     // MOBILE MENU & SCROLL REVEAL
@@ -1263,15 +1051,11 @@
     if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
     if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
     if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    window.addEventListener('resize', function () { if (window.innerWidth >= 768 && mobileMenu && mobileMenu.classList.contains('open')) closeMobileMenu(); });
 
     // Scroll Reveal
     const revealElements = document.querySelectorAll('.reveal-on-scroll');
-    function checkReveal() {
-      const windowHeight = window.innerHeight;
-      revealElements.forEach(element => {
-        if (element.getBoundingClientRect().top < windowHeight - 100) element.classList.add('revealed');
-      });
-    }
+    function checkReveal() { const windowHeight = window.innerHeight; const revealThreshold = 100; revealElements.forEach(element => { if (element.getBoundingClientRect().top < windowHeight - revealThreshold) element.classList.add('revealed'); }); }
     window.addEventListener('load', checkReveal);
     window.addEventListener('scroll', checkReveal);
   </script>

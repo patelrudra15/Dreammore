@@ -4,13 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Our Services | DreamMor – Complete MSME Solutions</title>
+  <title>Our Services | DreamMore – Complete MSME Solutions</title>
+    <link rel="icon" type="image/png" href="/LOGO.png">
   <meta name="description"
     content="End-to-end business support: Registration, Certifications, Funding, Compliance, Digital, Legal. 7 service categories for MSMEs & Startups.">
   <link
     href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800&family=Poppins:wght@400;500;600;700;800;900&display=swap"
     rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <!-- AOS Library for Scroll Animations -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <style>
     * {
       margin: 0;
@@ -22,6 +25,13 @@
     body {
       font-family: 'Inter', sans-serif;
       background: white;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    html {
+      overflow-x: hidden;
+      width: 100%;
     }
 
     h1,
@@ -31,56 +41,158 @@
       font-family: 'Poppins', sans-serif;
     }
 
+    /* Glass Navbar */
     .glass-nav {
       background: rgba(255, 255, 255, 0.4);
       backdrop-filter: blur(12px);
       border: 2px solid rgba(255, 255, 255, 0.5);
       box-shadow: 0 8px 28px rgba(0, 0, 0, 0.04);
+      transition: all 0.3s ease;
     }
 
+    .glass-nav:hover {
+      background: rgba(255, 255, 255, 0.6);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Button Primary with animation */
     .btn-primary {
       background: #BE3A1B;
-      transition: all 0.2s ease;
-      box-shadow: 0 6px 18px rgba(28, 156, 110, 0.3);
+      transition: all 0.3s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 6px 18px rgba(190, 58, 27, 0.3);
+      position: relative;
+      overflow: hidden;
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px) scale(1.05);
       background: #000000;
-      box-shadow: 0 12px 28px rgba(28, 156, 110, 0.4);
+      box-shadow: 0 12px 28px rgba(190, 58, 27, 0.4);
     }
 
-    .service-card:hover {
-      transform: translateY(-6px);
-      transition: all 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    .btn-primary::after {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(115deg, rgba(255,255,255,0) 10%, rgba(255,255,255,0.3) 50%, rgba(255,255,255,0) 90%);
+      transform: rotate(25deg);
+      transition: all 0.6s;
+      opacity: 0;
     }
 
-    .animated-once {
-      animation: fadeUp 0.6s ease forwards;
+    .btn-primary:hover::after {
+      animation: shine 0.6s forwards;
     }
 
-    @keyframes fadeUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes shine {
+      0% { transform: translateX(-100%) rotate(25deg); opacity: 0.5; }
+      100% { transform: translateX(100%) rotate(25deg); opacity: 0; }
     }
 
-    .delay-100 {
-      animation-delay: 0.1s;
+    /* Card Hover Effects - Zoom In/Out */
+    .service-card-hover {
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
 
-    .delay-200 {
-      animation-delay: 0.2s;
+    .service-card-hover:hover {
+      transform: translateY(-8px) scale(1.03);
+      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.15);
     }
 
-    .delay-300 {
-      animation-delay: 0.3s;
+    /* Zoom Image on Hover */
+    .zoom-image {
+      transition: transform 0.5s ease;
+    }
+
+    .zoom-image:hover {
+      transform: scale(1.08);
+    }
+
+    /* Float Animation for Icons */
+    @keyframes floatIcon {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-8px); }
+      100% { transform: translateY(0px); }
+    }
+
+    .float-icon {
+      animation: floatIcon 3s ease-in-out infinite;
+    }
+
+    /* Pulse Glow for Stats */
+    .stat-pulse {
+      transition: all 0.3s ease;
+    }
+
+    .stat-pulse:hover {
+      transform: scale(1.1);
+      text-shadow: 0 0 12px rgba(190, 58, 27, 0.5);
+    }
+
+    /* Animated Underline for Headings */
+    .animated-underline {
+      position: relative;
+      display: inline-block;
+    }
+
+    .animated-underline::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 3px;
+      bottom: -5px;
+      left: 0;
+      background-color: #BE3A1B;
+      transition: width 0.4s ease;
+    }
+
+    .animated-underline:hover::after {
+      width: 100%;
+    }
+
+    /* Spin on Hover */
+    .spin-hover {
+      transition: transform 0.5s ease;
+    }
+
+    .spin-hover:hover {
+      transform: rotate(360deg);
+    }
+
+    /* Glow Text */
+    .glow-text {
+      transition: text-shadow 0.3s ease;
+    }
+
+    .glow-text:hover {
+      text-shadow: 0 0 8px rgba(190, 58, 27, 0.5);
+    }
+
+    /* Ripple Effect */
+    .ripple-effect {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .ripple-effect:after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      border-radius: 50%;
+      background: rgba(190, 58, 27, 0.3);
+      transform: translate(-50%, -50%);
+      transition: width 0.4s, height 0.4s;
+    }
+
+    .ripple-effect:hover:after {
+      width: 200%;
+      height: 200%;
     }
 
     /* Mobile Menu Styles */
@@ -149,11 +261,12 @@
       font-weight: 500;
       color: #1a2e1e;
       border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-      transition: color 0.2s ease;
+      transition: color 0.2s ease, transform 0.2s ease;
     }
 
     .mobile-menu a:hover {
       color: #BE3A1B;
+      transform: translateX(8px);
     }
 
     .mobile-menu .mobile-cta {
@@ -168,35 +281,24 @@
 
     .mobile-menu .mobile-cta:hover {
       background: black;
+      transform: translateX(0);
     }
 
-    /* Scroll Reveal Animation */
-    .reveal-on-scroll {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease, transform 0.8s ease;
-    }
-
-    .reveal-on-scroll.revealed {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    /* Animated Box Card Styles */
+    /* Animated Service Card Styles */
     .animated-service-card {
       background: white;
       border-radius: 1.5rem;
       padding: 1.75rem;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.02);
       border: 1px solid #f0f0f0;
       height: 100%;
     }
 
     .animated-service-card:hover {
-      transform: translateY(-8px) scale(1.02);
-      box-shadow: 0 20px 40px -12px rgba(190, 58, 27, 0.25);
-      border-color: #BE3A1B20;
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 40px -12px rgba(190, 58, 27, 0.25);
+      border-color: #BE3A1B30;
     }
 
     .card-icon {
@@ -208,17 +310,17 @@
       align-items: center;
       justify-content: center;
       margin-bottom: 1.25rem;
-      transition: all 0.3s ease;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
 
     .animated-service-card:hover .card-icon {
       background: #BE3A1B;
-      transform: scale(1.05);
+      transform: scale(1.1) rotate(5deg);
     }
 
     .animated-service-card:hover .card-icon svg {
       stroke: white;
-      color: white;
+      transform: scale(1.05);
     }
 
     .card-icon svg {
@@ -237,643 +339,114 @@
       padding: 0.25rem 0.75rem;
       border-radius: 40px;
       margin-top: 0.75rem;
+      transition: all 0.3s ease;
     }
-  </style>
-</head>
 
-<body class="text-gray-800">
+    .animated-service-card:hover .service-tag {
+      background: #BE3A1B;
+      color: white;
+      transform: scale(1.05);
+    }
 
-  <!-- ========== MOBILE MENU OVERLAY ========== -->
-  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    /* Section Heading Center Fix */
+    .section-heading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-bottom: 3rem;
+    }
 
-  <!-- ========== MOBILE MENU ========== -->
-  <div class="mobile-menu" id="mobileMenu">
-    <div class="mobile-menu-close" id="mobileMenuClose">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
-        <line x1="18" y1="6" x2="6" y2="18"></line>
-        <line x1="6" y1="6" x2="18" y2="18"></line>
-      </svg>
-    </div>
-    <div class="mb-8 pt-8">
-      <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
-        <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
-        <span class="text-2xl font-black tracking-tight text-black">
-          Dream<span class="text-[#BE3A1B]">More</span>
-        </span>
-      </a>
-    </div>
-    <a href="/">Home</a>
-    <a href="/Service/service.html">Services</a>
-    <a href="/Government-Schemes/schemes.html">Government Schemes</a>
-    <a href="/Loan/loan.html">Loan</a>
-    <a href="/Blog/blog.html">Blog</a>
-    <a href="/About-us/about.html">About-us</a>
-    <a href="/Carrers/carrers.html">Careers</a>
-    <a href="/Contact-us/contact.html">Contact</a>
-    <a href="/Contact-us/contact.html" class="mobile-cta">Free Consultation →</a>
-  </div>
+    .section-heading .badge {
+      background: #BE3A1B;
+      padding: 0.25rem 1rem;
+      border-radius: 9999px;
+      color: white;
+      font-weight: 600;
+      font-size: 0.875rem;
+      display: inline-block;
+      width: fit-content;
+      transition: all 0.3s ease;
+    }
 
-  <!-- ==================== NAVBAR ==================== -->
-  <nav
-    class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-[72px]">
+    .section-heading .badge:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 12px rgba(190, 58, 27, 0.3);
+    }
 
-        <!-- LOGO -->
-        <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
-          <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
-          <span class="text-2xl font-black tracking-tight text-black">
-            Dream<span class="text-[#BE3A1B]">More</span>
-          </span>
-        </a>
-        <!-- Desktop Menu -->
-        <div class="hidden md:flex items-center gap-1">
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/">Home</a>
+    .section-heading .badge-light {
+      background: #BE3A1B10;
+      color: #BE3A1B;
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Service/service.html">Services</a>
+    .section-heading h2 {
+      font-size: 2.5rem;
+      font-weight: 900;
+      margin-top: 0.75rem;
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Government-Schemes/schemes.html">Government Schemes</a>
+    @media (min-width: 768px) {
+      .section-heading h2 {
+        font-size: 2.75rem;
+      }
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Loan/loan.html">Loan</a>
+    /* Container Fix */
+    .container-fix {
+      max-width: 1280px;
+      margin-left: auto;
+      margin-right: auto;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Blog/blog.html">Blog</a>
+    @media (min-width: 640px) {
+      .container-fix {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/About-us/about.html">About Us</a>
+    @media (min-width: 1024px) {
+      .container-fix {
+        padding-left: 2rem;
+        padding-right: 2rem;
+      }
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Carrers/carrers.html">Careers</a>
+    /* Service Row Card Styles */
+    .service-row-card {
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
 
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Contact-us/contact.html">Contact</a>
-        </div>
+    .service-row-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.15);
+    }
 
-        <!-- Button -->
-        <div class="hidden md:flex items-center gap-2">
-          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[black] transition"
-            href="/Contact-us/contact.html">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
-            </svg>
-            Free Consultation
-          </a>
-        </div>
+    /* WhatsApp Float Animation */
+    .floating-wa {
+      animation: waFloat 1.2s ease-in-out infinite;
+    }
 
-        <!-- Mobile Menu Button -->
-        <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
-            <line x1="4" y1="6" x2="20" y2="6"></line>
-            <line x1="4" y1="12" x2="20" y2="12"></line>
-            <line x1="4" y1="18" x2="20" y2="18"></line>
-          </svg>
-        </button>
+    @keyframes waFloat {
+      0% { transform: scale(0.96); box-shadow: 0 0 0 0 rgba(190, 58, 27, 0.4); }
+      70% { transform: scale(1.04); box-shadow: 0 0 0 12px rgba(190, 58, 27, 0); }
+      100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(190, 58, 27, 0); }
+    }
 
-      </div>
-    </div>
-  </nav>
+    /* Link Hover Animation */
+    .hover-link {
+      transition: all 0.3s ease;
+    }
 
-  <main>
-    <!-- Hero Section -->
-    <section class="relative overflow-hidden pt-32 pb-16 lg:py-24 bg-[#FAFAF7] reveal-on-scroll mt-10">
-      <div
-        class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-[#BE3A1B] opacity-10 blur-3xl">
-      </div>
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div class="grid lg:grid-cols-12 gap-10 items-start">
-          <div class="lg:col-span-7 space-y-6">
-            <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B]">
-              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
-              <span class="text-[11px] font-semibold tracking-widest uppercase text-white">7 Expert Services</span>
-            </div>
-            <h1 class="text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-[#1a2e1e]">Our <span
-                class="text-[#BE3A1B]">Services</span><br>Complete Business Support</h1>
-            <p class="text-black max-w-lg">Comprehensive end-to-end business support for every stage of your
-              entrepreneurial journey — registration, funding, compliance, digital growth and more.</p>
-            <div class="flex flex-wrap gap-3">
-              <a href="/Contact-us/contact.html"
-                class="btn-primary px-6 py-3 rounded-xl text-white font-bold flex items-center gap-2">Free Consultation
-                →</a>
-              
-            </div>
-            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">2000+</div>
-                <p class="text-xs">Businesses Served</p>
-              </div>
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">93%</div>
-                <p class="text-xs">Success Rate</p>
-              </div>
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">72h</div>
-                <p class="text-xs">Avg Turnaround</p>
-              </div>
-              <div class="bg-white p-3 rounded-xl shadow-sm">
-                <div class="text-2xl font-black text-[#BE3A1B]">7 Yrs</div>
-                <p class="text-xs">Experience</p>
-              </div>
-            </div>
-          </div>
-          <div class="lg:col-span-5 hidden lg:block space-y-3">
-            <div class="bg-white rounded-xl p-4 shadow-md flex items-center gap-4">
-              <div class="w-10 h-10 rounded-xl bg-[#BE3A1B] flex items-center justify-center text-white font-bold">01
-              </div>
-              <div>
-                <p class="font-bold">Business Registration</p>
-                <p class="text-xs text-gray-800">Pvt Ltd, OPC, LLP, Partnership</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                02</div>
-              <div>
-                <p class="font-bold">Certifications</p>
-                <p class="text-xs text-gray-800">ISO, FSSAI, GeM, Udyam, Startup India</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                03</div>
-              <div>
-                <p class="font-bold">Grants & Funding</p>
-                <p class="text-xs text-gray-800">PMEGP, CGTMSE, Mudra, Stand-Up India</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                04</div>
-              <div>
-                <p class="font-bold">Business Finance</p>
-                <p class="text-xs text-gray-800">Working capital, term loans, VC</p>
-              </div>
-            </div>
-            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4">
-              <div
-                class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold">
-                05</div>
-              <div>
-                <p class="font-bold">Digital Services</p>
-                <p class="text-xs text-gray-800">Website, SEO, CRM, branding</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    .hover-link:hover {
+      transform: translateX(5px);
+      color: #BE3A1B;
+    }
 
-    <!-- ========== NEW ANIMATED BOX CONTAINER FOR DIGITAL SERVICES ========== -->
-    <section class="py-20 bg-white reveal-on-scroll">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <span class="inline-block bg-[#BE3A1B]/10 px-4 py-1 rounded-full text-[#BE3A1B] text-sm font-semibold">Tech &
-            Digital</span>
-          <h2 class="text-4xl font-black mt-3">AI, IoT & <span class="text-[#BE3A1B]">Digital Solutions</span></h2>
-          <p class="text-gray-500 mt-2 max-w-2xl mx-auto">Future-ready digital transformation services to scale your
-            business</p>
-        </div>
-
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-          <!-- AI Solutions Card -->
-          <div class="animated-service-card animated-once">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
-                stroke-linejoin="round">
-                <path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10-2.5 0-4.8-1-6.5-2.5" />
-                <path d="M12 8v4l2.5 2.5" />
-                <path d="M8 12h.01" />
-                <path d="M16 12h.01" />
-                <path d="M6.5 17.5L8 16" />
-                <path d="M18 6.5L16 8" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">AI Solutions</h3>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Custom AI models, intelligent automation, predictive
-              analytics, and machine learning integration for smarter business decisions.</p>
-            <div class="service-tag">🤖 Intelligent Automation</div>
-            <a href="/Contact-us/contact.html"
-              class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all">Explore AI →</a>
-          </div>
-
-          <!-- IOT Solution Card -->
-          <div class="animated-service-card animated-once delay-100">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="2" width="20" height="20" rx="2.5" />
-                <circle cx="8.5" cy="8.5" r="1.5" />
-                <circle cx="15.5" cy="8.5" r="1.5" />
-                <circle cx="8.5" cy="15.5" r="1.5" />
-                <circle cx="15.5" cy="15.5" r="1.5" />
-                <line x1="12" y1="12" x2="12" y2="18" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">IoT Solutions</h3>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Connected devices, sensor integration, real-time
-              monitoring, and smart infrastructure for manufacturing and logistics.</p>
-            <div class="service-tag">📡 Smart Connectivity</div>
-            <a href="/Contact-us/contact.html"
-              class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all">Explore IoT
-              →</a>
-          </div>
-
-          <!-- Website Development Card -->
-          <div class="animated-service-card animated-once delay-200">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="2" y="3" width="20" height="14" rx="2" />
-                <line x1="8" y1="21" x2="16" y2="21" />
-                <line x1="12" y1="17" x2="12" y2="21" />
-                <path d="M2 7h20" />
-                <path d="M5 12h3" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">Website Development</h3>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Responsive websites, e-commerce platforms, CMS
-              solutions, and high-performance web applications tailored for MSMEs.</p>
-            <div class="service-tag">💻 Modern Web Stack</div>
-            <a href="/Contact-us/contact.html"
-              class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all">Explore Web
-              →</a>
-          </div>
-
-          <!-- App Development Card -->
-          <div class="animated-service-card animated-once delay-300">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <rect x="5" y="2" width="14" height="20" rx="2" />
-                <line x1="12" y1="18" x2="12.01" y2="18" />
-                <line x1="9" y1="6" x2="15" y2="6" />
-                <path d="M12 2v2" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">App Development</h3>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Native iOS/Android apps, cross-platform solutions,
-              UI/UX design, and app store deployment for business growth.</p>
-            <div class="service-tag">📱 Mobile-First</div>
-            <a href="/Contact-us/contact.html"
-              class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all">Explore Apps
-              →</a>
-          </div>
-
-          <!-- Digital Marketing Card -->
-          <div class="animated-service-card animated-once delay-100">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path
-                  d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9h-4m-7 9A9 9 0 0 1 3 12m9 9v-4M3 12a9 9 0 0 1 9-9m-9 9h4m7-9a9 9 0 0 1 9 9" />
-                <circle cx="12" cy="12" r="3" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">Digital Marketing</h3>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">SEO, social media management, PPC campaigns, content
-              marketing, and lead generation strategies for MSMEs.</p>
-            <div class="service-tag">📈 Growth Marketing</div>
-            <a href="/Contact-us/contact.html"
-              class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all">Explore
-              Marketing →</a>
-          </div>
-
-          <!-- Bonus: CRM & Automation Card (extra to fill grid nicely) -->
-          <div class="animated-service-card animated-once delay-200">
-            <div class="card-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                <circle cx="9" cy="7" r="4" />
-                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                <line x1="19" y1="12" x2="21" y2="12" />
-              </svg>
-            </div>
-            <h3 class="text-xl font-bold text-gray-800">CRM & Automation</h3>
-            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Customer relationship management, workflow automation,
-              lead tracking, and sales pipeline optimization.</p>
-            <div class="service-tag">⚡ Workflow Automation</div>
-            <a href="/Contact-us/contact.html"
-              class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all">Explore CRM
-              →</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== FULL SERVICE CARDS (7 categories - your original) ========== -->
-    <section id="services-list" class="py-20 bg-white reveal-on-scroll">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-12">
-          <span class="inline-block bg-[#BE3A1B] px-4 py-1 rounded-full text-white text-sm font-semibold">Everything You
-            Need</span>
-          <h2 class="text-4xl font-black mt-3">Our Complete <span class="text-[#BE3A1B]">Service Range</span></h2>
-        </div>
-
-        <!-- 1. Business Registration -->
-        <div
-          class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47] animated-once">
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
-            <div class="text-6xl font-black opacity-30">01</div>
-            <h3 class="text-2xl font-bold mt-2">Business Registration</h3>
-            <p class="text-sm mt-2 opacity-90">Private Limited, OPC, LLP, Partnership, Section 8, NGO</p>
-            <a href="/Service/registration.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-          <div class="md:col-span-3 p-6">
-            <p class="text-gray-800 mb-4">We handle complete incorporation under MCA, GST, and MSME simultaneously.</p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Private Limited
-                  Company</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">One Person
-                  Company</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">LLP Registration</span>
-              </div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Partnership Firm</span>
-              </div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Section 8 Company /
-                  NGO</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 2. Certifications -->
-        <div
-          class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-r-8 border-[#A35E47] animated-once delay-100">
-          <div class="md:col-span-3 p-6 order-2 md:order-1">
-            <p class="text-gray-800 mb-4">Get certified with ISO, FSSAI, IEC, GeM, Startup India, Udyam, NSIC.</p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">ISO 9001 / 14001</span>
-              </div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">FSSAI License</span>
-              </div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">IEC (Import Export
-                  Code)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">GeM Registration</span>
-              </div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Udyam / MSME
-                  Registration</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Startup India
-                  Recognition</span></div>
-            </div>
-          </div>
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white order-1 md:order-2">
-            <div class="text-6xl font-black opacity-30">02</div>
-            <h3 class="text-2xl font-bold mt-2">Certifications</h3>
-            <p class="text-sm opacity-90">Boost credibility & unlock schemes</p><a href="/Service/certification.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-        </div>
-
-        <!-- 3. Grants & Funding -->
-        <div
-          class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47] animated-once delay-200">
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
-            <div class="text-6xl font-black opacity-30">03</div>
-            <h3 class="text-2xl font-bold mt-2">Grants & Funding</h3>
-            <p class="text-sm opacity-90">PMEGP, CGTMSE, Mudra, Stand-Up India</p><a href="/Service/funding.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-          <div class="md:col-span-3 p-6">
-            <p class="text-gray-800 mb-4">Collateral-free government schemes and credit guarantee programs for MSMEs.
-            </p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">PMEGP (up to ₹50L, 35%
-                  subsidy)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">CGTMSE (collateral-free
-                  up to ₹5Cr)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Mudra Loan
-                  (Shishu/Kishor/Tarun)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Stand-Up India (SC/ST &
-                  Women)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Startup India Seed Fund
-                  (₹50L)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">PMFME (35% subsidy food
-                  processing)</span></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- 4. Business Finance -->
-        <div
-          class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-r-8 border-[#A35E47] animated-once delay-300">
-          <div class="md:col-span-3 p-6 order-2 md:order-1">
-            <p class="text-gray-800 mb-4">Working capital, term loans, venture capital connections and NBFC tie-ups.</p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Working Capital
-                  Loans</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Term Loans for
-                  expansion</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Venture Capital / Angel
-                  Funding</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Invoice
-                  Financing</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">NBFC Tie-ups for faster
-                  approval</span></div>
-            </div>
-          </div>
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white order-1 md:order-2">
-            <div class="text-6xl font-black opacity-30">04</div>
-            <h3 class="text-2xl font-bold mt-2">Business Finance</h3>
-            <p class="text-sm opacity-90">₹1L – ₹5Cr+ funding</p><a href="/Service/buisnessfinance.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-        </div>
-
-        <!-- 5. Digital Services, 6. Compliance, 7. Legal & Protection (simplified for brevity - keep your original structure) -->
-        <div
-          class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47] animated-once">
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
-            <div class="text-6xl font-black opacity-30">05</div>
-            <h3 class="text-2xl font-bold mt-2">Digital Services</h3>
-            <p class="text-sm opacity-90">Website, SEO, Social Media, CRM</p><a href="/Service/digital.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-          <div class="md:col-span-3 p-6">
-            <p class="text-gray-800 mb-4">Accelerate your online growth with modern digital solutions tailored for
-              MSMEs.</p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Website
-                  Development</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">SEO & Digital
-                  Marketing</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">CRM
-                  Implementation</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Social Media
-                  Management</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Logo & Brand
-                  Identity</span></div>
-            </div>
-          </div>
-        </div>
-        <div
-          class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-r-8 border-[#A35E47] animated-once delay-100">
-          <div class="md:col-span-3 p-6 order-2 md:order-1">
-            <p class="text-gray-800 mb-4">Stay compliant with ROC filings, GST returns, income tax, and annual
-              compliance.</p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">ROC Annual
-                  Filings</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">GST Registration &
-                  Monthly Returns</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Income Tax Returns
-                  (ITR)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">TDS Returns &
-                  Filings</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Audit Support &
-                  Representation</span></div>
-            </div>
-          </div>
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white order-1 md:order-2">
-            <div class="text-6xl font-black opacity-30">06</div>
-            <h3 class="text-2xl font-bold mt-2">Compliance</h3>
-            <p class="text-sm opacity-90">No penalty, No last-minute rush</p><a href="/Service/compliance.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-        </div>
-        <div
-          class="grid md:grid-cols-5 gap-6 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47] animated-once delay-200">
-          <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
-            <div class="text-6xl font-black opacity-30">07</div>
-            <h3 class="text-2xl font-bold mt-2">Legal & Protection</h3>
-            <p class="text-sm opacity-90">Trademark, Patent, Copyright</p><a href="/Service/legal.html"
-              class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold">Full Details
-              →</a>
-          </div>
-          <div class="md:col-span-3 p-6">
-            <p class="text-gray-800 mb-4">Protect your brand and business with trademark, patent, copyright, and legal
-              agreements.</p>
-            <div class="grid sm:grid-cols-2 gap-3">
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Trademark Registration
-                  & Opposition</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Patent Filing
-                  (Provisional/Complete)</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Copyright
-                  Registration</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Shram Suvidha / Labour
-                  Law Compliance</span></div>
-              <div class="flex gap-2"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Founder / Vendor
-                  Agreements</span></div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ========== FREE ASSESSMENT CTA ========== -->
-    <section class="relative overflow-hidden py-20 bg-[#f8faf9] reveal-on-scroll">
-      <div class="max-w-6xl mx-auto px-4 text-center">
-        <div class="inline-flex gap-2 bg-[#BE3A1B] px-4 py-1 rounded-full text-white text-sm font-semibold">⚡ 100% Free
-          — No Obligations</div>
-        <h2 class="text-3xl lg:text-5xl font-black mt-4">Not Sure Which Service You Need?<br><span
-            class="text-[#BE3A1B]">Book a Free Assessment</span></h2>
-        <p class="text-gray-800 max-w-xl mx-auto mt-4">Our experts will map out exact services, schemes, and subsidies
-          for your business — in a free 30-min call.</p>
-        <div class="flex flex-wrap justify-center gap-4 mt-8">
-          <a href="/Contact-us/contact.html" class="btn-primary px-8 py-3 rounded-xl text-white font-bold">Book Free
-            Consultation →</a>
-          <a href="tel:+919898575417"
-            class="px-6 py-3 rounded-xl border border-[#A35E47] text-[#BE3A1B] font-semibold">📞 Call +91 98985 75417
-          </a>
-        </div>
-        <div class="mt-6 text-sm text-gray-900">⭐ 4.9/5 rating from 120+ happy clients | Avg response &lt;2 hours</div>
-      </div>
-    </section>
-
-    <!-- ========== FOOTER ========== -->
-    <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
-      <div class="max-w-7xl mx-auto px-4">
-        <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
-          <div><span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
-            <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
-              funding — we handle every step.</p>
-          </div>
-          <div>
-            <h4 class="font-bold text-lg">Navigation</h4>
-            <ul class="mt-3 space-y-2 text-sm text-white/70">
-              <li><a href="/" class="hover:text-white transition">Home</a></li>
-              <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
-              <li><a href="/Government-Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
-              <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
-              <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
-              <li><a href="/About-us/about.html" class="hover:text-white transition">About-us</a></li>
-              <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
-              <li><a href="/Contact-us/contact.html" class="hover:text-white transition">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-bold text-lg">Categories</h4>
-            <ul class="mt-3 space-y-2 text-sm text-white/70">
-              <li>AI Solutions</li>
-              <li>Certifications</li>
-              <li>Website Development</li>
-              <li>App Development</li>
-              <li>IOT Solution</li>
-              <li>Digital Marketing</li>
-            </ul>
-          </div>
-          <div>
-            <h4 class="font-bold text-lg">Contact</h4>
-            <p class="mt-3 text-sm">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p>
-            <p class="mt-2">📧 info@dreammore.in</p>
-            <p class="pt-4">📞 +91 98985 75417</p>
-          </div>
-        </div>
-        <div class="mb-10 pb-6 border-b border-white/20 space-y-4 pt-5">
-          <div class="text-sm text-white/80 leading-relaxed"><span class="font-bold text-[#F97316]">⚠️
-              DISCLAIMER:</span> DreamMore Services Private Limited is a consulting firm providing guidance, advisory,
-            and execution support services. All services are delivered on a best-effort basis. We do not provide any
-            financial, legal, or regulatory guarantees. All outcomes are subject to government procedures, approvals,
-            and external factors.</div>
-          <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg"><span
-              class="font-bold text-[#F97316]">📌 NOTE:</span> All payments for services must be made exclusively in the
-            name of <strong>Dream More</strong> through our official payment channels, including bank transfers (NEFT,
-            IMPS, RTGS) or authorized digital payment gateways. We do not accept payments to personal accounts or under
-            any other name. Clients are strongly advised to verify account details before making any transaction.
-            DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
-          </div>
-        </div>
-        <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
-          <div class="flex flex-wrap justify-center gap-4"><a href="/legal/refund-policy.html"
-              class="hover:text-[#F97316] transition">📄 Refund Policy</a><span class="text-white/30">|</span><a
-              href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a><span
-              class="text-white/30">|</span><a href="/legal/privacy-policy.html"
-              class="hover:text-[#F97316] transition">🔒 Privacy Policy</a></div>
-          <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
-        </div>
-      </div>
-    </footer>
-  </main>
-
-  <!-- WhatsApp floating button -->
-  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-    <div class="bg-white rounded-xl shadow-lg p-3 text-sm max-w-[200px] border">💬 Chat with us! Get free advice on
-      schemes & funding.</div>
-    <a href="https://wa.me/919898575417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business."
-      target="_blank"
-      class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl animate-pulse"><svg
-        class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="white">
-        <path
-          d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zM23 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" />
-      </svg></a>
-  </div>
-
-  <script src="https://unpkg.com/sweetalert2@11"></script>
-  <style>
-    /* Popup Styles - 60 Second Popup Form */
+    /* Popup Styles */
     .popup-overlay {
       position: fixed;
       top: 0;
@@ -913,15 +486,8 @@
     }
 
     @keyframes slideInUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
+      from { transform: translateY(50px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
     }
 
     .popup-image-section {
@@ -1121,117 +687,441 @@
       .popup-container {
         width: 95%;
       }
-
       .benefits-list {
         display: none;
       }
-
       .popup-image-section {
         padding: 1rem;
       }
-
       .popup-image-section h3 {
         font-size: 1rem;
       }
     }
-  </style>
 
+    /* AOS Override */
+    [data-aos] {
+      transition-timing-function: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ========== MOBILE MENU OVERLAY ========== -->
+  <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+
+  <!-- ========== MOBILE MENU ========== -->
+  <div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-close" id="mobileMenuClose">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </div>
+    <div class="mb-8 pt-8">
+      <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
+        <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain zoom-image" />
+        <span class="text-2xl font-black tracking-tight text-black">
+          Dream<span class="text-[#BE3A1B]">More</span>
+        </span>
+      </a>
+    </div>
+    <a href="/">Home</a>
+    <a href="/Service/service.html">Services</a>
+    <a href="/Government-Schemes/schemes.html">Government Schemes</a>
+    <a href="/Loan/loan.html">Loan</a>
+    <a href="/Blog/blog.html">Blog</a>
+    <a href="/About-us/about.html">About-us</a>
+    <a href="/Carrers/carrers.html">Careers</a>
+    <a href="/Contact-us/contact.html">Contact</a>
+    <a href="/Contact-us/contact.html" class="mobile-cta">Free Consultation →</a>
+  </div>
+
+  <!-- ==================== NAVBAR ==================== -->
+  <nav class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-[72px]">
+        <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
+          <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain zoom-image" />
+          <span class="text-2xl font-black tracking-tight text-black">
+            Dream<span class="text-[#BE3A1B]">More</span>
+          </span>
+        </a>
+        <div class="hidden md:flex items-center gap-1">
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Government-Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/About-us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Carrers/carrers.html">Careers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition ripple-effect" href="/Contact-us/contact.html">Contact</a>
+        </div>
+        <div class="hidden md:flex items-center gap-2">
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-black transition transform hover:scale-105" href="/Contact-us/contact.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+            </svg>
+            Free Consultation
+          </a>
+        </div>
+        <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="6" x2="20" y2="6"></line>
+            <line x1="4" y1="12" x2="20" y2="12"></line>
+            <line x1="4" y1="18" x2="20" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- Hero Section with AOS -->
+    <section class="relative overflow-hidden pt-32 pb-16 lg:py-24 bg-[#FAFAF7] mt-10" data-aos="fade-up" data-aos-duration="800">
+      <div class="absolute -top-[320px] -right-[200px] w-[800px] h-[800px] rounded-full bg-[#BE3A1B] opacity-10 blur-3xl animate-pulse"></div>
+      <div class="container-fix relative z-10">
+        <div class="grid lg:grid-cols-12 gap-10 items-start">
+          <div class="lg:col-span-7 space-y-6" data-aos="fade-right" data-aos-delay="100">
+            <div class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 bg-[#BE3A1B] hover:scale-105 transition-transform duration-300">
+              <span class="w-2 h-2 rounded-full bg-white animate-pulse"></span>
+              <span class="text-[11px] font-semibold tracking-widest uppercase text-white">7 Expert Services</span>
+            </div>
+            <h1 class="text-5xl lg:text-6xl font-black leading-[1.08] tracking-tight text-[#1a2e1e]">Our <span class="text-[#BE3A1B] glow-text">Services</span><br>Complete Business Support</h1>
+            <p class="text-gray-600 max-w-lg">Comprehensive end-to-end business support for every stage of your entrepreneurial journey — registration, funding, compliance, digital growth and more.</p>
+            <div class="flex flex-wrap gap-3">
+              <a href="/Contact-us/contact.html" class="btn-primary px-6 py-3 rounded-xl text-white font-bold flex items-center gap-2">Free Consultation →</a>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-4">
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">2000+</div><p class="text-xs">Businesses Served</p></div>
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">93%</div><p class="text-xs">Success Rate</p></div>
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">72h</div><p class="text-xs">Avg Turnaround</p></div>
+              <div class="bg-white p-3 rounded-xl shadow-sm stat-pulse cursor-pointer"><div class="text-2xl font-black text-[#BE3A1B]">7 Yrs</div><p class="text-xs">Experience</p></div>
+            </div>
+          </div>
+          <div class="lg:col-span-5 hidden lg:block space-y-3" data-aos="fade-left" data-aos-delay="200">
+            <div class="bg-white rounded-xl p-4 shadow-md flex items-center gap-4 service-card-hover"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B] flex items-center justify-center text-white font-bold spin-hover">01</div><div><p class="font-bold">Business Registration</p><p class="text-xs text-gray-600">Pvt Ltd, OPC, LLP, Partnership</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 service-card-hover"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">02</div><div><p class="font-bold">Certifications</p><p class="text-xs text-gray-600">ISO, FSSAI, GeM, Udyam, Startup India</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 service-card-hover"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">03</div><div><p class="font-bold">Grants & Funding</p><p class="text-xs text-gray-600">PMEGP, CGTMSE, Mudra, Stand-Up India</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 service-card-hover"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">04</div><div><p class="font-bold">Business Finance</p><p class="text-xs text-gray-600">Working capital, term loans, VC</p></div></div>
+            <div class="bg-white rounded-xl p-4 shadow-sm flex items-center gap-4 service-card-hover"><div class="w-10 h-10 rounded-xl bg-[#BE3A1B]/10 flex items-center justify-center text-[#BE3A1B] font-bold spin-hover">05</div><div><p class="font-bold">Digital Services</p><p class="text-xs text-gray-600">Website, SEO, CRM, branding</p></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== TECH & DIGITAL SOLUTIONS ========== -->
+    <section class="py-20 bg-white">
+      <div class="container-fix">
+        <div class="section-heading" data-aos="fade-up" data-aos-duration="600">
+          <span class="badge badge-light">Tech & Digital</span>
+          <h2>AI, IoT & <span class="text-[#BE3A1B] animated-underline">Digital Solutions</span></h2>
+          <p class="text-gray-500 mt-2 max-w-2xl">Future-ready digital transformation services to scale your business</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <!-- AI Solutions Card -->
+          <div class="animated-service-card" data-aos="zoom-in" data-aos-delay="0">
+            <div class="card-icon float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 2a10 10 0 0 1 10 10c0 5.5-4.5 10-10 10-2.5 0-4.8-1-6.5-2.5"/><path d="M12 8v4l2.5 2.5"/><path d="M8 12h.01"/><path d="M16 12h.01"/><path d="M6.5 17.5L8 16"/><path d="M18 6.5L16 8"/></svg></div>
+            <h3 class="text-xl font-bold text-gray-800">AI Solutions</h3>
+            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Custom AI models, intelligent automation, predictive analytics, and machine learning integration for smarter business decisions.</p>
+            <div class="service-tag">🤖 Intelligent Automation</div>
+            <a href="/Contact-us/contact.html" class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all hover:translate-x-1">Explore AI →</a>
+          </div>
+          <!-- IOT Solution Card -->
+          <div class="animated-service-card" data-aos="zoom-in" data-aos-delay="100">
+            <div class="card-icon float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="2.5"/><circle cx="8.5" cy="8.5" r="1.5"/><circle cx="15.5" cy="8.5" r="1.5"/><circle cx="8.5" cy="15.5" r="1.5"/><circle cx="15.5" cy="15.5" r="1.5"/><line x1="12" y1="12" x2="12" y2="18"/></svg></div>
+            <h3 class="text-xl font-bold text-gray-800">IoT Solutions</h3>
+            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Connected devices, sensor integration, real-time monitoring, and smart infrastructure for manufacturing and logistics.</p>
+            <div class="service-tag">📡 Smart Connectivity</div>
+            <a href="/Contact-us/contact.html" class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all hover:translate-x-1">Explore IoT →</a>
+          </div>
+          <!-- Website Development Card -->
+          <div class="animated-service-card" data-aos="zoom-in" data-aos-delay="200">
+            <div class="card-icon float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/><path d="M2 7h20"/><path d="M5 12h3"/></svg></div>
+            <h3 class="text-xl font-bold text-gray-800">Website Development</h3>
+            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Responsive websites, e-commerce platforms, CMS solutions, and high-performance web applications tailored for MSMEs.</p>
+            <div class="service-tag">💻 Modern Web Stack</div>
+            <a href="/Contact-us/contact.html" class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all hover:translate-x-1">Explore Web →</a>
+          </div>
+          <!-- App Development Card -->
+          <div class="animated-service-card" data-aos="zoom-in" data-aos-delay="300">
+            <div class="card-icon float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12.01" y2="18"/><line x1="9" y1="6" x2="15" y2="6"/><path d="M12 2v2"/></svg></div>
+            <h3 class="text-xl font-bold text-gray-800">App Development</h3>
+            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Native iOS/Android apps, cross-platform solutions, UI/UX design, and app store deployment for business growth.</p>
+            <div class="service-tag">📱 Mobile-First</div>
+            <a href="/Contact-us/contact.html" class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all hover:translate-x-1">Explore Apps →</a>
+          </div>
+          <!-- Digital Marketing Card -->
+          <div class="animated-service-card" data-aos="zoom-in" data-aos-delay="400">
+            <div class="card-icon float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12a9 9 0 0 1-9 9m9-9a9 9 0 0 0-9-9m9 9h-4m-7 9A9 9 0 0 1 3 12m9 9v-4M3 12a9 9 0 0 1 9-9m-9 9h4m7-9a9 9 0 0 1 9 9"/><circle cx="12" cy="12" r="3"/></svg></div>
+            <h3 class="text-xl font-bold text-gray-800">Digital Marketing</h3>
+            <p class="text-gray-500 text-sm mt-2 leading-relaxed">SEO, social media management, PPC campaigns, content marketing, and lead generation strategies for MSMEs.</p>
+            <div class="service-tag">📈 Growth Marketing</div>
+            <a href="/Contact-us/contact.html" class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all hover:translate-x-1">Explore Marketing →</a>
+          </div>
+          <!-- CRM & Automation Card -->
+          <div class="animated-service-card" data-aos="zoom-in" data-aos-delay="500">
+            <div class="card-icon float-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/><line x1="19" y1="12" x2="21" y2="12"/></svg></div>
+            <h3 class="text-xl font-bold text-gray-800">CRM & Automation</h3>
+            <p class="text-gray-500 text-sm mt-2 leading-relaxed">Customer relationship management, workflow automation, lead tracking, and sales pipeline optimization.</p>
+            <div class="service-tag">⚡ Workflow Automation</div>
+            <a href="/Contact-us/contact.html" class="inline-block mt-4 text-[#BE3A1B] font-semibold text-sm hover:gap-2 transition-all hover:translate-x-1">Explore CRM →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== COMPLETE SERVICE RANGE ========== -->
+    <section id="services-list" class="py-20 bg-white">
+      <div class="container-fix">
+        <div class="section-heading" data-aos="fade-up" data-aos-duration="600">
+          <span class="badge">Everything You Need</span>
+          <h2>Our Complete <span class="text-[#BE3A1B] animated-underline">Service Range</span></h2>
+        </div>
+
+        <!-- 1. Business Registration -->
+        <div class="service-row-card" data-aos="fade-right" data-aos-delay="0">
+          <div class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47]">
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
+              <div class="text-6xl font-black opacity-30 float-icon">01</div>
+              <h3 class="text-2xl font-bold mt-2">Business Registration</h3>
+              <p class="text-sm mt-2 opacity-90">Private Limited, OPC, LLP, Partnership, Section 8, NGO</p>
+              <a href="/Service/registration.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+            <div class="md:col-span-3 p-6">
+              <p class="text-gray-800 mb-4">We handle complete incorporation under MCA, GST, and MSME simultaneously.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Private Limited Company</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">One Person Company</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">LLP Registration</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Partnership Firm</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Section 8 Company / NGO</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2. Certifications -->
+        <div class="service-row-card" data-aos="fade-left" data-aos-delay="100">
+          <div class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-r-8 border-[#A35E47]">
+            <div class="md:col-span-3 p-6 order-2 md:order-1">
+              <p class="text-gray-800 mb-4">Get certified with ISO, FSSAI, IEC, GeM, Startup India, Udyam, NSIC.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">ISO 9001 / 14001</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">FSSAI License</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">IEC (Import Export Code)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">GeM Registration</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Udyam / MSME Registration</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Startup India Recognition</span></div>
+              </div>
+            </div>
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white order-1 md:order-2">
+              <div class="text-6xl font-black opacity-30 float-icon">02</div>
+              <h3 class="text-2xl font-bold mt-2">Certifications</h3>
+              <p class="text-sm opacity-90">Boost credibility & unlock schemes</p>
+              <a href="/Service/certification.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Grants & Funding -->
+        <div class="service-row-card" data-aos="fade-right" data-aos-delay="200">
+          <div class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47]">
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
+              <div class="text-6xl font-black opacity-30 float-icon">03</div>
+              <h3 class="text-2xl font-bold mt-2">Grants & Funding</h3>
+              <p class="text-sm opacity-90">PMEGP, CGTMSE, Mudra, Stand-Up India</p>
+              <a href="/Service/funding.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+            <div class="md:col-span-3 p-6">
+              <p class="text-gray-800 mb-4">Collateral-free government schemes and credit guarantee programs for MSMEs.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">PMEGP (up to ₹50L, 35% subsidy)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">CGTMSE (collateral-free up to ₹5Cr)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Mudra Loan (Shishu/Kishor/Tarun)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Stand-Up India (SC/ST & Women)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Startup India Seed Fund (₹50L)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">PMFME (35% subsidy food processing)</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Business Finance -->
+        <div class="service-row-card" data-aos="fade-left" data-aos-delay="300">
+          <div class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-r-8 border-[#A35E47]">
+            <div class="md:col-span-3 p-6 order-2 md:order-1">
+              <p class="text-gray-800 mb-4">Working capital, term loans, venture capital connections and NBFC tie-ups.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Working Capital Loans</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Term Loans for expansion</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Venture Capital / Angel Funding</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Invoice Financing</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">NBFC Tie-ups for faster approval</span></div>
+              </div>
+            </div>
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white order-1 md:order-2">
+              <div class="text-6xl font-black opacity-30 float-icon">04</div>
+              <h3 class="text-2xl font-bold mt-2">Business Finance</h3>
+              <p class="text-sm opacity-90">₹1L – ₹5Cr+ funding</p>
+              <a href="/Service/buisnessfinance.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Digital Services -->
+        <div class="service-row-card" data-aos="fade-right" data-aos-delay="400">
+          <div class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47]">
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
+              <div class="text-6xl font-black opacity-30 float-icon">05</div>
+              <h3 class="text-2xl font-bold mt-2">Digital Services</h3>
+              <p class="text-sm opacity-90">Website, SEO, Social Media, CRM</p>
+              <a href="/Service/digital.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+            <div class="md:col-span-3 p-6">
+              <p class="text-gray-800 mb-4">Accelerate your online growth with modern digital solutions tailored for MSMEs.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Website Development</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">SEO & Digital Marketing</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">CRM Implementation</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Social Media Management</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Logo & Brand Identity</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 6. Compliance -->
+        <div class="service-row-card" data-aos="fade-left" data-aos-delay="500">
+          <div class="grid md:grid-cols-5 gap-6 mb-8 bg-white rounded-2xl overflow-hidden shadow-md border-r-8 border-[#A35E47]">
+            <div class="md:col-span-3 p-6 order-2 md:order-1">
+              <p class="text-gray-800 mb-4">Stay compliant with ROC filings, GST returns, income tax, and annual compliance.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">ROC Annual Filings</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">GST Registration & Monthly Returns</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Income Tax Returns (ITR)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">TDS Returns & Filings</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Audit Support & Representation</span></div>
+              </div>
+            </div>
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white order-1 md:order-2">
+              <div class="text-6xl font-black opacity-30 float-icon">06</div>
+              <h3 class="text-2xl font-bold mt-2">Compliance</h3>
+              <p class="text-sm opacity-90">No penalty, No last-minute rush</p>
+              <a href="/Service/compliance.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7. Legal & Protection -->
+        <div class="service-row-card" data-aos="fade-right" data-aos-delay="600">
+          <div class="grid md:grid-cols-5 gap-6 bg-white rounded-2xl overflow-hidden shadow-md border-l-8 border-[#A35E47]">
+            <div class="md:col-span-2 bg-gradient-to-bl from-[#000000] to-[#BE3A1B] p-8 text-white">
+              <div class="text-6xl font-black opacity-30 float-icon">07</div>
+              <h3 class="text-2xl font-bold mt-2">Legal & Protection</h3>
+              <p class="text-sm opacity-90">Trademark, Patent, Copyright</p>
+              <a href="/Service/legal.html" class="inline-block mt-5 bg-white text-[#BE3A1B] px-5 py-2 rounded-full text-sm font-bold hover:scale-105 transition-transform hover:bg-black hover:text-white">Full Details →</a>
+            </div>
+            <div class="md:col-span-3 p-6">
+              <p class="text-gray-800 mb-4">Protect your brand and business with trademark, patent, copyright, and legal agreements.</p>
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Trademark Registration & Opposition</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Patent Filing (Provisional/Complete)</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Copyright Registration</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Shram Suvidha / Labour Law Compliance</span></div>
+                <div class="flex gap-2 hover:translate-x-1 transition"><span class="text-[#BE3A1B]">✓</span><span class="text-sm">Founder / Vendor Agreements</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ========== FREE ASSESSMENT CTA ========== -->
+    <section class="relative overflow-hidden py-20 bg-[#f8faf9]">
+      <div class="container-fix text-center">
+        <div class="section-heading" data-aos="zoom-in" data-aos-duration="600">
+          <span class="badge">⚡ 100% Free — No Obligations</span>
+          <h2>Not Sure Which Service You Need?<br><span class="text-[#BE3A1B] animated-underline">Book a Free Assessment</span></h2>
+        </div>
+        <p class="text-gray-600 max-w-xl mx-auto mt-4" data-aos="fade-up">Our experts will map out exact services, schemes, and subsidies for your business — in a free 30-min call.</p>
+        <div class="flex flex-wrap justify-center gap-4 mt-8" data-aos="fade-up" data-aos-delay="100">
+          <a href="/Contact-us/contact.html" class="btn-primary px-8 py-3 rounded-xl text-white font-bold">Book Free Consultation →</a>
+          <a href="tel:+919898575417" class="px-6 py-3 rounded-xl border border-[#A35E47] text-[#BE3A1B] font-semibold hover:bg-[#BE3A1B] hover:text-white transition hover:scale-105">📞 Call +91 98985 75417</a>
+        </div>
+        <div class="mt-6 text-sm text-gray-500" data-aos="fade-up" data-aos-delay="200">⭐ 4.9/5 rating from 120+ happy clients | Avg response &lt;2 hours</div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8">
+    <div class="container-fix">
+      <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
+        <div data-aos="fade-up"><span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-white">More</span></span><p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to funding — we handle every step.</p></div>
+        <div data-aos="fade-up" data-aos-delay="100"><h4 class="font-bold text-lg">Navigation</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li><a href="/" class="hover:text-white transition hover:translate-x-1 inline-block">Home</a></li><li><a href="/Service/service.html" class="hover:text-white transition hover:translate-x-1 inline-block">Services</a></li><li><a href="/Government-Schemes/schemes.html" class="hover:text-white transition hover:translate-x-1 inline-block">Schemes</a></li><li><a href="/Loan/loan.html" class="hover:text-white transition hover:translate-x-1 inline-block">Loan</a></li><li><a href="/Blog/blog.html" class="hover:text-white transition hover:translate-x-1 inline-block">Blog</a></li><li><a href="/About-us/about.html" class="hover:text-white transition hover:translate-x-1 inline-block">About-us</a></li><li><a href="/Carrers/carrers.html" class="hover:text-white transition hover:translate-x-1 inline-block">Career</a></li><li><a href="/Contact-us/contact.html" class="hover:text-white transition hover:translate-x-1 inline-block">Contact</a></li></ul></div>
+        <div data-aos="fade-up" data-aos-delay="200"><h4 class="font-bold text-lg">Categories</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li class="hover:translate-x-1 transition">AI Solutions</li><li class="hover:translate-x-1 transition">Certifications</li><li class="hover:translate-x-1 transition">Website Development</li><li class="hover:translate-x-1 transition">App Development</li><li class="hover:translate-x-1 transition">IOT Solution</li><li class="hover:translate-x-1 transition">Digital Marketing</li></ul></div>
+        <div data-aos="fade-up" data-aos-delay="300"><h4 class="font-bold text-lg">Contact</h4><p class="mt-3 text-sm">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p><p class="mt-2">📧 info@dreammore.in</p><p class="pt-4">📞 +91 98985 75417</p></div>
+      </div>
+      <div class="mb-10 pb-6 border-b border-white/20 space-y-4 pt-5">
+        <div class="text-sm text-white/80 leading-relaxed"><span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span> DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support services. All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory guarantees. All outcomes are subject to government procedures, approvals, and external factors.</div>
+        <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg"><span class="font-bold text-[#F97316]">📌 NOTE:</span> All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our official payment channels, including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept payments to personal accounts or under any other name. Clients are strongly advised to verify account details before making any transaction. DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.</div>
+      </div>
+      <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
+        <div class="flex flex-wrap justify-center gap-4"><a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a><span class="text-white/30">|</span><a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a><span class="text-white/30">|</span><a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a></div>
+        <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- WhatsApp floating button -->
+  <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
+    <div class="bg-white rounded-xl shadow-lg p-3 text-sm max-w-[200px] border animate-pulse">💬 Chat with us! Get free advice on schemes & funding.</div>
+    <a href="https://wa.me/919898575417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business." target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl floating-wa"><svg class="w-8 h-8 text-white" viewBox="0 0 32 32" fill="white"><path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zM23 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z"/></svg></a>
+  </div>
+
+  <!-- Popup -->
   <div id="contactPopup" class="popup-overlay">
     <div class="popup-container">
       <div class="close-popup" id="closePopupBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
       </div>
       <div class="popup-image-section">
-        <div class="image-wrapper">
-          <img src="/LOGO.png" alt="DreamMore Logo"
-            style="width:120px; margin:0 auto; display:block; border-radius:20px; background:white; padding:10px;">
-          <h3>Expert Support</h3>
-          <p>Get personalized assistance for MSME & Startup</p>
-          <ul class="benefits-list">
-            <li>Free Business Consultation</li>
-            <li>Government Scheme Guidance</li>
-            <li>Loan & Funding Assistance</li>
-            <li>AI & Digital Growth Solutions</li>
-          </ul>
-        </div>
+        <div class="image-wrapper"><img src="/LOGO.png" alt="DreamMore Logo" style="width:120px; margin:0 auto; display:block; border-radius:20px; background:white; padding:10px;"><h3>Expert Support</h3><p>Get personalized assistance for MSME & Startup</p><ul class="benefits-list"><li>Free Business Consultation</li><li>Government Scheme Guidance</li><li>Loan & Funding Assistance</li><li>AI & Digital Growth Solutions</li></ul></div>
       </div>
       <div class="popup-form-section">
-        <div id="popupFormContent">
-          <div class="form-title">
-            <h2>Let's Connect!</h2>
-            <p>Fill the form below - response within 2 hours ⏱️</p>
-          </div>
-          <form id="popupContactForm">
-            <div class="form-group">
-              <label>Full Name <span class="required">*</span></label>
-              <input type="text" id="popupFullName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label>Email Address <span class="required">*</span></label>
-              <input type="email" id="popupEmail" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-              <label>Phone Number <span class="required">*</span></label>
-              <input type="tel" id="popupPhone" placeholder="+91 XXXXX XXXXX" required>
-            </div>
-            <div class="form-group">
-              <label>Service Interested In</label>
-              <select id="popupService">
-                <option value="">Select a service</option>
-                <option value="Company Registration">Company Registration (MSME/Udyam)</option>
-                <option value="Funding Support">Funding Support & Investment</option>
-                <option value="Certifications">Certifications (ISO, FSSAI, etc.)</option>
-                <option value="AI Solutions">AI & Automation Solutions</option>
-                <option value="Digital Marketing">Digital Marketing & SEO</option>
-                <option value="Website Development">Website & App Development</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Loan Type (If needed)</label>
-              <select id="popupLoan">
-                <option value="">Select loan</option>
-                <option value="Business Loan">Business Loan</option>
-                <option value="Salaried Personal Loan">Salaried Personal Loan</option>
-                <option value="Home Loan">Home Loan</option>
-                <option value="Education Loan">Education Loan</option>
-                <option value="Machinery Loan">Machinery Loan</option>
-                <option value="Loan Against Property">Loan Against Property</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Message / Query</label>
-              <textarea rows="2" id="popupMessage" placeholder="Tell us about your business requirements..."></textarea>
-            </div>
-            <button type="submit" id="popupSubmitBtn" class="submit-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg>
-              Submit Request
-            </button>
-          </form>
-          <div id="popupTimerText" class="timer-text"></div>
-        </div>
+        <div id="popupFormContent"><div class="form-title"><h2>Let's Connect!</h2><p>Fill the form below - response within 2 hours ⏱️</p></div>
+        <form id="popupContactForm">
+          <div class="form-group"><label>Full Name <span class="required">*</span></label><input type="text" id="popupFullName" placeholder="Enter your full name" required></div>
+          <div class="form-group"><label>Email Address <span class="required">*</span></label><input type="email" id="popupEmail" placeholder="you@example.com" required></div>
+          <div class="form-group"><label>Phone Number <span class="required">*</span></label><input type="tel" id="popupPhone" placeholder="+91 XXXXX XXXXX" required></div>
+          <div class="form-group"><label>Service Interested In</label><select id="popupService"><option value="">Select a service</option><option value="Company Registration">Company Registration (MSME/Udyam)</option><option value="Funding Support">Funding Support & Investment</option><option value="Certifications">Certifications (ISO, FSSAI, etc.)</option><option value="AI Solutions">AI & Automation Solutions</option><option value="Digital Marketing">Digital Marketing & SEO</option><option value="Website Development">Website & App Development</option></select></div>
+          <div class="form-group"><label>Loan Type (If needed)</label><select id="popupLoan"><option value="">Select loan</option><option value="Business Loan">Business Loan</option><option value="Salaried Personal Loan">Salaried Personal Loan</option><option value="Home Loan">Home Loan</option><option value="Education Loan">Education Loan</option><option value="Machinery Loan">Machinery Loan</option><option value="Loan Against Property">Loan Against Property</option></select></div>
+          <div class="form-group"><label>Message / Query</label><textarea rows="2" id="popupMessage" placeholder="Tell us about your business requirements..."></textarea></div>
+          <button type="submit" id="popupSubmitBtn" class="submit-btn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request</button>
+        </form>
+        <div id="popupTimerText" class="timer-text"></div>
       </div>
     </div>
   </div>
 
-
+  <!-- Scripts -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script src="https://unpkg.com/sweetalert2@11"></script>
   <script>
-    // ==========================================
-    // GOOGLE SHEETS SCRIPT URL
-    // ==========================================
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWQRCInqGKqTuH9dC02D9nUY_koLo_ynrQLcR_c-GG9GoxPSsUkHpVPtRKl1f0ykNn/exec';
+    // Initialize AOS
+    AOS.init({
+      duration: 800,
+      once: false,
+      mirror: false,
+      offset: 100,
+      easing: 'ease-in-out-cubic'
+    });
 
-    // ==========================================
-    // 60 SECOND POPUP LOGIC
-    // ==========================================
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWQRCInqGKqTuH9dC02D9nUY_koLo_ynrQLcR_c-GG9GoxPSsUkHpVPtRKl1f0ykNn/exec';
     let isPopupVisible = false;
     let popupClosedManually = false;
     let countdownInterval = null;
-
     const popup = document.getElementById('contactPopup');
     const closePopupBtn = document.getElementById('closePopupBtn');
     const popupTimerText = document.getElementById('popupTimerText');
@@ -1242,25 +1132,17 @@
       countdownInterval = setInterval(() => {
         secondsLeft--;
         if (isPopupVisible && popupTimerText) {
-          if (secondsLeft > 0) {
-            popupTimerText.innerHTML = `⏳ This popup will close in ${secondsLeft} seconds`;
-          } else {
-            popupTimerText.innerHTML = `✨ Don't miss out! Submit now ✨`;
-          }
+          if (secondsLeft > 0) popupTimerText.innerHTML = `⏳ This popup will close in ${secondsLeft} seconds`;
+          else popupTimerText.innerHTML = `✨ Don't miss out! Submit now ✨`;
         }
-        if (secondsLeft <= 0) {
-          clearInterval(countdownInterval);
-          countdownInterval = null;
-          if (isPopupVisible) hidePopup(true);
-        }
+        if (secondsLeft <= 0) { clearInterval(countdownInterval); countdownInterval = null; if (isPopupVisible) hidePopup(true); }
       }, 1000);
     }
 
     function showPopup(showTimer = false, secondsLeft = 60) {
       if (!isPopupVisible && !popupClosedManually) {
         popup.classList.add('active');
-        const popupFormContent = document.getElementById('popupFormContent');
-        if (popupFormContent) popupFormContent.style.display = 'block';
+        document.getElementById('popupFormContent').style.display = 'block';
         isPopupVisible = true;
         document.body.style.overflow = 'hidden';
         if (showTimer && secondsLeft > 0) startCountdown(secondsLeft);
@@ -1275,159 +1157,50 @@
         document.body.style.overflow = '';
         if (countdownInterval) clearInterval(countdownInterval);
         countdownInterval = null;
-        if (manualClose) {
-          popupClosedManually = true;
-          setTimeout(() => { popupClosedManually = false; }, 30000);
-        }
+        if (manualClose) { popupClosedManually = true; setTimeout(() => { popupClosedManually = false; }, 30000); }
         if (popupTimerText) popupTimerText.innerHTML = '';
       }
     }
 
     if (closePopupBtn) closePopupBtn.addEventListener('click', () => hidePopup(true));
+    setTimeout(() => { if (!isPopupVisible && !popupClosedManually) showPopup(true, 60); }, 30000);
 
-    // Auto popup after 60 seconds (1 minute)
-    setTimeout(() => {
-      if (!isPopupVisible && !popupClosedManually) showPopup(true, 60);
-    }, 30000);
-
-    // ==========================================
-    // POPUP FORM SUBMISSION - ONLY SWEETALERT
-    // ==========================================
     const popupForm = document.getElementById('popupContactForm');
     const popupSubmitBtn = document.getElementById('popupSubmitBtn');
 
     async function submitPopupForm(e) {
       e.preventDefault();
-
       const fullName = document.getElementById('popupFullName').value.trim();
       const email = document.getElementById('popupEmail').value.trim();
       const phone = document.getElementById('popupPhone').value.trim();
-
-      if (!fullName || !email || !phone) {
-        Swal.fire({ title: "Missing Fields", text: "Please fill Full Name, Email and Phone Number (required fields).", icon: "warning", confirmButtonColor: "#BE3A1B" });
-        return;
-      }
-
+      if (!fullName || !email || !phone) { Swal.fire({ title: "Missing Fields", text: "Please fill all required fields.", icon: "warning", confirmButtonColor: "#BE3A1B" }); return; }
       const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        Swal.fire({ title: "Invalid Email", text: "Please enter a valid email address.", icon: "error", confirmButtonColor: "#BE3A1B" });
-        return;
-      }
-
+      if (!emailPattern.test(email)) { Swal.fire({ title: "Invalid Email", text: "Please enter a valid email address.", icon: "error", confirmButtonColor: "#BE3A1B" }); return; }
       popupSubmitBtn.disabled = true;
       popupSubmitBtn.innerHTML = '<span>⏳ Submitting...</span>';
-
-      const formData = {
-        fullName: fullName,
-        email: email,
-        phone: phone,
-        service: document.getElementById('popupService').value || "Not selected",
-        loan: document.getElementById('popupLoan').value || "Not selected",
-        message: document.getElementById('popupMessage').value.trim() || "No message",
-        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-        source: "60sec_popup_form"
-      };
-
+      const formData = { fullName, email, phone, service: document.getElementById('popupService').value || "Not selected", loan: document.getElementById('popupLoan').value || "Not selected", message: document.getElementById('popupMessage').value.trim() || "No message", timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }), source: "60sec_popup_form" };
       try {
         await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
-
-        Swal.fire({
-          title: "✅ Request Sent!",
-          text: "Your details have been submitted successfully. Our expert will contact you within 2 hours.",
-          icon: "success",
-          confirmButtonColor: "#BE3A1B",
-          confirmButtonText: "OK"
-        });
-
+        Swal.fire({ title: "✅ Request Sent!", text: "Your details have been submitted successfully. Our expert will contact you within 2 hours.", icon: "success", confirmButtonColor: "#BE3A1B", confirmButtonText: "OK" });
         popupForm.reset();
         hidePopup(true);
-
-      } catch (error) {
-        console.error("Submission Error:", error);
-        Swal.fire({ title: "Network Error", text: "Unable to submit. Please check your internet connection.", icon: "error", confirmButtonColor: "#BE3A1B" });
-      } finally {
-        popupSubmitBtn.disabled = false;
-        popupSubmitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request';
-      }
+      } catch (error) { Swal.fire({ title: "Network Error", text: "Unable to submit. Please check your internet connection.", icon: "error", confirmButtonColor: "#BE3A1B" }); }
+      finally { popupSubmitBtn.disabled = false; popupSubmitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request'; }
     }
-
     if (popupForm) popupForm.addEventListener('submit', submitPopupForm);
-
-    // Close popup when clicking outside
-    if (popup) {
-      popup.addEventListener('click', (e) => { if (e.target === popup) hidePopup(true); });
-    }
-
-    // ==========================================
-    // MOBILE MENU & SCROLL REVEAL & FAQ TOGGLE
-    // ==========================================
-
-    // FAQ toggle
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        const content = btn.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    });
+    if (popup) popup.addEventListener('click', (e) => { if (e.target === popup) hidePopup(true); });
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-    function openMobileMenu() {
-      if (mobileMenu) mobileMenu.classList.add('open');
-      if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileMenu() {
-      if (mobileMenu) mobileMenu.classList.remove('open');
-      if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', openMobileMenu);
-    }
-    if (mobileMenuClose) {
-      mobileMenuClose.addEventListener('click', closeMobileMenu);
-    }
-    if (mobileMenuOverlay) {
-      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-    }
-
-    // Close mobile menu on window resize
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= 768 && mobileMenu && mobileMenu.classList.contains('open')) {
-        closeMobileMenu();
-      }
-    });
-
-    // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-    function checkReveal() {
-      const windowHeight = window.innerHeight;
-      const revealThreshold = 100;
-      revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - revealThreshold) {
-          element.classList.add('revealed');
-        }
-      });
-    }
-
-    // Initial check on load
-    window.addEventListener('load', checkReveal);
-    // Check on scroll
-    window.addEventListener('scroll', checkReveal);
+    function openMobileMenu() { if (mobileMenu) mobileMenu.classList.add('open'); if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { if (mobileMenu) mobileMenu.classList.remove('open'); if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open'); document.body.style.overflow = ''; }
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    window.addEventListener('resize', function () { if (window.innerWidth >= 768 && mobileMenu && mobileMenu.classList.contains('open')) closeMobileMenu(); });
   </script>
 </body>
 
