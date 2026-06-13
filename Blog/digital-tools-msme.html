@@ -34,119 +34,86 @@
       font-family: 'Poppins', sans-serif;
     }
 
-    /* Full Animations */
+    /* Advanced Animations */
     @keyframes fadeUp {
-      0% {
-        opacity: 0;
-        transform: translateY(30px);
-      }
+      0% { opacity: 0; transform: translateY(35px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
 
-      100% {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    @keyframes fadeDown {
+      0% { opacity: 0; transform: translateY(-35px); }
+      100% { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes fadeLeft {
-      0% {
-        opacity: 0;
-        transform: translateX(-40px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      0% { opacity: 0; transform: translateX(-40px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
 
     @keyframes fadeRight {
-      0% {
-        opacity: 0;
-        transform: translateX(40px);
-      }
-
-      100% {
-        opacity: 1;
-        transform: translateX(0);
-      }
+      0% { opacity: 0; transform: translateX(40px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
 
     @keyframes scaleIn {
-      0% {
-        opacity: 0;
-        transform: scale(0.92);
-      }
-
-      100% {
-        opacity: 1;
-        transform: scale(1);
-      }
+      0% { opacity: 0; transform: scale(0.92); }
+      100% { opacity: 1; transform: scale(1); }
     }
 
     @keyframes zoomInOut {
-      0% {
-        transform: scale(0.95);
-        opacity: 0;
-      }
-
-      50% {
-        transform: scale(1.02);
-        opacity: 0.5;
-      }
-
-      100% {
-        transform: scale(1);
-        opacity: 1;
-      }
+      0% { transform: scale(0.95); opacity: 0; }
+      50% { transform: scale(1.02); opacity: 0.5; }
+      100% { transform: scale(1); opacity: 1; }
     }
 
-    .animate-fadeUp {
-      animation: fadeUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-12px); }
+      100% { transform: translateY(0px); }
     }
 
-    .animate-fadeLeft {
-      animation: fadeLeft 0.5s ease forwards;
+    @keyframes pulseGlow {
+      0% { box-shadow: 0 0 0 0 rgba(190, 58, 27, 0.4); }
+      70% { box-shadow: 0 0 0 14px rgba(190, 58, 27, 0); }
+      100% { box-shadow: 0 0 0 0 rgba(190, 58, 27, 0); }
     }
 
-    .animate-fadeRight {
-      animation: fadeRight 0.5s ease forwards;
+    @keyframes shimmer {
+      0% { background-position: -200% 0; }
+      100% { background-position: 200% 0; }
     }
 
-    .animate-scale {
-      animation: scaleIn 0.45s ease forwards;
+    @keyframes rotateIn {
+      0% { opacity: 0; transform: rotate(-5deg) scale(0.95); }
+      100% { opacity: 1; transform: rotate(0deg) scale(1); }
     }
 
-    .animate-zoom {
-      animation: zoomInOut 0.7s ease forwards;
+    @keyframes slideInStagger {
+      0% { opacity: 0; transform: translateX(-30px); }
+      100% { opacity: 1; transform: translateX(0); }
     }
 
-    .delay-100 {
-      animation-delay: 0.1s;
-    }
+    .animate-fadeUp { animation: fadeUp 0.7s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+    .animate-fadeDown { animation: fadeDown 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards; }
+    .animate-fadeLeft { animation: fadeLeft 0.6s ease forwards; }
+    .animate-fadeRight { animation: fadeRight 0.6s ease forwards; }
+    .animate-scale { animation: scaleIn 0.5s ease forwards; }
+    .animate-zoom { animation: zoomInOut 0.7s ease forwards; }
+    .animate-rotate { animation: rotateIn 0.5s ease forwards; }
+    .float-animation { animation: float 5s ease-in-out infinite; }
+    .btn-pulse { animation: pulseGlow 2s infinite; }
+    .shimmer-text { background: linear-gradient(90deg, #1a2e1e 0%, #BE3A1B 50%, #1a2e1e 100%); background-size: 200% auto; -webkit-background-clip: text; background-clip: text; color: transparent; animation: shimmer 3s linear infinite; }
 
-    .delay-200 {
-      animation-delay: 0.2s;
-    }
-
-    .delay-300 {
-      animation-delay: 0.3s;
-    }
-
-    .delay-400 {
-      animation-delay: 0.4s;
-    }
-
-    .delay-500 {
-      animation-delay: 0.5s;
-    }
-
-    .delay-600 {
-      animation-delay: 0.6s;
-    }
-
-    .delay-700 {
-      animation-delay: 0.7s;
-    }
+    .delay-100 { animation-delay: 0.1s; }
+    .delay-200 { animation-delay: 0.2s; }
+    .delay-300 { animation-delay: 0.3s; }
+    .delay-400 { animation-delay: 0.4s; }
+    .delay-500 { animation-delay: 0.5s; }
+    .delay-600 { animation-delay: 0.6s; }
+    .delay-700 { animation-delay: 0.7s; }
+    .delay-800 { animation-delay: 0.8s; }
+    .delay-900 { animation-delay: 0.9s; }
+    .delay-1000 { animation-delay: 1s; }
 
     html {
       scroll-behavior: smooth;
@@ -168,6 +135,38 @@
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
 
+    /* Hover Effects */
+    .hover-zoom {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hover-zoom:hover {
+      transform: scale(1.03);
+      box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+    }
+
+    .icon-hover {
+      transition: all 0.3s ease;
+    }
+    .icon-hover:hover {
+      transform: rotate(12deg) scale(1.15);
+      background: #BE3A1B;
+    }
+
+    .blog-card {
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .blog-card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 25px 35px -12px rgba(190, 58, 27, 0.25);
+      border-color: #BE3A1B;
+    }
+
+    .list-item-stagger {
+      opacity: 0;
+      animation: slideInStagger 0.5s ease forwards;
+    }
+
+    /* Mobile Menu Styles */
     .mobile-menu {
       position: fixed;
       top: 0;
@@ -184,11 +183,7 @@
       flex-direction: column;
       overflow-y: auto;
     }
-
-    .mobile-menu.active {
-      right: 0;
-    }
-
+    .mobile-menu.active { right: 0; }
     .mobile-menu-overlay {
       position: fixed;
       top: 0;
@@ -201,12 +196,7 @@
       visibility: hidden;
       transition: all 0.3s ease;
     }
-
-    .mobile-menu-overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
+    .mobile-menu-overlay.active { opacity: 1; visibility: visible; }
     .mobile-menu-close {
       position: absolute;
       top: 20px;
@@ -219,24 +209,22 @@
       justify-content: center;
       border-radius: 50%;
       background: #f5f5f5;
+      transition: all 0.2s ease;
     }
-
+    .mobile-menu-close:hover { background: #BE3A1B; transform: rotate(90deg); }
+    .mobile-menu-close:hover svg { stroke: white; }
     .mobile-menu a {
       padding: 12px 0;
       text-decoration: none;
       color: #1a2e1e;
       font-weight: 500;
       border-bottom: 1px solid #eef2f0;
-      transition: color 0.2s;
+      transition: color 0.2s, transform 0.2s;
     }
-
-    .mobile-menu a:hover {
-      color: #1C9C6E;
-    }
-
+    .mobile-menu a:hover { color: #BE3A1B; transform: translateX(6px); }
     .mobile-cta {
       margin-top: 20px;
-      background: #1C9C6E;
+      background: #BE3A1B;
       color: white !important;
       text-align: center;
       padding: 12px !important;
@@ -244,16 +232,48 @@
       font-weight: bold !important;
       border: none !important;
     }
+    .mobile-cta:hover { background: #000; transform: translateX(0); }
 
-    .mobile-cta:hover {
-      background: #15855f;
+    /* Scroll Reveal Base */
+    .scroll-reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
     }
+    .scroll-reveal.revealed { opacity: 1; transform: translateY(0); }
+
+    .scroll-reveal-left {
+      opacity: 0;
+      transform: translateX(-45px);
+      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .scroll-reveal-left.revealed { opacity: 1; transform: translateX(0); }
+
+    .scroll-reveal-right {
+      opacity: 0;
+      transform: translateX(45px);
+      transition: all 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .scroll-reveal-right.revealed { opacity: 1; transform: translateX(0); }
+
+    .scroll-reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+    }
+    .scroll-reveal-scale.revealed { opacity: 1; transform: scale(1); }
 
     .line-clamp-2 {
       display: -webkit-box;
       -webkit-box-orient: vertical;
       overflow: hidden;
     }
+
+    footer a {
+      transition: color 0.2s, transform 0.2s;
+      display: inline-block;
+    }
+    footer a:hover { color: #BE3A1B; transform: translateX(5px); }
   </style>
 </head>
 
@@ -265,8 +285,7 @@
   <!-- Mobile Menu -->
   <div class="mobile-menu" id="mobileMenu">
     <div class="mobile-menu-close" id="mobileMenuClose">
-      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-        stroke-linecap="round" stroke-linejoin="round">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
         <line x1="18" y1="6" x2="6" y2="18"></line>
         <line x1="6" y1="6" x2="18" y2="18"></line>
       </svg>
@@ -274,9 +293,7 @@
     <div class="mb-8 pt-8">
       <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
         <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
-        <span class="text-2xl font-black tracking-tight text-black">
-          Dream<span class="text-[#BE3A1B]">More</span>
-        </span>
+        <span class="text-2xl font-black tracking-tight text-black">Dream<span class="text-[#BE3A1B]">More</span></span>
       </a>
     </div>
     <a href="/">Home</a>
@@ -291,68 +308,39 @@
   </div>
 
   <!-- NAVBAR -->
-  <nav
+  <nav id="navbar"
     class="fixed z-50 top-3 left-3 right-3 md:left-6 md:right-6 rounded-2xl md:rounded-full glass-nav transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-[72px]">
-
-        <!-- LOGO -->
         <a class="flex items-center gap-2.5 flex-shrink-0" href="/">
           <img src="/LOGO.png" alt="Dream More Logo" class="h-14 w-auto object-contain" />
-          <span class="text-2xl font-black tracking-tight text-black">
-            Dream<span class="text-[#BE3A1B]">More</span>
-          </span>
+          <span class="text-2xl font-black tracking-tight text-black">Dream<span class="text-[#BE3A1B]">More</span></span>
         </a>
-        <!-- Desktop Menu -->
         <div class="hidden md:flex items-center gap-1">
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/">Home</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Service/service.html">Services</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Government-Schemes/schemes.html">Government Schemes</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Loan/loan.html">Loan</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Blog/blog.html">Blog</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/About-us/about.html">About Us</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Carrers/carrers.html">Careers</a>
-
-          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition"
-            href="/Contact-us/contact.html">Contact</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/">Home</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Service/service.html">Services</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Government-Schemes/schemes.html">Government Schemes</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Loan/loan.html">Loan</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Blog/blog.html">Blog</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/About-us/about.html">About Us</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Carrers/carrers.html">Careers</a>
+          <a class="px-3 py-2 rounded-full text-sm font-medium text-gray-800 hover:bg-white/60 transition" href="/Contact-us/contact.html">Contact</a>
         </div>
-
-        <!-- Button -->
         <div class="hidden md:flex items-center gap-2">
-          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[black] transition"
-            href="/Contact-us/contact.html">
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
-              stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path
-                d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
+          <a class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-sm font-semibold bg-[#BE3A1B] text-white hover:bg-[black] transition btn-pulse" href="/Contact-us/contact.html">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
+              <path d="M13.832 16.568a1 1 0 0 0 1.213-.303l.355-.465A2 2 0 0 1 17 15h3a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2A18 18 0 0 1 2 4a2 2 0 0 1 2-2h3a2 2 0 0 1 2 2v3a2 2 0 0 1-.8 1.6l-.468.351a1 1 0 0 0-.292 1.233 14 14 0 0 0 6.392 6.384" />
             </svg>
             Free Consultation
           </a>
         </div>
-
-        <!-- Mobile Menu Button -->
         <button class="md:hidden p-2 rounded-full bg-white/50" id="mobileMenuBtn" aria-label="menu">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            stroke-linecap="round" stroke-linejoin="round">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
             <line x1="4" y1="6" x2="20" y2="6"></line>
             <line x1="4" y1="12" x2="20" y2="12"></line>
             <line x1="4" y1="18" x2="20" y2="18"></line>
           </svg>
         </button>
-
       </div>
     </div>
   </nav>
@@ -360,229 +348,72 @@
   <main class="bg-white pt-[72px] overflow-x-hidden">
     <!-- Hero Section -->
     <section class="relative overflow-hidden py-14 lg:py-20 bg-[#FAFAF7]">
-      <div
-        class="absolute -top-[280px] -right-[180px] w-[700px] h-[700px] rounded-full bg-gradient-radial from-[#BE3A1B]/10 to-transparent">
-      </div>
+      <div class="absolute -top-[280px] -right-[180px] w-[700px] h-[700px] rounded-full bg-gradient-radial from-[#BE3A1B]/10 to-transparent float-animation"></div>
       <div class="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-center gap-2 text-[12px] mb-8 animate-fadeUp">
+        <div class="flex items-center gap-2 text-[12px] mb-8 animate-fadeDown">
           <a class="transition-colors text-[#8a9a8e] hover:text-[#BE3A1B]" href="/">Home</a>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            class="text-[#8a9a8e]">
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[#8a9a8e]"><path d="m9 18 6-6-6-6"></path></svg>
           <a class="transition-colors text-[#8a9a8e] hover:text-[#BE3A1B]" href="/Blog/blog.html">Blog</a>
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
-            class="text-[#8a9a8e]">
-            <path d="m9 18 6-6-6-6"></path>
-          </svg>
-          <span class="truncate max-w-xs font-semibold text-[#BE3A1B]">10 Digital Tools Every MSME Owner Needs in
-            2026</span>
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="text-[#8a9a8e]"><path d="m9 18 6-6-6-6"></path></svg>
+          <span class="truncate max-w-xs font-semibold text-[#BE3A1B]">10 Digital Tools Every MSME Owner Needs in 2026</span>
         </div>
-        <div
-          class="inline-flex items-center gap-2 mb-5 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B] animate-fadeUp delay-100">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2">
-            <path d="M12 7v14"></path>
-            <path
-              d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z">
-            </path>
-          </svg>
+        <div class="inline-flex items-center gap-2 mb-5 rounded-full px-4 py-1.5 bg-[#BE3A1B] border border-[#BE3A1B] animate-zoom">
+          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2"><path d="M12 7v14"></path><path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z"></path></svg>
           <span class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Digital Growth</span>
         </div>
-        <h1
-          class="text-3xl md:text-[44px] lg:text-[54px] font-black leading-[1.06] tracking-tight mb-5 max-w-4xl text-[#1a2e1e] animate-fadeUp delay-200">
-          10 Digital Tools Every MSME Owner Needs in 2026</h1>
-        <p class="text-[15px] leading-relaxed max-w-2xl mb-8 text-[#5a6b5e] animate-fadeUp delay-300">From accounting
-          software to WhatsApp Business API — the tools that help Indian MSMEs cut costs, serve customers better, and
-          scale without hiring an army.</p>
-        <div class="flex flex-wrap items-center gap-5 pt-5 border-t border-[#BE3A1B]/15 animate-zoom delay-400">
-          <div class="flex items-center gap-3">
-            <div
-              class="w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-sm bg-[#BE3A1B]">
-              D</div>
-            <div>
-              <p class="font-bold text-[13px] text-[#1a2e1e]">Deepak Joshi</p>
-              <p class="text-[11px] text-[#8a9a8e]">Digital Transformation Advisor</p>
-            </div>
-          </div>
+        <h1 class="text-3xl md:text-[44px] lg:text-[54px] font-black leading-[1.06] tracking-tight mb-5 max-w-4xl text-[#1a2e1e] animate-fadeUp delay-100 shimmer-text">10 Digital Tools Every MSME Owner Needs in 2026</h1>
+        <p class="text-[15px] leading-relaxed max-w-2xl mb-8 text-[#5a6b5e] animate-fadeUp delay-200">From accounting software to WhatsApp Business API — the tools that help Indian MSMEs cut costs, serve customers better, and scale without hiring an army.</p>
+        <div class="flex flex-wrap items-center gap-5 pt-5 border-t border-[#BE3A1B]/15 animate-zoom delay-300">
+          <div class="flex items-center gap-3 hover-zoom"><div class="w-10 h-10 rounded-full flex items-center justify-center font-black text-white text-sm bg-[#BE3A1B] transition-all hover:scale-110">D</div><div><p class="font-bold text-[13px] text-[#1a2e1e]">Deepak Joshi</p><p class="text-[11px] text-[#8a9a8e]">Digital Transformation Advisor</p></div></div>
           <div class="h-8 w-px bg-[#BE3A1B]/20"></div>
-          <span class="flex items-center gap-1.5 text-[13px] text-[#8a9a8e]"><svg width="13" height="13"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M8 2v4"></path>
-              <path d="M16 2v4"></path>
-              <rect width="18" height="18" x="3" y="4" rx="2"></rect>
-              <path d="M3 10h18"></path>
-            </svg> 10 Dec 2025</span>
-          <span class="flex items-center gap-1.5 text-[13px] text-[#8a9a8e]"><svg width="13" height="13"
-              viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <path d="M12 6v6l4 2"></path>
-            </svg> 8 min read</span>
+          <span class="flex items-center gap-1.5 text-[13px] text-[#8a9a8e]"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> 10 Dec 2025</span>
+          <span class="flex items-center gap-1.5 text-[13px] text-[#8a9a8e]"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 8 min read</span>
         </div>
       </div>
-      <svg viewBox="0 0 1440 48" fill="none" class="block w-full">
-        <path d="M0,24 C480,0 960,48 1440,16 L1440,48 L0,48 Z" fill="white"></path>
-      </svg>
+      <svg viewBox="0 0 1440 48" fill="none" class="block w-full"><path d="M0,24 C480,0 960,48 1440,16 L1440,48 L0,48 Z" fill="white"></path></svg>
     </section>
 
     <!-- Blog Content -->
     <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 overflow-hidden">
       <div class="grid lg:grid-cols-[1fr_320px] gap-12 items-start min-w-0">
         <article class="min-w-0">
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp">India's Digital MSME Scheme provides
-            ₹1 lakh subsidy for technology adoption — but most MSME owners don't know which tools to adopt first. We've
-            worked with 500+ businesses on their digital journey. Here's what actually drives ROI.</p>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">India's Digital MSME Scheme provides ₹1 lakh subsidy for technology adoption — but most MSME owners don't know which tools to adopt first. We've worked with 500+ businesses on their digital journey. Here's what actually drives ROI.</p>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft">
-            1. Tally Prime / Zoho Books — Accounting</h2>
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp delay-100">Paper-based accounting in
-            2026 is a compliance liability. Tally Prime (₹18,000/year) or Zoho Books (₹9,000/year) automate GST
-            calculations, generate e-invoices, track inventory, and produce balance sheets instantly. Both integrate
-            with the GST portal.</p>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">1. Tally Prime / Zoho Books — Accounting</h2>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">Paper-based accounting in 2026 is a compliance liability. Tally Prime (₹18,000/year) or Zoho Books (₹9,000/year) automate GST calculations, generate e-invoices, track inventory, and produce balance sheets instantly. Both integrate with the GST portal.</p>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-100">
-            2. GeM Seller Account — Government Sales</h2>
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp delay-200">The Government
-            e-Marketplace (GeM) gives you access to ₹2.5 lakh crore in annual government procurement. Registration is
-            free. With ISO or MSME certification, you become eligible for 25%+ tender reservations. We've helped clients
-            secure their first government contract within 45 days of GeM onboarding.</p>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">2. GeM Seller Account — Government Sales</h2>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">The Government e-Marketplace (GeM) gives you access to ₹2.5 lakh crore in annual government procurement. Registration is free. With ISO or MSME certification, you become eligible for 25%+ tender reservations. We've helped clients secure their first government contract within 45 days of GeM onboarding.</p>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-200">
-            3. WhatsApp Business API — Customer Communication</h2>
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp delay-300">The WhatsApp Business App
-            (free) is good for individual businesses. But MSMEs with 50+ customer interactions daily should upgrade to
-            the WhatsApp Business API — it enables automated order confirmations, payment reminders, and catalogues at
-            scale.</p>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">3. WhatsApp Business API — Customer Communication</h2>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">The WhatsApp Business App (free) is good for individual businesses. But MSMEs with 50+ customer interactions daily should upgrade to the WhatsApp Business API — it enables automated order confirmations, payment reminders, and catalogues at scale.</p>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-300">
-            4. Razorpay / Cashfree — Digital Payments</h2>
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp delay-400">Accept UPI, cards, net
-            banking, and EMI without a physical terminal. Razorpay and Cashfree offer payment links, invoice payment,
-            and subscription billing. The 2% MDR is tax-deductible. Also opens access to Razorpay Capital for working
-            capital loans based on transaction history.</p>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">4. Razorpay / Cashfree — Digital Payments</h2>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">Accept UPI, cards, net banking, and EMI without a physical terminal. Razorpay and Cashfree offer payment links, invoice payment, and subscription billing. The 2% MDR is tax-deductible. Also opens access to Razorpay Capital for working capital loans based on transaction history.</p>
 
-          <div
-            class="my-8 rounded-2xl p-6 flex gap-4 bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 animate-scale delay-200">
-            <div
-              class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BE3A1B" stroke-width="2">
-                <path
-                  d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5">
-                </path>
-                <path d="M9 18h6"></path>
-                <path d="M10 22h4"></path>
-              </svg></div>
-            <div>
-              <p class="text-[11px] font-black uppercase tracking-widest mb-1.5 text-[#BE3A1B]">Government Incentive</p>
-              <p class="text-[14px] leading-relaxed text-[#1a2e1e]">The Digital MSME Scheme provides 50–70% subsidy on
-                cloud computing, ERP, and CRM adoption. Udyam-registered MSMEs can claim up to ₹1 lakh. Apply through
-                your district DIC office — DreamMore handles this documentation.</p>
-            </div>
-          </div>
+          <div class="my-8 rounded-2xl p-6 flex gap-4 bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 scroll-reveal-scale hover-zoom"><div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0 bg-[#BE3A1B]/10 border border-[#BE3A1B]/20 icon-hover"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#BE3A1B" stroke-width="2"><path d="M15 14c.2-1 .7-1.7 1.5-2.5 1-.9 1.5-2.2 1.5-3.5A6 6 0 0 0 6 8c0 1 .2 2.2 1.5 3.5.7.7 1.3 1.5 1.5 2.5"></path><path d="M9 18h6"></path><path d="M10 22h4"></path></svg></div><div><p class="text-[11px] font-black uppercase tracking-widest mb-1.5 text-[#BE3A1B]">Government Incentive</p><p class="text-[14px] leading-relaxed text-[#1a2e1e]">The Digital MSME Scheme provides 50–70% subsidy on cloud computing, ERP, and CRM adoption. Udyam-registered MSMEs can claim up to ₹1 lakh. Apply through your district DIC office — DreamMore handles this documentation.</p></div></div>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-400">
-            5. Google My Business — Local Discovery</h2>
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp delay-500">Free, but criminally
-            underused. A complete Google My Business profile drives 4x more local enquiries than an unoptimized one. Add
-            your products/services, photos, business hours, and respond to reviews. This is non-negotiable for any
-            business serving a local market.</p>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">5. Google My Business — Local Discovery</h2>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">Free, but criminally underused. A complete Google My Business profile drives 4x more local enquiries than an unoptimized one. Add your products/services, photos, business hours, and respond to reviews. This is non-negotiable for any business serving a local market.</p>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-500">
-            6. Shopify / WooCommerce — E-Commerce</h2>
-          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] animate-fadeUp delay-600">If you sell physical
-            products, you need an e-commerce presence beyond WhatsApp catalogs. Shopify starts at ₹1,700/month. You can
-            also list on ONDC (Open Network for Digital Commerce) — India's own e-commerce protocol that gives you
-            access to Paytm, PhonePe, and other platforms simultaneously.</p>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">6. Shopify / WooCommerce — E-Commerce</h2>
+          <p class="leading-[1.85] text-[15px] mb-5 text-[#4a5c4e] scroll-reveal">If you sell physical products, you need an e-commerce presence beyond WhatsApp catalogs. Shopify starts at ₹1,700/month. You can also list on ONDC (Open Network for Digital Commerce) — India's own e-commerce protocol that gives you access to Paytm, PhonePe, and other platforms simultaneously.</p>
 
-          <h2
-            class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] animate-fadeLeft delay-600">
-            The Digital Maturity Roadmap for MSMEs</h2>
+          <h2 class="text-2xl md:text-3xl font-black mt-12 mb-5 leading-tight pl-5 text-[#1a2e1e] border-l-4 border-[#BE3A1B] scroll-reveal-left">The Digital Maturity Roadmap for MSMEs</h2>
           <ol class="space-y-3 mb-6">
-            <li class="flex items-start gap-3 animate-fadeUp delay-700"><span
-                class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">1</span><span
-                class="text-[15px] leading-relaxed text-[#4a5c4e]">Foundation (Month 1–2): Google My Business + WhatsApp
-                Business + Tally/Zoho Books</span></li>
-            <li class="flex items-start gap-3 animate-fadeUp delay-800"><span
-                class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">2</span><span
-                class="text-[15px] leading-relaxed text-[#4a5c4e]">Payments (Month 2–3): Razorpay + UPI QR + digital
-                invoicing</span></li>
-            <li class="flex items-start gap-3 animate-fadeUp delay-900"><span
-                class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">3</span><span
-                class="text-[15px] leading-relaxed text-[#4a5c4e]">Sales (Month 3–6): GeM registration + basic website +
-                social media</span></li>
-            <li class="flex items-start gap-3 animate-fadeUp delay-1000"><span
-                class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B]">4</span><span
-                class="text-[15px] leading-relaxed text-[#4a5c4e]">Scale (Month 6+): ERP system + WhatsApp API +
-                e-commerce + CRM</span></li>
+            <li class="flex items-start gap-3 list-item-stagger" style="animation-delay: 0.1s"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B] transition-all hover:scale-110">1</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Foundation (Month 1–2): Google My Business + WhatsApp Business + Tally/Zoho Books</span></li>
+            <li class="flex items-start gap-3 list-item-stagger" style="animation-delay: 0.2s"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B] transition-all hover:scale-110">2</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Payments (Month 2–3): Razorpay + UPI QR + digital invoicing</span></li>
+            <li class="flex items-start gap-3 list-item-stagger" style="animation-delay: 0.3s"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B] transition-all hover:scale-110">3</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Sales (Month 3–6): GeM registration + basic website + social media</span></li>
+            <li class="flex items-start gap-3 list-item-stagger" style="animation-delay: 0.4s"><span class="flex-shrink-0 w-7 h-7 text-white text-[11px] font-black rounded-full flex items-center justify-center mt-0.5 bg-[#BE3A1B] transition-all hover:scale-110">4</span><span class="text-[15px] leading-relaxed text-[#4a5c4e]">Scale (Month 6+): ERP system + WhatsApp API + e-commerce + CRM</span></li>
           </ol>
 
-          <div class="mt-10 rounded-2xl p-8 flex gap-5 items-start bg-[#BE3A1B] shadow-lg animate-zoom delay-400">
-            <div
-              class="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-xl flex-shrink-0 bg-white/20 border border-white/30">
-              D</div>
-            <div class="relative z-10">
-              <p class="font-black text-lg text-white">Deepak Joshi</p>
-              <p class="text-[13px] mb-3 text-white/60">Digital Transformation Advisor · DreamMore</p>
-              <p class="text-[14px] leading-relaxed text-white/80">Deepak has helped 500+ MSMEs adopt digital tools and
-                technology. Book a free consultation to get personalized advice.</p>
-            </div>
-          </div>
+          <div class="mt-10 rounded-2xl p-8 flex gap-5 items-start bg-[#BE3A1B] shadow-lg scroll-reveal-scale hover-zoom"><div class="w-14 h-14 rounded-2xl flex items-center justify-center font-black text-white text-xl flex-shrink-0 bg-white/20 border border-white/30 transition-all hover:scale-110">D</div><div class="relative z-10"><p class="font-black text-lg text-white">Deepak Joshi</p><p class="text-[13px] mb-3 text-white/60">Digital Transformation Advisor · DreamMore</p><p class="text-[14px] leading-relaxed text-white/80">Deepak has helped 500+ MSMEs adopt digital tools and technology. Book a free consultation to get personalized advice.</p></div></div>
         </article>
 
         <aside class="lg:sticky lg:top-24 space-y-5">
-          <div class="rounded-2xl p-5 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10 animate-fadeRight delay-100">
-            <p class="text-[11px] font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-[#1a2e1e]">
-              Table of Contents</p>
-            <ol class="space-y-2">
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">01</span><span
-                  class="leading-snug text-[#5a6b5e]">Tally Prime / Zoho Books</span></li>
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">02</span><span
-                  class="leading-snug text-[#5a6b5e]">GeM Seller Account</span></li>
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">03</span><span
-                  class="leading-snug text-[#5a6b5e]">WhatsApp Business API</span></li>
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">04</span><span
-                  class="leading-snug text-[#5a6b5e]">Razorpay / Cashfree</span></li>
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">05</span><span
-                  class="leading-snug text-[#5a6b5e]">Google My Business</span></li>
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">06</span><span
-                  class="leading-snug text-[#5a6b5e]">Shopify / WooCommerce</span></li>
-              <li class="flex items-start gap-2.5 text-[13px]"><span
-                  class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">07</span><span
-                  class="leading-snug text-[#5a6b5e]">Digital Maturity Roadmap</span></li>
-            </ol>
-          </div>
+          <div class="rounded-2xl p-5 bg-[#BE3A1B]/5 border border-[#BE3A1B]/10 scroll-reveal-right hover-zoom"><p class="text-[11px] font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-[#1a2e1e]">Table of Contents</p><ol class="space-y-2"><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">01</span><span class="leading-snug text-[#5a6b5e]">Tally Prime / Zoho Books</span></li><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">02</span><span class="leading-snug text-[#5a6b5e]">GeM Seller Account</span></li><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">03</span><span class="leading-snug text-[#5a6b5e]">WhatsApp Business API</span></li><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">04</span><span class="leading-snug text-[#5a6b5e]">Razorpay / Cashfree</span></li><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">05</span><span class="leading-snug text-[#5a6b5e]">Google My Business</span></li><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">06</span><span class="leading-snug text-[#5a6b5e]">Shopify / WooCommerce</span></li><li class="flex items-start gap-2.5 text-[13px] transition-all hover:translate-x-1"><span class="font-bold flex-shrink-0 text-[11px] mt-0.5 text-[#BE3A1B]">07</span><span class="leading-snug text-[#5a6b5e]">Digital Maturity Roadmap</span></li></ol></div>
 
-          <div class="rounded-2xl overflow-hidden bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 animate-scale delay-200">
-            <div class="p-5 bg-[#BE3A1B]">
-              <p class="font-black text-white text-[15px] mb-1">Need Help Applying?</p>
-              <p class="text-[13px] leading-relaxed text-white/75">Our experts handle the complete Digital MSME Scheme
-                application.</p>
-            </div>
-            <div class="p-5 space-y-2.5"><a
-                class="group flex items-center justify-between font-bold px-5 py-3.5 rounded-xl bg-[#BE3A1B] text-white"
-                href="/Contact-us/contact.html"><span class="text-[13px]">Book Free Call</span><span>→</span></a><a
-                href="tel:+919898575417"
-                class="flex items-center gap-2 justify-center font-semibold px-5 py-3 rounded-xl bg-white border border-[#BE3A1B]/20 text-[#1a2e1e]">📞
-                +91 9898575417</a>
-              <div class="flex items-center justify-center gap-3 pt-2">
-                <div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">✅</span><span
-                    class="text-[10px] font-medium text-gray-500">Govt. Recognized</span></div>
-                <div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">🎧</span><span
-                    class="text-[10px] font-medium text-gray-500">Free</span></div>
-              </div>
-            </div>
-          </div>
+          <div class="rounded-2xl overflow-hidden bg-[#BE3A1B]/5 border border-[#BE3A1B]/15 scroll-reveal-scale hover-zoom"><div class="p-5 bg-[#BE3A1B]"><p class="font-black text-white text-[15px] mb-1">Need Help Applying?</p><p class="text-[13px] leading-relaxed text-white/75">Our experts handle the complete Digital MSME Scheme application.</p></div><div class="p-5 space-y-2.5"><a class="group flex items-center justify-between font-bold px-5 py-3.5 rounded-xl bg-[#BE3A1B] text-white hover:bg-black transition" href="/Contact-us/contact.html"><span class="text-[13px]">Book Free Call</span><span>→</span></a><a href="tel:+919898575417" class="flex items-center gap-2 justify-center font-semibold px-5 py-3 rounded-xl bg-white border border-[#BE3A1B]/20 text-[#1a2e1e] hover:bg-gray-50 transition">📞 +91 9898575417</a><div class="flex items-center justify-center gap-3 pt-2"><div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">✅</span><span class="text-[10px] font-medium text-gray-500">Govt. Recognized</span></div><div class="flex items-center gap-1.5"><span class="text-[#BE3A1B]">🎧</span><span class="text-[10px] font-medium text-gray-500">Free</span></div></div></div></div>
         </aside>
       </div>
     </section>
@@ -590,750 +421,67 @@
     <!-- More Articles Section -->
     <section class="relative overflow-hidden py-20 bg-[#F4F1EC]">
       <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center mb-14 animate-fadeUp"><span
-            class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B] border border-[#BE3A1B]"><span
-              class="w-2 h-2 rounded-full bg-[#ffffff]"></span><span
-              class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Keep Reading</span></span>
-          <h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3 text-[#1a2e1e]">More from DreamMore</h2>
-        </div>
+        <div class="text-center mb-14 scroll-reveal"><span class="inline-flex items-center gap-2 rounded-full px-4 py-1.5 mb-4 bg-[#BE3A1B] border border-[#BE3A1B]"><span class="w-2 h-2 rounded-full bg-[#ffffff]"></span><span class="text-[11px] font-semibold tracking-widest uppercase text-[#ffffff]">Keep Reading</span></span><h2 class="text-3xl lg:text-4xl font-black leading-tight mb-3 text-[#1a2e1e]">More from DreamMore</h2></div>
         <div class="grid md:grid-cols-3 gap-5">
-          <article
-            class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 animate-scale delay-100">
-            <div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div>
-            <div class="p-6 flex flex-col flex-1"><span
-                class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B] text-[#ffffff]">Government
-                Schemes</span>
-              <h3
-                class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">
-                Udyam Shakti Scheme 2026: Complete Guide for Women Entrepreneurs</h3>
-              <p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">Everything you need to know about
-                India's flagship scheme for women-led MSMEs — eligibility, benefits up to ₹10 lakh, and how to apply.
-              </p>
-              <div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span
-                  class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 6v6l4 2"></path>
-                  </svg> 10 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B]"
-                  href="/Blog/udyam-shakti-scheme.html">Read →</a></div>
-            </div>
-          </article>
-          <article
-            class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 animate-scale delay-200">
-            <div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div>
-            <div class="p-6 flex flex-col flex-1"><span
-                class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B] text-[#ffffff]">Government
-                Schemes</span>
-              <h3
-                class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">
-                PMEGP 2026: The Complete Guide to Getting ₹50 Lakh for Your Business</h3>
-              <p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">PMEGP remains India's biggest
-                self-employment scheme. Learn exact eligibility, subsidy rates, and bank selection strategy.</p>
-              <div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span
-                  class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 6v6l4 2"></path>
-                  </svg> 14 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B]"
-                  href="/Blog/pmegp-guide-2026.html">Read →</a></div>
-            </div>
-          </article>
-          <article
-            class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 animate-scale delay-300">
-            <div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div>
-            <div class="p-6 flex flex-col flex-1"><span
-                class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B] text-[#ffffff]">Registration</span>
-              <h3
-                class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">
-                MSME Udyam Registration 2026: The Only Guide You'll Need</h3>
-              <p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">Udyam Registration is the gateway
-                to 20+ government benefits. Step-by-step guide covers process, documents, and common errors.</p>
-              <div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span
-                  class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10"
-                    viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="12" cy="12" r="10"></circle>
-                    <path d="M12 6v6l4 2"></path>
-                  </svg> 8 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B]"
-                  href="/Blog/msme-udyam-registration.html">Read →</a></div>
-            </div>
-          </article>
+          <article class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 blog-card scroll-reveal-scale" style="animation-delay: 0.1s"><div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div><div class="p-6 flex flex-col flex-1"><span class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B] text-[#ffffff]">Government Schemes</span><h3 class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">Udyam Shakti Scheme 2026: Complete Guide for Women Entrepreneurs</h3><p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">Everything you need to know about India's flagship scheme for women-led MSMEs — eligibility, benefits up to ₹10 lakh, and how to apply.</p><div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 10 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B] hover:translate-x-1 transition" href="/Blog/udyam-shakti-scheme.html">Read →</a></div></div></article>
+          <article class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 blog-card scroll-reveal-scale" style="animation-delay: 0.2s"><div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div><div class="p-6 flex flex-col flex-1"><span class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B] text-[#ffffff]">Government Schemes</span><h3 class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">PMEGP 2026: The Complete Guide to Getting ₹50 Lakh for Your Business</h3><p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">PMEGP remains India's biggest self-employment scheme. Learn exact eligibility, subsidy rates, and bank selection strategy.</p><div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 14 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B] hover:translate-x-1 transition" href="/Blog/pmegp-guide-2026.html">Read →</a></div></div></article>
+          <article class="group rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl flex flex-col bg-white border border-[#BE3A1B]/10 blog-card scroll-reveal-scale" style="animation-delay: 0.3s"><div class="h-[3px] w-full bg-gradient-to-r from-[#BE3A1B] to-[#BE3A1B]/40"></div><div class="p-6 flex flex-col flex-1"><span class="inline-flex text-[11px] font-bold px-3 py-1.5 rounded-lg mb-4 self-start bg-[#BE3A1B] text-[#ffffff]">Registration</span><h3 class="font-black text-[16px] leading-snug mb-3 text-[#1a2e1e] group-hover:text-[#BE3A1B] transition-colors">MSME Udyam Registration 2026: The Only Guide You'll Need</h3><p class="text-[13px] leading-relaxed mb-5 line-clamp-2 text-[#5a6b5e]">Udyam Registration is the gateway to 20+ government benefits. Step-by-step guide covers process, documents, and common errors.</p><div class="flex items-center justify-between pt-4 border-t border-[#BE3A1B]/10"><span class="flex items-center gap-1.5 text-[11px] font-medium text-[#8a9a8e]"><svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg> 8 min read</span><a class="flex items-center gap-1.5 text-[12px] font-bold text-[#BE3A1B] hover:translate-x-1 transition" href="/Blog/msme-udyam-registration.html">Read →</a></div></div></article>
         </div>
       </div>
     </section>
   </main>
 
   <!-- Footer -->
-  <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8 reveal-on-scroll">
+  <footer class="bg-gradient-to-br from-[#000000] to-[#BE3A1B] text-white pt-16 pb-8">
     <div class="max-w-7xl mx-auto px-4">
-
-      <!-- Disclaimer & Notice Section -->
-
-
-      <!-- Main Footer Grid -->
       <div class="grid md:grid-cols-4 gap-8 border-b border-white/20 pb-10">
-
-        <!-- Brand Column -->
-        <div>
-          <span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span>
-          <p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to
-            funding — we handle every step.</p>
-        </div>
-
-        <!-- Navigation Column -->
-        <div>
-          <h4 class="font-bold text-lg">Navigation</h4>
-          <ul class="mt-3 space-y-2 text-sm text-white/70">
-            <li><a href="/" class="hover:text-white transition">Home</a></li>
-            <li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li>
-            <li><a href="/Government-Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li>
-            <li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li>
-            <li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li>
-            <li><a href="/About-us/about.html" class="hover:text-white transition">About-us</a></li>
-            <li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li>
-            <li><a href="/Contact-us/contact.html" class="hover:text-white transition">Contact</a></li>
-          </ul>
-        </div>
-
-        <!-- Categories Column -->
-        <div>
-          <h4 class="font-bold text-lg">Categories</h4>
-          <ul class="mt-3 space-y-2 text-sm text-white/70">
-            <li>AI Solutions</li>
-            <li>Certifications</li>
-            <li>Website Development</li>
-            <li>App Development</li>
-            <li>IOT Solution</li>
-            <li>Digital Marketing</li>
-          </ul>
-        </div>
-
-        <!-- Contact Column -->
-        <div>
-          <h4 class="font-bold text-lg">Contact</h4>
-          <p class="mt-3 text-sm">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p>
-          <p class="mt-2">📧 info@dreammore.in</p>
-          <p class="pt-4">📞 +91 98985 75417</p>
-        </div>
+        <div><span class="text-2xl font-black text-[#BE3A1B]">Dream<span class="text-[#ffffff]">More</span></span><p class="text-sm text-white/70 mt-3">India's trusted MSME & startup support platform. From registration to funding — we handle every step.</p></div>
+        <div><h4 class="font-bold text-lg">Navigation</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li><a href="/" class="hover:text-white transition">Home</a></li><li><a href="/Service/service.html" class="hover:text-white transition">Services</a></li><li><a href="/Government-Schemes/schemes.html" class="hover:text-white transition">Schemes</a></li><li><a href="/Loan/loan.html" class="hover:text-white transition">Loan</a></li><li><a href="/Blog/blog.html" class="hover:text-white transition">Blog</a></li><li><a href="/About-us/about.html" class="hover:text-white transition">About-us</a></li><li><a href="/Carrers/carrers.html" class="hover:text-white transition">Career</a></li><li><a href="/Contact-us/contact.html" class="hover:text-white transition">Contact</a></li></ul></div>
+        <div><h4 class="font-bold text-lg">Categories</h4><ul class="mt-3 space-y-2 text-sm text-white/70"><li>AI Solutions</li><li>Certifications</li><li>Website Development</li><li>App Development</li><li>IOT Solution</li><li>Digital Marketing</li></ul></div>
+        <div><h4 class="font-bold text-lg">Contact</h4><p class="mt-3 text-sm">703 - H K House, B/H jivabhai chamber , ashram road Ahmedabad</p><p class="mt-2">📧 info@dreammore.in</p><p class="pt-4">📞 +91 98985 75417</p></div>
       </div>
-
       <div class="mb-10 pb-6 border-b border-white/20 space-y-4">
-
-        <!-- Disclaimer -->
-        <div class="text-sm text-white/80 leading-relaxed pt-5">
-          <span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span>
-          DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support
-          services.
-          All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory
-          guarantees.
-          All outcomes are subject to government procedures, approvals, and external factors.
-        </div>
-
-        <!-- Note -->
-        <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg">
-          <span class="font-bold text-[#F97316]">📌 NOTE:</span>
-          All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our
-          official payment channels,
-          including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept
-          payments to personal accounts
-          or under any other name. Clients are strongly advised to verify account details before making any
-          transaction.
-          DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.
-        </div>
+        <div class="text-sm text-white/80 leading-relaxed pt-5"><span class="font-bold text-[#F97316]">⚠️ DISCLAIMER:</span> DreamMore Services Private Limited is a consulting firm providing guidance, advisory, and execution support services. All services are delivered on a best-effort basis. We do not provide any financial, legal, or regulatory guarantees. All outcomes are subject to government procedures, approvals, and external factors.</div>
+        <div class="text-sm text-white/80 leading-relaxed bg-white/10 p-3 rounded-lg"><span class="font-bold text-[#F97316]">📌 NOTE:</span> All payments for services must be made exclusively in the name of <strong>Dream More</strong> through our official payment channels, including bank transfers (NEFT, IMPS, RTGS) or authorized digital payment gateways. We do not accept payments to personal accounts or under any other name. Clients are strongly advised to verify account details before making any transaction. DreamMore will not be responsible for any loss arising from payments made outside our authorized channels.</div>
       </div>
-
-      <!-- Legal & Policy Links Row -->
-      <div
-        class="max-w-7xl mx-auto px-4 pt-6 flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80">
-        <div class="flex flex-wrap justify-center gap-4">
-          <a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a>
-          <span class="text-white/30">|</span>
-          <a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a>
-          <span class="text-white/30">|</span>
-          <a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a>
-        </div>
-        <div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div>
-      </div>
-
-
-
+      <div class="flex flex-col md:flex-row justify-between items-center gap-3 text-xs text-white/80"><div class="flex flex-wrap justify-center gap-4"><a href="/legal/refund-policy.html" class="hover:text-[#F97316] transition">📄 Refund Policy</a><span class="text-white/30">|</span><a href="/legal/Terms.html" class="hover:text-[#F97316] transition">⚖️ Terms & Conditions</a><span class="text-white/30">|</span><a href="/legal/privacy-policy.html" class="hover:text-[#F97316] transition">🔒 Privacy Policy</a></div><div>© 2026 DreamMore Business Solutions Pvt. Ltd. All rights reserved. Made in India 🇮🇳</div></div>
     </div>
   </footer>
 
   <!-- WhatsApp float button -->
   <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end gap-2">
-    <div
-      class="bg-white rounded-2xl shadow-xl p-3 pr-7 text-xs font-medium animate-zoom delay-500 border border-gray-100">
-      💬 Chat with us! Get free advice</div>
-    <a href="https://wa.me/919898575417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business."
-      target="_blank"
-      class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl hover:scale-105 transition"><svg
-        viewBox="0 0 32 32" fill="white" width="30">
-        <path
-          d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zm0 23.04c-2.04 0-3.96-.54-5.62-1.5l-.4-.24-4 1.16 1.18-3.88-.26-.4A10.36 10.36 0 015.56 15.8c0-5.76 4.68-10.44 10.44-10.44 5.76 0 10.44 4.68 10.44 10.44S21.762 26.24 16.002 26.24zM21.74 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z" />
-      </svg></a>
+    <div class="bg-white rounded-2xl shadow-xl p-3 pr-7 text-xs font-medium animate-zoom border border-gray-100 hover:scale-105 transition">💬 Chat with us! Get free advice</div>
+    <a href="https://wa.me/919898575417?text=Hi%20DreamMore!%20I'd%20like%20to%20know%20which%20Service%20is%20best%20for%20Your%20business." target="_blank" class="w-14 h-14 rounded-full bg-[#BE3A1B] flex items-center justify-center shadow-xl hover:scale-110 transition"><svg viewBox="0 0 32 32" fill="white" width="30"><path d="M16.002 3.2C9.031 3.2 3.4 8.83 3.4 15.8c0 2.36.66 4.56 1.8 6.44L3.2 28.8l6.74-1.96c1.82.98 3.9 1.56 6.06 1.56 6.97 0 12.6-5.63 12.6-12.6S22.97 3.2 16.002 3.2zm0 23.04c-2.04 0-3.96-.54-5.62-1.5l-.4-.24-4 1.16 1.18-3.88-.26-.4A10.36 10.36 0 015.56 15.8c0-5.76 4.68-10.44 10.44-10.44 5.76 0 10.44 4.68 10.44 10.44S21.762 26.24 16.002 26.24zM21.74 18.3c-.32-.16-1.88-.92-2.16-1.02-.28-.1-.48-.16-.68.16-.2.32-.76.96-.94 1.16-.18.2-.34.22-.66.08-.32-.16-1.34-.5-2.54-1.58-.94-.84-1.58-1.88-1.76-2.2-.18-.32-.02-.5.14-.66.14-.14.32-.36.48-.54.16-.18.2-.3.3-.5.1-.2.06-.38-.02-.54-.08-.16-.68-1.64-.94-2.24-.24-.58-.5-.5-.68-.52-.18 0-.38-.02-.58-.02-.2 0-.52.08-.8.38-.28.3-1.06 1.04-1.06 2.52s1.08 2.92 1.24 3.12c.16.2 2.14 3.26 5.18 4.58.72.32 1.28.5 1.72.64.72.22 1.38.2 1.9.12.58-.1 1.88-.76 2.14-1.5.26-.74.26-1.38.18-1.5-.08-.14-.28-.22-.6-.38z"/></svg></a>
   </div>
-
 
   <script src="https://unpkg.com/sweetalert2@11"></script>
-  <style>
-    /* Popup Styles - 60 Second Popup Form */
-    .popup-overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.85);
-      backdrop-filter: blur(12px);
-      z-index: 10000;
-      display: none;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .popup-overlay.active {
-      display: flex;
-    }
-
-    .popup-container {
-      background: white;
-      border-radius: 32px;
-      width: 90%;
-      max-width: 1000px;
-      max-height: 85vh;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-      animation: slideInUp 0.4s ease;
-      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
-    }
-
-    @media (min-width: 768px) {
-      .popup-container {
-        flex-direction: row;
-      }
-    }
-
-    @keyframes slideInUp {
-      from {
-        transform: translateY(50px);
-        opacity: 0;
-      }
-
-      to {
-        transform: translateY(0);
-        opacity: 1;
-      }
-    }
-
-    .popup-image-section {
-      background: linear-gradient(145deg, #BE3A1B, #8B2A14);
-      padding: 2rem;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
-
-    @media (min-width: 768px) {
-      .popup-image-section {
-        width: 40%;
-      }
-    }
-
-    .popup-image-section h3 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      color: white;
-      margin: 1rem 0 0.25rem;
-    }
-
-    .popup-image-section p {
-      color: rgba(255, 255, 255, 0.9);
-      font-size: 0.85rem;
-    }
-
-    .benefits-list {
-      text-align: left;
-      margin-top: 1.2rem;
-      list-style: none;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 20px;
-      padding: 0.8rem 1rem;
-    }
-
-    .benefits-list li {
-      color: white;
-      font-size: 0.8rem;
-      margin-bottom: 0.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .benefits-list li::before {
-      content: "✓";
-      width: 18px;
-      height: 18px;
-      background: rgba(255, 255, 255, 0.2);
-      border-radius: 50%;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 10px;
-    }
-
-    .popup-form-section {
-      padding: 2rem;
-      background: white;
-    }
-
-    @media (min-width: 768px) {
-      .popup-form-section {
-        width: 60%;
-      }
-    }
-
-    .close-popup {
-      position: absolute;
-      top: 12px;
-      right: 12px;
-      width: 36px;
-      height: 36px;
-      background: rgba(255, 255, 255, 0.95);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      z-index: 30;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      transition: all 0.2s ease;
-    }
-
-    .close-popup:hover {
-      transform: rotate(90deg);
-      background: #BE3A1B;
-    }
-
-    .close-popup:hover svg {
-      stroke: white;
-    }
-
-    .form-title {
-      margin-bottom: 1.5rem;
-    }
-
-    .form-title h2 {
-      font-size: 1.6rem;
-      font-weight: 800;
-      color: #1a2e1e;
-    }
-
-    .form-title p {
-      color: #6b7280;
-      font-size: 0.85rem;
-      margin-top: 0.2rem;
-    }
-
-    .form-group {
-      margin-bottom: 1rem;
-    }
-
-    .form-group label {
-      display: block;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: #374151;
-      margin-bottom: 0.3rem;
-    }
-
-    .form-group label .required {
-      color: #BE3A1B;
-    }
-
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-      width: 100%;
-      padding: 0.75rem 1rem;
-      border: 1.5px solid #e9edf2;
-      border-radius: 16px;
-      font-size: 0.85rem;
-      font-family: inherit;
-      background: #fafbfc;
-      transition: all 0.2s ease;
-    }
-
-    .form-group input:focus,
-    .form-group textarea:focus,
-    .form-group select:focus {
-      outline: none;
-      border-color: #BE3A1B;
-      box-shadow: 0 0 0 3px rgba(190, 58, 27, 0.12);
-      background: white;
-    }
-
-    .submit-btn {
-      width: 100%;
-      background: linear-gradient(135deg, #BE3A1B, #9B2E14);
-      color: white;
-      font-weight: 700;
-      padding: 0.85rem;
-      border: none;
-      border-radius: 40px;
-      cursor: pointer;
-      font-size: 0.95rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.5rem;
-      margin-top: 0.5rem;
-      transition: all 0.2s ease;
-    }
-
-    .submit-btn:hover {
-      background: linear-gradient(135deg, #000, #1a1a1a);
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(190, 58, 27, 0.3);
-    }
-
-    .submit-btn:disabled {
-      opacity: 0.7;
-      cursor: not-allowed;
-      transform: none;
-    }
-
-    .timer-text {
-      text-align: center;
-      font-size: 0.7rem;
-      color: #BE3A1B;
-      font-weight: 500;
-      margin-top: 1rem;
-      background: #fff0ed;
-      display: inline-block;
-      width: auto;
-      padding: 4px 12px;
-      border-radius: 30px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    @media (max-width: 480px) {
-      .popup-container {
-        width: 95%;
-      }
-
-      .benefits-list {
-        display: none;
-      }
-
-      .popup-image-section {
-        padding: 1rem;
-      }
-
-      .popup-image-section h3 {
-        font-size: 1rem;
-      }
-    }
-  </style>
-
-  <div id="contactPopup" class="popup-overlay">
-    <div class="popup-container">
-      <div class="close-popup" id="closePopupBtn">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="18" y1="6" x2="6" y2="18"></line>
-          <line x1="6" y1="6" x2="18" y2="18"></line>
-        </svg>
-      </div>
-      <div class="popup-image-section">
-        <div class="image-wrapper">
-          <img src="/LOGO.png" alt="DreamMore Logo"
-            style="width:120px; margin:0 auto; display:block; border-radius:20px; background:white; padding:10px;">
-          <h3>Expert Support</h3>
-          <p>Get personalized assistance for MSME & Startup</p>
-          <ul class="benefits-list">
-            <li>Free Business Consultation</li>
-            <li>Government Scheme Guidance</li>
-            <li>Loan & Funding Assistance</li>
-            <li>AI & Digital Growth Solutions</li>
-          </ul>
-        </div>
-      </div>
-      <div class="popup-form-section">
-        <div id="popupFormContent">
-          <div class="form-title">
-            <h2>Let's Connect!</h2>
-            <p>Fill the form below - response within 2 hours ⏱️</p>
-          </div>
-          <form id="popupContactForm">
-            <div class="form-group">
-              <label>Full Name <span class="required">*</span></label>
-              <input type="text" id="popupFullName" placeholder="Enter your full name" required>
-            </div>
-            <div class="form-group">
-              <label>Email Address <span class="required">*</span></label>
-              <input type="email" id="popupEmail" placeholder="you@example.com" required>
-            </div>
-            <div class="form-group">
-              <label>Phone Number <span class="required">*</span></label>
-              <input type="tel" id="popupPhone" placeholder="+91 XXXXX XXXXX" required>
-            </div>
-            <div class="form-group">
-              <label>Service Interested In</label>
-              <select id="popupService">
-                <option value="">Select a service</option>
-                <option value="Company Registration">Company Registration (MSME/Udyam)</option>
-                <option value="Funding Support">Funding Support & Investment</option>
-                <option value="Certifications">Certifications (ISO, FSSAI, etc.)</option>
-                <option value="AI Solutions">AI & Automation Solutions</option>
-                <option value="Digital Marketing">Digital Marketing & SEO</option>
-                <option value="Website Development">Website & App Development</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Loan Type (If needed)</label>
-              <select id="popupLoan">
-                <option value="">Select loan</option>
-                <option value="Business Loan">Business Loan</option>
-                <option value="Salaried Personal Loan">Salaried Personal Loan</option>
-                <option value="Home Loan">Home Loan</option>
-                <option value="Education Loan">Education Loan</option>
-                <option value="Machinery Loan">Machinery Loan</option>
-                <option value="Loan Against Property">Loan Against Property</option>
-              </select>
-            </div>
-            <div class="form-group">
-              <label>Message / Query</label>
-              <textarea rows="2" id="popupMessage" placeholder="Tell us about your business requirements..."></textarea>
-            </div>
-            <button type="submit" id="popupSubmitBtn" class="submit-btn">
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2">
-                <path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" />
-              </svg>
-              Submit Request
-            </button>
-          </form>
-          <div id="popupTimerText" class="timer-text"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
   <script>
-    // ==========================================
-    // GOOGLE SHEETS SCRIPT URL
-    // ==========================================
     const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxWQRCInqGKqTuH9dC02D9nUY_koLo_ynrQLcR_c-GG9GoxPSsUkHpVPtRKl1f0ykNn/exec';
 
-    // ==========================================
-    // 60 SECOND POPUP LOGIC
-    // ==========================================
-    let isPopupVisible = false;
-    let popupClosedManually = false;
-    let countdownInterval = null;
-
-    const popup = document.getElementById('contactPopup');
-    const closePopupBtn = document.getElementById('closePopupBtn');
-    const popupTimerText = document.getElementById('popupTimerText');
-
-    function startCountdown(secondsLeft) {
-      if (countdownInterval) clearInterval(countdownInterval);
-      if (popupTimerText) popupTimerText.innerHTML = `⏳ This popup will close in ${secondsLeft} seconds`;
-      countdownInterval = setInterval(() => {
-        secondsLeft--;
-        if (isPopupVisible && popupTimerText) {
-          if (secondsLeft > 0) {
-            popupTimerText.innerHTML = `⏳ This popup will close in ${secondsLeft} seconds`;
-          } else {
-            popupTimerText.innerHTML = `✨ Don't miss out! Submit now ✨`;
-          }
-        }
-        if (secondsLeft <= 0) {
-          clearInterval(countdownInterval);
-          countdownInterval = null;
-          if (isPopupVisible) hidePopup(true);
-        }
-      }, 1000);
+    // Scroll Reveal Handler
+    function handleScrollReveal() {
+      const reveals = document.querySelectorAll('.scroll-reveal, .scroll-reveal-left, .scroll-reveal-right, .scroll-reveal-scale');
+      reveals.forEach(el => { if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('revealed'); });
     }
+    window.addEventListener('scroll', handleScrollReveal);
+    window.addEventListener('load', handleScrollReveal);
 
-    function showPopup(showTimer = false, secondsLeft = 60) {
-      if (!isPopupVisible && !popupClosedManually) {
-        popup.classList.add('active');
-        const popupFormContent = document.getElementById('popupFormContent');
-        if (popupFormContent) popupFormContent.style.display = 'block';
-        isPopupVisible = true;
-        document.body.style.overflow = 'hidden';
-        if (showTimer && secondsLeft > 0) startCountdown(secondsLeft);
-        else if (popupTimerText) popupTimerText.innerHTML = '⏳ Get expert advice now!';
-      }
-    }
-
-    function hidePopup(manualClose = true) {
-      if (isPopupVisible) {
-        popup.classList.remove('active');
-        isPopupVisible = false;
-        document.body.style.overflow = '';
-        if (countdownInterval) clearInterval(countdownInterval);
-        countdownInterval = null;
-        if (manualClose) {
-          popupClosedManually = true;
-          setTimeout(() => { popupClosedManually = false; }, 30000);
-        }
-        if (popupTimerText) popupTimerText.innerHTML = '';
-      }
-    }
-
-    if (closePopupBtn) closePopupBtn.addEventListener('click', () => hidePopup(true));
-
-    // Auto popup after 60 seconds (1 minute)
-    setTimeout(() => {
-      if (!isPopupVisible && !popupClosedManually) showPopup(true, 60);
-    }, 30000);
-
-    // ==========================================
-    // POPUP FORM SUBMISSION - ONLY SWEETALERT
-    // ==========================================
-    const popupForm = document.getElementById('popupContactForm');
-    const popupSubmitBtn = document.getElementById('popupSubmitBtn');
-
-    async function submitPopupForm(e) {
-      e.preventDefault();
-
-      const fullName = document.getElementById('popupFullName').value.trim();
-      const email = document.getElementById('popupEmail').value.trim();
-      const phone = document.getElementById('popupPhone').value.trim();
-
-      if (!fullName || !email || !phone) {
-        Swal.fire({ title: "Missing Fields", text: "Please fill Full Name, Email and Phone Number (required fields).", icon: "warning", confirmButtonColor: "#BE3A1B" });
-        return;
-      }
-
-      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-      if (!emailPattern.test(email)) {
-        Swal.fire({ title: "Invalid Email", text: "Please enter a valid email address.", icon: "error", confirmButtonColor: "#BE3A1B" });
-        return;
-      }
-
-      popupSubmitBtn.disabled = true;
-      popupSubmitBtn.innerHTML = '<span>⏳ Submitting...</span>';
-
-      const formData = {
-        fullName: fullName,
-        email: email,
-        phone: phone,
-        service: document.getElementById('popupService').value || "Not selected",
-        loan: document.getElementById('popupLoan').value || "Not selected",
-        message: document.getElementById('popupMessage').value.trim() || "No message",
-        timestamp: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' }),
-        source: "60sec_popup_form"
-      };
-
-      try {
-        await fetch(SCRIPT_URL, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(formData) });
-
-        Swal.fire({
-          title: "✅ Request Sent!",
-          text: "Your details have been submitted successfully. Our expert will contact you within 2 hours.",
-          icon: "success",
-          confirmButtonColor: "#BE3A1B",
-          confirmButtonText: "OK"
-        });
-
-        popupForm.reset();
-        hidePopup(true);
-
-      } catch (error) {
-        console.error("Submission Error:", error);
-        Swal.fire({ title: "Network Error", text: "Unable to submit. Please check your internet connection.", icon: "error", confirmButtonColor: "#BE3A1B" });
-      } finally {
-        popupSubmitBtn.disabled = false;
-        popupSubmitBtn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg> Submit Request';
-      }
-    }
-
-    if (popupForm) popupForm.addEventListener('submit', submitPopupForm);
-
-    // Close popup when clicking outside
-    if (popup) {
-      popup.addEventListener('click', (e) => { if (e.target === popup) hidePopup(true); });
-    }
-
-    // ==========================================
-    // MOBILE MENU & SCROLL REVEAL & FAQ TOGGLE
-    // ==========================================
-
-    // FAQ toggle
-    document.querySelectorAll('.faq-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        btn.classList.toggle('active');
-        const content = btn.nextElementSibling;
-        if (content.style.maxHeight) {
-          content.style.maxHeight = null;
-        } else {
-          content.style.maxHeight = content.scrollHeight + "px";
-        }
-      });
-    });
+    // Navbar scroll effect
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => { if (window.scrollY > 50) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled'); });
 
     // Mobile Menu Toggle
     const mobileMenuBtn = document.getElementById('mobileMenuBtn');
     const mobileMenu = document.getElementById('mobileMenu');
     const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
     const mobileMenuClose = document.getElementById('mobileMenuClose');
-
-    function openMobileMenu() {
-      if (mobileMenu) mobileMenu.classList.add('open');
-      if (mobileMenuOverlay) mobileMenuOverlay.classList.add('open');
-      document.body.style.overflow = 'hidden';
-    }
-
-    function closeMobileMenu() {
-      if (mobileMenu) mobileMenu.classList.remove('open');
-      if (mobileMenuOverlay) mobileMenuOverlay.classList.remove('open');
-      document.body.style.overflow = '';
-    }
-
-    if (mobileMenuBtn) {
-      mobileMenuBtn.addEventListener('click', openMobileMenu);
-    }
-    if (mobileMenuClose) {
-      mobileMenuClose.addEventListener('click', closeMobileMenu);
-    }
-    if (mobileMenuOverlay) {
-      mobileMenuOverlay.addEventListener('click', closeMobileMenu);
-    }
-
-    // Close mobile menu on window resize
-    window.addEventListener('resize', function () {
-      if (window.innerWidth >= 768 && mobileMenu && mobileMenu.classList.contains('open')) {
-        closeMobileMenu();
-      }
-    });
-
-    // Scroll Reveal Animation
-    const revealElements = document.querySelectorAll('.reveal-on-scroll');
-
-    function checkReveal() {
-      const windowHeight = window.innerHeight;
-      const revealThreshold = 100;
-      revealElements.forEach(element => {
-        const elementTop = element.getBoundingClientRect().top;
-        if (elementTop < windowHeight - revealThreshold) {
-          element.classList.add('revealed');
-        }
-      });
-    }
-
-    // Initial check on load
-    window.addEventListener('load', checkReveal);
-    // Check on scroll
-    window.addEventListener('scroll', checkReveal);
+    function openMobileMenu() { mobileMenu.classList.add('active'); mobileMenuOverlay.classList.add('active'); document.body.style.overflow = 'hidden'; }
+    function closeMobileMenu() { mobileMenu.classList.remove('active'); mobileMenuOverlay.classList.remove('active'); document.body.style.overflow = ''; }
+    if (mobileMenuBtn) mobileMenuBtn.addEventListener('click', openMobileMenu);
+    if (mobileMenuClose) mobileMenuClose.addEventListener('click', closeMobileMenu);
+    if (mobileMenuOverlay) mobileMenuOverlay.addEventListener('click', closeMobileMenu);
+    window.addEventListener('resize', function() { if (window.innerWidth >= 768 && mobileMenu.classList.contains('active')) closeMobileMenu(); });
   </script>
-
-
 </body>
 
 </html>
